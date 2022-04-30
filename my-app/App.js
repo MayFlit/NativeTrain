@@ -9,11 +9,13 @@ export default function App() {
 
 
 
+
   return (
       <ImageBackground source={require('./assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>
 
       <SafeAreaView style={{flex: 1}}>
-        <Hero/>
+            <Hero/>
+
           <Enemy/>
       <StatusBar style="auto" hidden={true}/>
     </SafeAreaView>

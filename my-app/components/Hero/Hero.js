@@ -1,19 +1,24 @@
 import React from "react";
-import {View, Image, Text} from "react-native";
+import {View, Image} from "react-native";
 import {HeroStyle} from "./style";
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
+export const Hero = () => {
 
 
 
-export const Hero = async () => {
-    try {
-        await AsyncStorage.setItem(
-            '@MySuperStore:key',
-            'I like to save it.'
-        );
-    } catch (error) {
-        // Error saving data
+    async function lala() {
+        // await AsyncStorage.setItem(
+        //     'lalailaKey',
+        //     'lalailaValue'
+        // );
+        const lala = await AsyncStorage.getItem('lalailaKey')
+        console.log(lala)
     }
+    lala()
+
+
 
     return (
         <View style={HeroStyle.container}>
