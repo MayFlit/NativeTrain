@@ -1,33 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import {StyleSheet, Text, View, SafeAreaView, Button, Alert, Image} from 'react-native';
+import React from "react";
+import {SafeAreaView, ImageBackground} from 'react-native';
+import {Hero} from "./components/Hero/Hero";
+import {Enemy} from "./components/Enemy/Enemy";
+
 
 export default function App() {
-  const hello = () => console.log('lalaila')
-  const lalaila = () => Alert.alert('Lalaila', 'Lalaila inner', [
-    {text: 'Да', onPress: () => console.log('Да')},
-    {text: 'Отмена', onPress: () => console.log('Отмена')},
-  ])
+
 
 
   return (
-    <SafeAreaView   style={styles.container}>
-      <Text></Text>
-        {/*<Image source={require('./assets/background_main.jpg')}/>*/}
-      <Button title='Играть' onPress={hello}/>
-      <Button title='Выйти' onPress={lalaila}/>
+      <ImageBackground source={require('./assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>
 
-
-
-      <StatusBar style="auto" />
+      <SafeAreaView style={{flex: 1}}>
+        <Hero/>
+          <Enemy/>
+      <StatusBar style="auto" hidden={true}/>
     </SafeAreaView>
+      </ImageBackground>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
