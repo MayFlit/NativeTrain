@@ -1,17 +1,23 @@
 import { INIT_HERO } from "../actionTypes/heroAT";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import asyncStorage from "@react-native-async-storage/async-storage/src/AsyncStorage";
 
 
-const initialState = { characteristics: [0, 0], equipment: {} }
+const initialState = { characteristics: {attack: 0} }
 
 export const heroReducer = async (state = initialState, action) => {
     switch (action.type) {
         case INIT_HERO:
-            // const health = await AsyncStorage.getItem('heroHealth')
-            const attackPoints = await asyncStorage.getItem('heroAttack')
-            // const deffencePoints = await asyncStorage.getItem('heroAttack')
-            // return {...state, state.characteristics: {attack: attackPoints}
+            // await AsyncStorage.removeItem('')
+            const characteristics = await AsyncStorage.getItem('characteristics')
+
+
+            if (!characteristics) {
+                const characteristics = {attack: 0}
+                await AsyncStorage.setItem('characteristics', JSON.stringify(characteristics))
+
+                return {...state, characteristics}
+            }
+            return {...state, characteristics: JSON.parse(characteristics)}
 
         default:
             return state
