@@ -19,7 +19,7 @@ export default function App() {
       <StatusBar style="auto" hidden={true}/>
     </SafeAreaView>
       </ImageBackground>
-</Provider>
+    </Provider>
 
 );
 }
