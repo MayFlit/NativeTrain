@@ -19,7 +19,7 @@ export const heroReducer = async (state = initialState, action) => {
             }
             return {...state, characteristics: JSON.parse(characteristics)}
 
-        default:
+
             return state
 
 

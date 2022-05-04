@@ -12,10 +12,6 @@ const dispatch = useDispatch()
         dispatch(initHeroAC())
     },[dispatch])
 
-
-
-
-
     return (
         <View style={HeroStyle.container}>
             <Image source={require('../../assets/hero200.png')} style={HeroStyle.hero}/>
