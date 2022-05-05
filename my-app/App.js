@@ -6,10 +6,12 @@ import {SafeAreaView, ImageBackground} from 'react-native';
 import {Hero} from "./components/Hero/Hero";
 import {Enemy} from "./components/Enemy/Enemy";
 import hero from './store/hero'
+import enemy from './store/enemy'
 
 
 export default function App() {
-    // hero.init()
+    hero.init()
+    enemy.init()
 
     return (
       <Provider store={store}>

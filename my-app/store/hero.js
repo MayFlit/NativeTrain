@@ -1,41 +1,35 @@
-import {makeAutoObservable} from "mobx";
+import {action, makeAutoObservable, observable} from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 class Hero {
 
-    characteristics = {attack: 20, health: 100}
+    @observable characteristics = {attack: 20, health: 100}
 
     constructor() {
         makeAutoObservable(this)
     }
 
-
+    @action
     increment = () => {
         this.characteristics.attack++
     }
 
 
-    // init = async () => {
-    //     const characteristics = await AsyncStorage.getItem('characteristics')
-    //     console.log(characteristics)
-    //
-    //     if(!characteristics) {
-    //         await AsyncStorage.setItem('heroAttack', JSON.stringify(this.characteristics))
-    //     }
-    //     this.characteristics = JSON.parse(characteristics)
-    // }
+    @action
+    heroInit = (char) => {
+        this.characteristics = JSON.parse(char)
+    }
 
 
-
-    init() {
-        AsyncStorage.getItem('characteristics')
+    @action.bound
+    init = () => {
+        AsyncStorage.getItem('HeroCharacteristics')
             .then(char => {
-                console.log(char)
-                if(!char) {
-                    AsyncStorage.setItem('heroAttack', JSON.stringify(this.characteristics))
+                if (!char) {
+                    AsyncStorage.setItem('HeroCharacteristics', JSON.stringify(this.characteristics))
                 }
-                this.characteristics = JSON.parse(char)
+                this.heroInit(char)
             })
     }
 
