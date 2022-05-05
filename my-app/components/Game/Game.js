@@ -13,6 +13,7 @@ export const Game = observer (() => {
             <SafeAreaView style={{flex: 1}}>
                 <Text>Ваша атака: {hero.characteristics.attack}</Text>
                 <Text>Ваше здоровье: {hero.characteristics.health}</Text>
+                <Text>Ваше золото: {hero.gold}</Text>
                 <Text style={{fontSize: 70}} onPress={() => {enemy.hit(hero.characteristics.attack); enemy.die()}} >Атаковать</Text>
                 <Hero />
                 <Enemy/>

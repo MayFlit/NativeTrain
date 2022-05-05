@@ -1,5 +1,6 @@
 import {action, makeAutoObservable, observable} from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import hero from './hero'
 
 
 class Enemy {
@@ -41,6 +42,7 @@ class Enemy {
     die = () => {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 100;
+            hero.gold+= 10;
         }
     }
 
