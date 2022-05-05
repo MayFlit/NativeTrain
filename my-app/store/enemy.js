@@ -43,6 +43,7 @@ class Enemy {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 100;
             hero.gold+= 10;
+            AsyncStorage.setItem('heroGold', String(hero.gold));
         }
     }
 
