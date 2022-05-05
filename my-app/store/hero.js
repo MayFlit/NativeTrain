@@ -6,6 +6,8 @@ class Hero {
 
     @observable characteristics = {attack: 20, health: 100}
     @observable gold = 0;
+    @observable equipment = {sword: {name: 'Wooden Sword', attack: 5}}
+
 
 
     constructor() {
@@ -45,6 +47,24 @@ class Hero {
     initGoldAction = (gold) => {
         this.gold = gold
     }
+
+
+    @action.bound
+    initEquip = () => {
+        AsyncStorage.getItem('heroEquipment')
+            .then(equip => {
+                if (!equip) {
+                    AsyncStorage.setItem('heroEquipment', JSON.stringify(this.equipment))
+                }
+                this.initEquipAction(equip)
+            })
+    }
+
+    @action
+    initEquipAction = (equip) => {
+        this.equipment = JSON.parse(equip)
+    }
+
 
 
 
