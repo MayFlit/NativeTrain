@@ -5,33 +5,51 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 class Hero {
 
     @observable characteristics = {attack: 20, health: 100}
+    @observable gold = 0;
+
 
     constructor() {
         makeAutoObservable(this)
     }
 
-    @action
-    increment = () => {
-        this.characteristics.attack++
+
+    @action.bound
+    initChar = () => {
+        AsyncStorage.getItem('heroCharacteristics')
+            .then(char => {
+                if (!char) {
+                    AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
+                }
+                this.initCharAction(char)
+            })
     }
 
-
     @action
-    heroInit = (char) => {
+    initCharAction = (char) => {
         this.characteristics = JSON.parse(char)
     }
 
 
     @action.bound
-    init = () => {
-        AsyncStorage.getItem('HeroCharacteristics')
-            .then(char => {
-                if (!char) {
-                    AsyncStorage.setItem('HeroCharacteristics', JSON.stringify(this.characteristics))
+    initGold = () => {
+
+        // AsyncStorage.getItem('heroGold').then(data => console.log(data))
+        AsyncStorage.getItem('heroGold')
+            .then(gold => {
+                if (!gold) {
+                    AsyncStorage.setItem('heroGold', String(this.gold))
                 }
-                this.heroInit(char)
+                this.initGoldAction(+gold)
             })
     }
+
+    @action
+    initGoldAction = (gold) => {
+        this.gold = gold
+    }
+
+
+
 
 }
 

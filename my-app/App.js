@@ -7,7 +7,8 @@ import {Game} from "./components/Game/Game";
 
 
 export default function App() {
-    hero.init()
+    hero.initChar()
+    hero.initGold()
     enemy.init()
 
     return (
