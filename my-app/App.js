@@ -9,6 +9,9 @@ import {Game} from "./components/Game/Game";
 export default function App() {
     hero.initChar()
     hero.initGold()
+    hero.initEquip()
+    hero.initExp()
+    hero.levelSystemFunk()
     enemy.init()
 
     return (
