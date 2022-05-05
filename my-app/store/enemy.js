@@ -18,6 +18,7 @@ class Enemy {
 
     @action
     enemyInit = (char) => {
+        console.log('lala')
         this.characteristics = JSON.parse(char)
     }
 
