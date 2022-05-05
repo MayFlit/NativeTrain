@@ -5,20 +5,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 class Enemy {
 
     @observable characteristics = {attack: 0, health: 100}
+    @observable image = 'enemy-1.jpg'
 
     constructor() {
         makeAutoObservable(this)
     }
 
-    @action
-    increment = () => {
-        this.characteristics.attack++
-    }
-
 
     @action
     enemyInit = (char) => {
-        console.log('lala')
         this.characteristics = JSON.parse(char)
     }
 
@@ -29,12 +24,24 @@ class Enemy {
         // AsyncStorage.setItem('enemyCharacteristics', JSON.stringify({attack: 0, health: 200}))
         AsyncStorage.getItem('enemyCharacteristics')
             .then(char => {
-                console.log(char)
                 if (!char) {
                     AsyncStorage.setItem('enemyCharacteristics', JSON.stringify(this.characteristics))
                 }
                 this.enemyInit(char)
             })
+    }
+
+    @action
+    hit = (dmg) => {
+        this.characteristics.health-= dmg;
+    }
+
+
+    @action
+    die = () => {
+        if (this.characteristics.health <= 0) {
+            this.characteristics.health = 100;
+        }
     }
 
 }
