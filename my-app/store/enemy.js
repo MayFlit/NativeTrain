@@ -1,18 +1,15 @@
 import {action, makeAutoObservable, observable} from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import hero from './hero'
 
 
 class Enemy {
 
     @observable characteristics = {attack: 0, health: 100}
+    @observable image = 'enemy-1.jpg'
 
     constructor() {
         makeAutoObservable(this)
-    }
-
-    @action
-    increment = () => {
-        this.characteristics.attack++
     }
 
 
@@ -33,6 +30,21 @@ class Enemy {
                 }
                 this.enemyInit(char)
             })
+    }
+
+    @action
+    hit = () => {
+        this.characteristics.health-= hero.characteristics.attack + hero.equipment.sword.attack;
+    }
+
+
+    @action
+    die = () => {
+        if (this.characteristics.health <= 0) {
+            this.characteristics.health = 100;
+            hero.gold+= 10;
+            AsyncStorage.setItem('heroGold', String(hero.gold));
+        }
     }
 
 }
