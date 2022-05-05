@@ -5,6 +5,7 @@ import {Enemy} from "../Enemy/Enemy";
 import hero from '../../store/hero'
 import enemy from '../../store/enemy'
 import {observer} from "mobx-react-lite";
+import {GameStyle} from "./style";
 
 
 export const Game = observer (() => {
@@ -14,7 +15,8 @@ export const Game = observer (() => {
                 <Text>Ваша атака: {hero.characteristics.attack}</Text>
                 <Text>Ваше здоровье: {hero.characteristics.health}</Text>
                 <Text>Ваше золото: {hero.gold}</Text>
-                <Text style={{fontSize: 70}} onPress={() => {enemy.hit(hero.characteristics.attack); enemy.die()}} >Атаковать</Text>
+                <Text>Ваше оружие: {hero.equipment.sword.name}</Text>
+                <Text style={GameStyle.text} onPress={() => {enemy.hit(); enemy.die()}} >Атаковать</Text>
                 <Hero />
                 <Enemy/>
             </SafeAreaView>
