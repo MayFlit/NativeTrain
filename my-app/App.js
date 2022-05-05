@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from "react";
 import {store} from './redux/store'
-import {Provider, useDispatch, useSelector} from 'react-redux'
+import {Provider} from 'react-redux'
 import {SafeAreaView, ImageBackground} from 'react-native';
 import {Hero} from "./components/Hero/Hero";
 import {Enemy} from "./components/Enemy/Enemy";
