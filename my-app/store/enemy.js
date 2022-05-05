@@ -18,7 +18,6 @@ class Enemy {
 
     @action
     enemyInit = (char) => {
-        console.log('lala')
         this.characteristics = JSON.parse(char)
     }
 
@@ -29,7 +28,6 @@ class Enemy {
         // AsyncStorage.setItem('enemyCharacteristics', JSON.stringify({attack: 0, health: 200}))
         AsyncStorage.getItem('enemyCharacteristics')
             .then(char => {
-                console.log(char)
                 if (!char) {
                     AsyncStorage.setItem('enemyCharacteristics', JSON.stringify(this.characteristics))
                 }
