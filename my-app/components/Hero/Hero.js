@@ -8,7 +8,7 @@ import hero from "../../store/hero";
 export const Hero = observer(() => {
     return (
         <View style={HeroStyle.container}>
-            <Text onPress={hero.increment}  style={{color: 'red', fontSize: 40}}>attack {hero.characteristics.attack}</Text>
+            {/*<Text onPress={hero.increment}  style={{color: 'red', fontSize: 40}}>attack {hero.characteristics.attack}</Text>*/}
             <Image source={require('../../assets/hero200.png')} style={HeroStyle.hero}/>
         </View>
     );

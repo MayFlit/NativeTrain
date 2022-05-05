@@ -5,14 +5,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 class Enemy {
 
     @observable characteristics = {attack: 0, health: 100}
+    @observable image = 'enemy-1.jpg'
 
     constructor() {
         makeAutoObservable(this)
-    }
-
-    @action
-    increment = () => {
-        this.characteristics.attack++
     }
 
 
@@ -33,6 +29,19 @@ class Enemy {
                 }
                 this.enemyInit(char)
             })
+    }
+
+    @action
+    hit = (dmg) => {
+        this.characteristics.health-= dmg;
+    }
+
+
+    @action
+    die = () => {
+        if (this.characteristics.health <= 0) {
+            this.characteristics.health = 100;
+        }
     }
 
 }
