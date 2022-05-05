@@ -16,9 +16,7 @@ class Hero {
         makeAutoObservable(this)
     }
 
-
-
-    // Пробная функция для отслеживания уровня
+    //Пробная функция для отслеживания уровня
     @action
     levelSystemFunk = () => {
         for (let i = 0; i < this.levelSystem.length; i++) {
@@ -27,6 +25,17 @@ class Hero {
             }
         }
     }
+
+
+    // @computed
+    // get levelSystemFunk() {
+    //     console.log('asdas')
+    //     for (let i = 0; i < this.levelSystem.length; i++) {
+    //         if (this.experience >= this.levelSystem[i].exp) {
+    //             this.level = this.levelSystem[i].level
+    //         }
+    //     }
+    // }
 
 
     // Инициализация характеристик персонажа
