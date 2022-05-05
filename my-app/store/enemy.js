@@ -42,8 +42,12 @@ class Enemy {
     die = () => {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 100;
+            hero.experience+= 20;
+            hero.levelSystemFunk();
             hero.gold+= 10;
             AsyncStorage.setItem('heroGold', String(hero.gold));
+            AsyncStorage.setItem('heroExp', String(hero.experience));
+
         }
     }
 
