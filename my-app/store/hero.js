@@ -32,8 +32,6 @@ class Hero {
 
     @action.bound
     initGold = () => {
-
-        // AsyncStorage.getItem('heroGold').then(data => console.log(data))
         AsyncStorage.getItem('heroGold')
             .then(gold => {
                 if (!gold) {
