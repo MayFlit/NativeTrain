@@ -14,6 +14,7 @@ export const Game = observer (({ navigation }) => {
     navigation.navigate('Shop');
   }
 
+
     return (
         <ImageBackground source={require('../../assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>
             <SafeAreaView style={{flex: 1}}>

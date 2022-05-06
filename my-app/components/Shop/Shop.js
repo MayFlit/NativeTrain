@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity, Image } fro
 import {observer} from "mobx-react-lite";
 import shop from '../../store/shop';
 import {ShopStyle} from "./style";
+import { toJS } from 'mobx';
 
 export const Shop = observer (({ navigation, route }) => {
   const loadScene = () => {
@@ -18,7 +19,7 @@ export const Shop = observer (({ navigation, route }) => {
               
               <Button title="Назад" onPress={loadScene}/>
 
-              {/* <Text> {shop.shop.weapons[0].name}  </Text> */}
+               {/*<Text> {shop.shop.weapons[0].name}  </Text>*/}
               <FlatList renderItem={({shop}) => (
                 <TouchableOpacity onPress={loadScene} >
                   
