@@ -6,7 +6,8 @@ import hero from './hero'
 class Enemy {
 
     @observable characteristics = {attack: 0, health: 100}
-    @observable image = 'enemy-1.png'
+    @observable image = require('../assets/enemy1-1.png')
+                images = [require('../assets/enemy1-1.png'), require('../assets/enemy1-2.png'), require('../assets/enemy1-3.png')]
 
     constructor() {
         makeAutoObservable(this)
@@ -42,6 +43,7 @@ class Enemy {
     die = () => {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 100;
+            this.image = this.images[Math.floor(Math.random() * 3)]
             hero.experience+= 20;
             hero.levelSystemFunk();
             hero.gold+= 10;
