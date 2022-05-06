@@ -5,8 +5,12 @@ export const GameStyle = StyleSheet.create({
         fontSize: 50,
         color: 'red',
         position: 'absolute',
-        bottom: 150,
+        bottom: 50,
         right: 65,
+    },
+    shop: {
+      width: 50,
+      height: 50,
     }
 });
 

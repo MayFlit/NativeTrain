@@ -12,9 +12,14 @@ export default function Navigate() {
   return <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen
-      name=""
+      name="Game"
       component={Game}
       options={{title: ''}}
+      />
+      <Stack.Screen
+      name="Shop"
+      component={Shop}
+      options={{title: 'Магазин'}}
       />
     </Stack.Navigator>
   </NavigationContainer>;

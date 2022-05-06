@@ -1,11 +1,14 @@
 import {StyleSheet} from 'react-native';
 
 export const ShopStyle = StyleSheet.create({
-  text: {
-      fontSize: 50,
-      color: 'red',
-      position: 'absolute',
-      bottom: 150,
-      right: 65,
+  background: {
+    backgroundColor: '#ecc792',
+    width: 100,
+    height: 100,
+    flex: 1
+  },
+  img: {
+    width: 100,
+    height: 100
   }
 });

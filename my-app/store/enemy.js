@@ -6,7 +6,7 @@ import hero from './hero'
 class Enemy {
 
     @observable characteristics = {attack: 0, health: 100}
-    @observable image = 'enemy-1.jpg'
+    @observable image = 'enemy-1.png'
 
     constructor() {
         makeAutoObservable(this)
