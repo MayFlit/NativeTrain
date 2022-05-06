@@ -6,6 +6,7 @@ import hero from '../../store/hero'
 import enemy from '../../store/enemy'
 import {observer} from "mobx-react-lite";
 import {GameStyle} from "./style";
+import { Shop } from "../Shop/Shop";
 
 
 export const Game = observer (() => {
@@ -21,6 +22,7 @@ export const Game = observer (() => {
                 <Text style={GameStyle.text} onPress={() => {enemy.hit(); enemy.die()}} >Атаковать</Text>
                 <Hero />
                 <Enemy/>
+                
             </SafeAreaView>
         </ImageBackground>
     );
