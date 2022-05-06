@@ -11,6 +11,7 @@ export const EnemyStyle = StyleSheet.create({
     enemy: {
         width: 300,
         height: 300,
+        left: 30
     },
     text: {
         fontSize: 40,

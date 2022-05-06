@@ -8,7 +8,7 @@ export const Enemy = observer (() => {
     return (
         <View style={EnemyStyle.container}>
             <Text>{enemy.characteristics.health}</Text>
-            <Image source={require(`../../assets/enemy-1.jpg`)} style={EnemyStyle.enemy}/>
+            <Image source={require(`../../assets/enemy-1.png`)} style={EnemyStyle.enemy}/>
         </View>
     );
 })
