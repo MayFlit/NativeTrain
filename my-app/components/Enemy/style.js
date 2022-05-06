@@ -5,13 +5,14 @@ export const EnemyStyle = StyleSheet.create({
         borderWidth: 4,
         borderColor: 'red',
         position: 'absolute',
-        bottom: 300,
-        left: 30
+        bottom: 100,
+        left: 50
+        
     },
     enemy: {
         width: 300,
-        height: 300,
-        left: 30
+        height: 500,
+        left: 30,
     },
     text: {
         fontSize: 40,

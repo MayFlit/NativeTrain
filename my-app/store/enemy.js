@@ -35,7 +35,7 @@ class Enemy {
 
     @action
     hit = () => {
-        this.characteristics.health-= hero.characteristics.attack + hero.equipment.sword.attack;
+        this.characteristics.health-= hero.characteristics.attack + hero.equipment.weapon.attack;
     }
 
 

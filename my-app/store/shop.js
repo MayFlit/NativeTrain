@@ -1,9 +1,9 @@
-import {makeAutoObservable} from "mobx";
+import {action, makeAutoObservable, observable} from "mobx";
 import hero from './hero'
 
 class Shop {
 
-    shop = {weapons: [
+  @observable shop = {weapons: [
                 {id: 101, name: 'Bone Sword', attack: 10, price: 1000},
                 {id: 102, name: 'Steel Sword', attack: 20, price: 2000},
                 {id: 103, name: 'Golden Sword', attack: 40, price: 4000},
@@ -23,6 +23,7 @@ class Shop {
     }
 
     // Метод для покупки снаряжения
+    @action
     buy = (id) => {
         const weapon = this.shop.weapons.find(wep => wep.id === id && hero.gold >= wep.price)
         if (weapon) {
