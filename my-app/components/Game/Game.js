@@ -16,6 +16,8 @@ export const Game = observer (() => {
                 <Text>Ваше здоровье: {hero.characteristics.health}</Text>
                 <Text>Ваше золото: {hero.gold}</Text>
                 <Text>Ваше оружие: {hero.equipment.sword.name}</Text>
+                <Text>Ваш уровень: {hero.level}</Text>
+                <Text>Ваш опыт: {hero.experience}</Text>
                 <Text style={GameStyle.text} onPress={() => {enemy.hit(); enemy.die()}} >Атаковать</Text>
                 <Hero />
                 <Enemy/>
