@@ -26,7 +26,7 @@ class Shop {
     buy = (id) => {
         const weapon = this.shop.weapons.find(wep => wep.id === id && hero.gold >= wep.price)
         if (weapon) {
-            hero.equipment.weapon = weapon;
+            hero.equipment.sword = weapon;
         }
 
         const armor = this.shop.armor.find(arm => arm.id === id && hero.gold >= arm.price)

@@ -6,7 +6,7 @@ class Hero {
 
     @observable characteristics = {attack: 20, health: 100}
     @observable gold = 0;
-    @observable equipment = {weapon: {id: 100, name: 'Wooden Sword', attack: 5, price: 100},
+    @observable equipment = {sword: {id: 100, name: 'Wooden Sword', attack: 5, price: 100},
                             armor: {id: 200, name: 'Wooden Armor', defence: 5, price: 50},}
     @observable experience = 0;
     @observable level = 1;
