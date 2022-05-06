@@ -6,10 +6,11 @@ class Hero {
 
     @observable characteristics = {attack: 20, health: 100}
     @observable gold = 0;
-    @observable equipment = {sword: {name: 'Wooden Sword', attack: 5}}
+    @observable equipment = {weapon: {id: 100, name: 'Wooden Sword', attack: 5, price: 100},
+                            armor: {id: 200, name: 'Wooden Armor', defence: 5, price: 50},}
     @observable experience = 0;
     @observable level = 1;
-                levelSystem = [{level: 2 ,exp: 100}, {level: 3 ,exp: 300}, {level: 4 ,exp: 500}, {level: 5 ,exp: 1000}, {level: 6 ,exp: 10000}]
+                levelSystem = [{level: 2 ,exp: 100}, {level: 3 ,exp: 300}, {level: 4 ,exp: 500}, {level: 5 ,exp: 1000}, {level: 6 ,exp: 10000},]
 
 
     constructor() {
