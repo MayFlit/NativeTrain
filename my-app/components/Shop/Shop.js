@@ -10,9 +10,9 @@ export const Shop = observer (({ navigation, route }) => {
     navigation.goBack();
   }
 
-  console.log('====================================');
-  console.log(shop.shop.weapons);
-  console.log('====================================');
+  // console.log('====================================');
+  // console.log(shop.shop.weapons);
+  // console.log('====================================');
 
   return (
           <View style={ShopStyle.background}>

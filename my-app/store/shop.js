@@ -1,5 +1,6 @@
 import {action, makeAutoObservable, observable} from "mobx";
 import hero from './hero'
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Shop {
 
@@ -28,11 +29,15 @@ class Shop {
         const weapon = this.shop.weapons.find(wep => wep.id === id && hero.gold >= wep.price)
         if (weapon) {
             hero.equipment.sword = weapon;
+            hero.gold -= weapon.price
+            // AsyncStorage
         }
 
         const armor = this.shop.armor.find(arm => arm.id === id && hero.gold >= arm.price)
         if (armor) {
             hero.equipment.armor = armor;
+            hero.gold -= armor.price
+            // AsyncStorage
         }
     }
 
