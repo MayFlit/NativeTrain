@@ -4,7 +4,6 @@ import hero from './hero'
 
 
 class Enemy3 {
-
     @observable characteristics = {attack: 0, health: 300}
     @observable image = require('../assets/enemy1-1.png')
     @observable world = 3

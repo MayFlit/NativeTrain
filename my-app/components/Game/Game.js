@@ -15,8 +15,6 @@ export const Game = observer (({ navigation }) => {
     navigation.navigate('Shop');
   }
 
-    console.log(hero.world)
-
     return (
         <ImageBackground source={require('../../assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>
             <SafeAreaView style={{flex: 1}}>
@@ -27,13 +25,13 @@ export const Game = observer (({ navigation }) => {
                 {/*<Text>Ваше оружие: {hero.equipment.sword.name}</Text>*/}
                 <Text>Ваш уровень: {hero.level}</Text>
                 <Text>Ваш опыт: {hero.experience}</Text>
-                <Text style={GameStyle.text} onPress={() => {hero.hit()}} >Атаковать</Text>
-                <Text style={GameStyle.text2} onPress={() => {hero.worldUp()}} >Повысить</Text>
+                {hero.doubleDamageIndicator ?
+                    <Text style={GameStyle.text} onPress={() => {hero.doubleHit()}} >Атаковать x2</Text> :
+                    <Text style={GameStyle.text} onPress={() => {hero.hit()}} >Атаковать</Text>}
+                <Text style={GameStyle.text2} onPress={() => {hero.doubleDamage()}} >Повысить</Text>
                 <Hero />
-
                 {hero.world === 1 ? <Enemy/> : hero.world === 2 ? <Enemy2/> : <Enemy3 />}
-                {/*<Enemy />*/}
-              
+
 
                 <TouchableOpacity onPress={loadScene}>
                 <Image source={require('../../assets/shop.png')} style={GameStyle.shop}/>
