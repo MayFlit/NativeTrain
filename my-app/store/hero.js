@@ -6,13 +6,14 @@ import enemy3 from './enemy3'
 
 
 class Hero {
-    @observable characteristics = {attack: 20, health: 100}
+    @observable characteristics = {attack: 20, health: 100, maxHealth: 100}
     @observable gold = 0;
     @observable equipment = {sword: {id: 100, name: 'Wooden Sword', attack: 5, price: 100},
                             armor: {id: 200, name: 'Wooden Armor', defence: 5, price: 50},}
     @observable experience = 0;
     @observable level = 1;
     @observable world = 1;
+    @observable doubleDamageIndicator = false;
     levelSystem = [{level: 2 ,exp: 100}, {level: 3 ,exp: 300}, {level: 4 ,exp: 500}, {level: 5 ,exp: 1000}, {level: 6 ,exp: 10000},]
 
 
@@ -28,9 +29,10 @@ class Hero {
     }
 
 
+    // Базовая атака героя
     @action
     hit = () => {
-        let arrOfEnemy = [enemy, enemy2, enemy3]
+        const arrOfEnemy = [enemy, enemy2, enemy3]
 
         arrOfEnemy.forEach((enemy) => {
             if (enemy.world === this.world) {
@@ -39,6 +41,92 @@ class Hero {
             }
         })
     }
+
+
+
+    // Slash навык
+    @action
+    slash = () => {
+        const arrOfEnemy = [enemy, enemy2, enemy3]
+
+        arrOfEnemy.forEach((enemy) => {
+            if (enemy.world === this.world) {
+                enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 10
+                enemy.die()
+            }
+        })
+    }
+
+
+    // Bleed навык
+    @action
+    bleed = () => {
+        const arrOfEnemy = [enemy, enemy2, enemy3]
+        let counter = 0;
+
+        arrOfEnemy.forEach((enemy) => {
+            if (enemy.world === this.world) {
+                const intervalId = setInterval(() => {
+                    this.bleedAction(enemy);
+                    counter += 1;
+
+                    if (counter === 10) {
+                        clearInterval(intervalId);
+                    }
+
+                }, 500)
+            }
+        })
+    }
+
+    @action
+    bleedAction = (enemy) => {
+        enemy.characteristics.health -= 50
+        enemy.die()
+    }
+
+
+
+    // Heal навык
+    @action
+    heal = () => {
+        if (this.characteristics.health + 100 < this.characteristics.maxHealth) {
+            this.characteristics.health += 100;
+        } else {
+            this.characteristics.health = this.characteristics.maxHealth
+        }
+    }
+
+
+    // DoubleDamage навык
+    @action
+    doubleDamage = () => {
+        this.doubleDamageIndicator = true;
+
+        setTimeout(() => {
+            this.doubleDamageAction()
+        }, 3000)
+    }
+
+    @action
+    doubleDamageAction = () => {
+        this.doubleDamageIndicator = false;
+    }
+
+
+    // Двойная атака героя
+    @action
+    doubleHit = () => {
+        const arrOfEnemy = [enemy, enemy2, enemy3]
+
+        arrOfEnemy.forEach((enemy) => {
+            if (enemy.world === this.world) {
+                enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 2
+                enemy.die()
+            }
+        })
+    }
+
 
 
 
@@ -67,6 +155,7 @@ class Hero {
     // Инициализация характеристик персонажа
     @action.bound
     initChar = () => {
+        // AsyncStorage.removeItem('heroCharacteristics')
         AsyncStorage.getItem('heroCharacteristics')
             .then(char => {
                 if (!char) {
@@ -80,6 +169,7 @@ class Hero {
     initCharAction = (char) => {
         this.characteristics = JSON.parse(char)
     }
+
 
     // Инициализация золота
     @action.bound
