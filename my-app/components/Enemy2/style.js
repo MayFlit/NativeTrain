@@ -7,7 +7,7 @@ export const EnemyStyle = StyleSheet.create({
         position: 'absolute',
         bottom: 100,
         left: 50
-        
+
     },
     enemy: {
         width: 300,

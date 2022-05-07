@@ -5,8 +5,19 @@ export const GameStyle = StyleSheet.create({
         fontSize: 50,
         color: 'red',
         position: 'absolute',
-        bottom: 150,
+        bottom: 60,
         right: 65,
+    },
+    text2: {
+        fontSize: 50,
+        color: 'red',
+        position: 'absolute',
+        bottom: 10,
+        right: 65,
+    },
+    shop: {
+      width: 50,
+      height: 50,
     }
 });
 

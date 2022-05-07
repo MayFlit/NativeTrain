@@ -5,8 +5,9 @@ export const HeroStyle = StyleSheet.create({
         borderWidth: 4,
         borderColor: 'red',
         position: 'absolute',
-        bottom: 10,
-        right: 130
+        bottom: 130,
+        right: 130,
+        zIndex: 1
     },
     hero: {
         width: 100,

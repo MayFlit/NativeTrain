@@ -1,21 +1,46 @@
 import {action, computed, makeAutoObservable, observable} from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import enemy from "./enemy";
+import enemy2 from "./enemy2";
+import enemy3 from './enemy3'
 
 
 class Hero {
-
     @observable characteristics = {attack: 20, health: 100}
     @observable gold = 0;
     @observable equipment = {sword: {id: 100, name: 'Wooden Sword', attack: 5, price: 100},
                             armor: {id: 200, name: 'Wooden Armor', defence: 5, price: 50},}
     @observable experience = 0;
     @observable level = 1;
-                levelSystem = [{level: 2 ,exp: 100}, {level: 3 ,exp: 300}, {level: 4 ,exp: 500}, {level: 5 ,exp: 1000}, {level: 6 ,exp: 10000},]
+    @observable world = 1;
+    levelSystem = [{level: 2 ,exp: 100}, {level: 3 ,exp: 300}, {level: 4 ,exp: 500}, {level: 5 ,exp: 1000}, {level: 6 ,exp: 10000},]
 
 
     constructor() {
         makeAutoObservable(this)
     }
+
+
+
+    @action
+    worldUp = () => {
+        this.world += 1;
+    }
+
+
+    @action
+    hit = () => {
+        let arrOfEnemy = [enemy, enemy2, enemy3]
+
+        arrOfEnemy.forEach((enemy) => {
+            if (enemy.world === this.world) {
+                enemy.characteristics.health -= this.characteristics.attack + this.equipment.sword.attack
+                enemy.die()
+            }
+        })
+    }
+
+
 
     //Пробная функция для отслеживания уровня
     @action
@@ -109,6 +134,27 @@ class Hero {
     initExpAction = (exp) => {
         this.experience = exp
     }
+
+
+    // Инициализация текущего игрового мира
+    // @action.bound
+    // initWorld = () => {
+    //     AsyncStorage.removeItem('heroWorld')
+    //     AsyncStorage.getItem('heroWorld')
+    //         .then(world => {
+    //             if (!world) {
+    //                 AsyncStorage.setItem('heroWorld', String(this.world))
+    //             }
+    //             this.initWorldAction(+world)
+    //         })
+    // }
+    //
+    //
+    // @action
+    // initWorldAction = (world) => {
+    //     this.world = world
+    // }
+
 
 }
 
