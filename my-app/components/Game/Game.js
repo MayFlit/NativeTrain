@@ -32,9 +32,7 @@ export const Game = observer (({ navigation }) => {
                 <Hero />
                 <Enemy/>
               
-                <Text style={GameStyle.text} onPress={() => {enemy.hit(); enemy.die()}} >Атаковать</Text>
-                
-
+                <Text style={GameStyle.text} onPress={() => {hero.hit()}} >Атаковать</Text>
             </SafeAreaView>
         </ImageBackground>
     );

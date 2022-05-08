@@ -18,7 +18,7 @@ export const GameStyle = StyleSheet.create({
     shop: {
       width: 50,
       height: 50,
-      bottom: "598px"
+      bottom: 598
     },
   
 });

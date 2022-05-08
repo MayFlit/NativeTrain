@@ -9,7 +9,6 @@ import hero from "../../store/hero";
 
 export const Enemy = observer (() => {
     const currentEnemy = hero.world === 1 ? enemy : hero.world === 2 ? enemy2 : enemy3
-
     return (
         <View style={EnemyStyle.container}>
             <Text style={EnemyStyle.text}>{currentEnemy.characteristics.health}</Text>
