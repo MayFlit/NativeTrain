@@ -16,19 +16,19 @@ export const Skills = observer (() => {
     return (
             <SafeAreaView style={SkillsStyle.box}>
 
-              <TouchableOpacity onPress={loadScene}>
+              <TouchableOpacity onPress={() => {hero.heal()}}>
                 <Text style={SkillsStyle.container}><Image source={require('../../assets/skills/health.png')} style={SkillsStyle.icons}/> </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={loadScene}>
+                <TouchableOpacity onPress={() => {hero.bleed()}}>
                 <Text style={SkillsStyle.container}><Image source={require('../../assets/skills/blood.png')} style={SkillsStyle.icons}/> </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={loadScene}>
+                <TouchableOpacity onPress={() => {hero.slash()}}>
                 <Text style={SkillsStyle.container}> <Image source={require('../../assets/skills/damage.png')} style={SkillsStyle.icons} /> </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={loadScene}>
+                <TouchableOpacity onPress={() => {hero.doubleDamage()}}>
                 <Text style={SkillsStyle.container}><Image source={require('../../assets/skills/x2.png')} style={SkillsStyle.icons}/></Text>
                 </TouchableOpacity>
 
