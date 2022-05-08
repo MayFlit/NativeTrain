@@ -5,11 +5,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 class Shop {
 
   @observable shop = {weapons: [
-                {id: 101, name: 'Bone Sword', attack: 10, price: 1000},
-                {id: 102, name: 'Steel Sword', attack: 20, price: 2000},
-                {id: 103, name: 'Golden Sword', attack: 40, price: 4000},
-                {id: 104, name: 'Diamond Sword', attack: 80, price: 8000},
-                {id: 105, name: 'Damasked Sword', attack: 160, price: 16000}],
+                {id: 101, name: 'Knife', attack: 10, price: 1000, img: require('../assets/shop/knife.png') },
+                {id: 102, name: 'Hammer', attack: 20, price: 2000,img: require('../assets/shop/hammer.png')},
+                {id: 103, name: 'Axe', attack: 40, price: 4000,  img: require('../assets/shop/axe.png')},
+                {id: 104, name: 'Sword', attack: 80, price: 8000, img: require('../assets/shop/sword.png')},
+                {id: 105, name: 'Gun', attack: 160, price: 16000, img: require('../assets/shop/gun.png')}],
             armor: [
                 {id: 201, name: 'Bone Armor', defence: 10, price: 500},
                 {id: 202, name: 'Steel Armor', defence: 15, price: 1000},

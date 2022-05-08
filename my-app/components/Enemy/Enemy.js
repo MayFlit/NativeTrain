@@ -12,7 +12,7 @@ export const Enemy = observer (() => {
 
     return (
         <View style={EnemyStyle.container}>
-            <Text style={EnemyStyle.text}>{currentEnemy.characteristics.health}</Text>
+            <Text style={EnemyStyle.hitpoints}>{currentEnemy.characteristics.health}</Text>
             <Image source={currentEnemy.image} style={EnemyStyle.enemy}/>
         </View>
 );
