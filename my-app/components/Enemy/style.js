@@ -15,7 +15,9 @@ export const EnemyStyle = StyleSheet.create({
         left: 30,
     },
     text: {
-        fontSize: 40,
+        position: 'absolute',
+        top: 150,
+        fontSize: 20,
         color: 'red',
     },
     hitpoints: {

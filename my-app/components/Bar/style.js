@@ -22,5 +22,8 @@ export const BarStyle = StyleSheet.create({
       color: 'white',
       boxShadow: "1px 1px 30px 15px #f56b00",
       fontSize: 20,
+    },
+    shield: {
+      
     }
 });

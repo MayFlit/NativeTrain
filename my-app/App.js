@@ -2,8 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React from "react";
 import {SafeAreaView, ImageBackground} from 'react-native';
 import hero from './store/hero'
-import enemy from './store/enemy'
-// import {Game} from "./components/Game/Game";
 import GameStack from './components/Navigation/Navigation';
 
 
@@ -12,8 +10,9 @@ export default function App() {
     hero.initGold()
     hero.initEquip()
     hero.initExp()
+    hero.initWorld()
     hero.levelSystemFunk()
-    enemy.init()
+
 
     return (
       <ImageBackground source={require('./assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>

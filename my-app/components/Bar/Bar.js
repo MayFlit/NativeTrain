@@ -13,8 +13,8 @@ export const Bar = observer (() => {
             <SafeAreaView style={BarStyle.box}>
                 <Text style={BarStyle.container}><Image source={require('../../assets/bar/health.png')} style={BarStyle.icons}/> {hero.characteristics.health}</Text>
                 <Text style={BarStyle.container}><Image source={require('../../assets/bar/money.png')} style={BarStyle.icons}/> {hero.gold}</Text>
-                <Text style={BarStyle.container}><Image source={require('../../assets/bar/level.png')} style={BarStyle.icons}/> {hero.level}</Text>
-                
+                <Text style={BarStyle.container}> <Image source={require('../../assets/bar/shield2.png')} style={BarStyle.icons} /> {hero.level}</Text>
+    
                 {/* <Text>Ваша атака: {hero.characteristics.attack}</Text>
                 <Text>Ваше оружие: {hero.equipment.sword.name}</Text>
                 <Text>Ваш опыт: {hero.experience}</Text> */}
