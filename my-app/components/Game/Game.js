@@ -2,8 +2,6 @@ import React from "react";
 import {SafeAreaView, ImageBackground, Text, Image, TouchableOpacity } from 'react-native';
 import {Hero} from "../Hero/Hero";
 import {Enemy} from "../Enemy/Enemy";
-import {Enemy2} from "../Enemy2/Enemy2";
-import {Enemy3} from "../Enemy3/Enemy3";
 import hero from '../../store/hero';
 import {observer} from "mobx-react-lite";
 import {GameStyle} from "./style";
@@ -18,8 +16,10 @@ export const Game = observer (({ navigation }) => {
 
     return (
         <ImageBackground source={require('../../assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>
+
             <SafeAreaView style={{flex: 1}}>                
                 <Bar />
+
 
                 <TouchableOpacity onPress={loadScene}>
                 <Image source={require('../../assets/shop.png')} style={GameStyle.shop}/>
