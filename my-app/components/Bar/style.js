@@ -16,7 +16,6 @@ export const BarStyle = StyleSheet.create({
       height: 50,
       padding: 10,
       backgroundColor: "red",
-      margin: "1.8em auto",
       borderTopRightRadius: 20,
       borderBottomLeftRadius: 20,
       color: 'white',

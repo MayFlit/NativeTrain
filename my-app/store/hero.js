@@ -55,7 +55,6 @@ class Hero {
     }
 
 
-
     // Slash навык
     @action
     slash = () => {
@@ -302,6 +301,7 @@ class Hero {
     initExpAction = (exp) => {
         this.experience = exp
     }
+
 
 
     // Инициализация текущего игрового мира

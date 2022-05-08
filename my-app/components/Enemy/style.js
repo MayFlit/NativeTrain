@@ -21,18 +21,17 @@ export const EnemyStyle = StyleSheet.create({
         color: 'red',
     },
     hitpoints: {
-    width: "100%",
 		backgroundColor: "#e74c3c",
 		boxShadow: "inset 0px 0px 8px 2px #bf3729",
 		position: "relative",
 		zIndex: -1,
-    color: "white",
-		fontSize: "14px",
+        color: "white",
+		fontSize: 14,
 		textAlign: "center",
 		width: "100%"
     },
     "hitpoints:after": {
-      content: "",
+            content: "",
 			display: "block",
 			width: "100%",
 			height: "100%",
