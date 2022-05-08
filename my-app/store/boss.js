@@ -3,11 +3,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import hero from './hero'
 
 
-class Enemy2 {
+class Boss {
 
-    @observable characteristics = {attack: 0, health: 200}
+    @observable characteristics = {attack: 0, health: 500}
     @observable image = require('../assets/enemy/enemy1-1.png')
-    @observable world = 2
+    @observable world = 1
     images = [require('../assets/enemy/enemy1-1.png'), require('../assets/enemy/enemy1-2.png'), require('../assets/enemy/enemy1-3.png')]
 
     constructor() {
@@ -18,11 +18,11 @@ class Enemy2 {
     @action
     die = () => {
         if (this.characteristics.health <= 0) {
-            this.characteristics.health = 200;
+            this.characteristics.health = 500;
             this.image = this.images[Math.floor(Math.random() * 3)]
-            hero.experience+= 40;
+            hero.experience+= 200;
             hero.levelSystemFunk();
-            hero.gold+= 20;
+            hero.gold+= 100;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
         }
@@ -30,4 +30,4 @@ class Enemy2 {
 
 }
 
-export default new Enemy2()
+export default new Boss()

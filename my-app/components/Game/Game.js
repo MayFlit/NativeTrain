@@ -30,7 +30,8 @@ export const Game = observer (({ navigation }) => {
                     <Text style={GameStyle.text} onPress={() => {hero.hit()}} >Атаковать</Text>}
                 <Text style={GameStyle.text2} onPress={() => {hero.doubleDamage()}} >Повысить</Text>
                 <Hero />
-                {hero.world === 1 ? <Enemy/> : hero.world === 2 ? <Enemy2/> : <Enemy3 />}
+                {/*{hero.world === 1 ? <Enemy/> : hero.world === 2 ? <Enemy2/> : <Enemy3 />}*/}
+                <Enemy/>
 
 
                 <TouchableOpacity onPress={loadScene}>
