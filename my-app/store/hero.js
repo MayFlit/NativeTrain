@@ -3,6 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import enemy from "./enemy";
 import enemy2 from "./enemy2";
 import enemy3 from './enemy3'
+import boss from './boss'
 
 
 class Hero {
@@ -13,7 +14,12 @@ class Hero {
     @observable experience = 0;
     @observable level = 1;
     @observable world = 1;
+
+
     @observable doubleDamageIndicator = false;
+    @observable bossIndicator = false;
+
+
     @observable slashCooldown = false;
     @observable doubleDamageCooldown = false;
     @observable healCooldown = false;
@@ -37,10 +43,11 @@ class Hero {
     // Базовая атака героя
     @action
     hit = () => {
-        const arrOfEnemy = [enemy, enemy2, enemy3]
+        const arrOfEnemy = [enemy, enemy2, enemy3, boss]
 
         arrOfEnemy.forEach((enemy) => {
-            if (enemy.world === this.world) {
+            if ((enemy.world === this.world && !this.bossIndicator)
+                || (enemy.world = this.world && this.bossIndicator)) {
                 enemy.characteristics.health -= this.characteristics.attack + this.equipment.sword.attack
                 enemy.die()
             }
@@ -55,7 +62,8 @@ class Hero {
         const arrOfEnemy = [enemy, enemy2, enemy3]
 
         arrOfEnemy.forEach((enemy) => {
-            if (enemy.world === this.world) {
+            if ((enemy.world === this.world && !this.bossIndicator)
+                || (enemy.world = this.world && this.bossIndicator)) {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 10
                 enemy.die()
 
@@ -82,7 +90,8 @@ class Hero {
         let counter = 0;
 
         arrOfEnemy.forEach((enemy) => {
-            if (enemy.world === this.world) {
+            if ((enemy.world === this.world && !this.bossIndicator)
+                || (enemy.world = this.world && this.bossIndicator)) {
                 const intervalId = setInterval(() => {
                     this.bleedAction(enemy);
                     counter += 1;
@@ -188,7 +197,8 @@ class Hero {
         const arrOfEnemy = [enemy, enemy2, enemy3]
 
         arrOfEnemy.forEach((enemy) => {
-            if (enemy.world === this.world) {
+            if ((enemy.world === this.world && !this.bossIndicator)
+                || (enemy.world = this.world && this.bossIndicator)) {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 2
                 enemy.die()
             }
@@ -295,23 +305,22 @@ class Hero {
 
 
     // Инициализация текущего игрового мира
-    // @action.bound
-    // initWorld = () => {
-    //     AsyncStorage.removeItem('heroWorld')
-    //     AsyncStorage.getItem('heroWorld')
-    //         .then(world => {
-    //             if (!world) {
-    //                 AsyncStorage.setItem('heroWorld', String(this.world))
-    //             }
-    //             this.initWorldAction(+world)
-    //         })
-    // }
-    //
-    //
-    // @action
-    // initWorldAction = (world) => {
-    //     this.world = world
-    // }
+    @action.bound
+    initWorld = () => {
+        AsyncStorage.getItem('heroWorld')
+            .then(world => {
+                if (!world) {
+                    AsyncStorage.setItem('heroWorld', String(this.world))
+                }
+                this.initWorldAction(+world)
+            })
+    }
+
+
+    @action
+    initWorldAction = (world) => {
+        this.world = world
+    }
 
 
 }

@@ -10,8 +10,10 @@ export default function App() {
     hero.initGold()
     hero.initEquip()
     hero.initExp()
-    // hero.initWorld()
+    hero.initWorld()
     hero.levelSystemFunk()
+
+
     return (
       <ImageBackground source={require('./assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>
       <SafeAreaView style={{flex: 1}}>
