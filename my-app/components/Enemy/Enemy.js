@@ -8,21 +8,11 @@ import enemy3 from '../../store/enemy3'
 import hero from "../../store/hero";
 
 export const Enemy = observer (() => {
-    const world = hero.world
-
+    const currentEnemy = hero.world === 1 ? enemy : hero.world === 2 ? enemy2 : enemy3
     return (
-        {0 === 1 ?
         <View style={EnemyStyle.container}>
-            <Text style={EnemyStyle.text}>{enemy.characteristics.health}</Text>
-            <Image source={enemy.image} style={EnemyStyle.enemy}/>
-        </View> : hero.world === 2 ?
-        <View style={EnemyStyle.container}>
-            <Text style={EnemyStyle.text}>{enemy.characteristics.health}</Text>
-            <Image source={enemy.image} style={EnemyStyle.enemy}/>
-        </View> :
-        <View style={EnemyStyle.container}>
-            <Text style={EnemyStyle.text}>{enemy.characteristics.health}</Text>
-            <Image source={enemy.image} style={EnemyStyle.enemy}/>
-        </View>}
+            <Text style={EnemyStyle.text}>{currentEnemy.characteristics.health}</Text>
+            <Image source={currentEnemy.image} style={EnemyStyle.enemy}/>
+        </View>
 );
 })
