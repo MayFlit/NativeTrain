@@ -14,6 +14,11 @@ class Hero {
     @observable level = 1;
     @observable world = 1;
     @observable doubleDamageIndicator = false;
+    @observable slashCooldown = false;
+    @observable doubleDamageCooldown = false;
+    @observable healCooldown = false;
+    @observable bleedCooldown = false;
+
     levelSystem = [{level: 2 ,exp: 100}, {level: 3 ,exp: 300}, {level: 4 ,exp: 500}, {level: 5 ,exp: 1000}, {level: 6 ,exp: 10000},]
 
 
@@ -22,7 +27,7 @@ class Hero {
     }
 
 
-
+    // Тестовый метод для проверки разных миров
     @action
     worldUp = () => {
         this.world += 1;
@@ -53,9 +58,21 @@ class Hero {
             if (enemy.world === this.world) {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 10
                 enemy.die()
+
+                this.slashCooldown = true;
+                setTimeout(() => {
+                    this.slashCooldownAction()
+                }, 3000)
             }
         })
     }
+
+    @action
+    slashCooldownAction = () => {
+        this.slashCooldown = false;
+    }
+
+
 
 
     // Bleed навык
@@ -73,11 +90,18 @@ class Hero {
                     if (counter === 10) {
                         clearInterval(intervalId);
                     }
-
                 }, 500)
+
+
+                this.bleedCooldown = true;
+                setTimeout(() => {
+                    this.bleedCooldownAction()
+                }, 3000)
+
             }
         })
     }
+
 
     @action
     bleedAction = (enemy) => {
@@ -87,26 +111,61 @@ class Hero {
 
 
 
+    @action
+    bleedCooldownAction = () => {
+        this.bleedCooldown = false;
+    }
+
+
+
+
     // Heal навык
     @action
     heal = () => {
         if (this.characteristics.health + 100 < this.characteristics.maxHealth) {
             this.characteristics.health += 100;
+
+            this.healCooldown = true;
+            setTimeout(() => {
+                this.healCooldownAction()
+            }, 3000)
+
         } else {
             this.characteristics.health = this.characteristics.maxHealth
+            this.healCooldown = true;
+
+            setTimeout(() => {
+                this.healCooldownAction()
+            }, 3000)
         }
     }
+
+
+
+    @action
+    healCooldownAction = () => {
+        this.healCooldown = false;
+    }
+
+
+
 
 
     // DoubleDamage навык
     @action
     doubleDamage = () => {
         this.doubleDamageIndicator = true;
+        this.doubleDamageCooldown = true;
 
         setTimeout(() => {
             this.doubleDamageAction()
         }, 3000)
+
+        setTimeout(() => {
+            this.doubleDamageCooldownAction()
+        }, 3000)
     }
+
 
     @action
     doubleDamageAction = () => {
@@ -114,7 +173,16 @@ class Hero {
     }
 
 
-    // Двойная атака героя
+    @action
+    doubleDamageCooldownAction = () => {
+        this.doubleDamageCooldown = false;
+    }
+
+
+
+
+
+    // Двойная атака героя для навыка Double Damage
     @action
     doubleHit = () => {
         const arrOfEnemy = [enemy, enemy2, enemy3]
