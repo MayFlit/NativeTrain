@@ -10,16 +10,17 @@ export const Shop = observer (({ navigation, route }) => {
     navigation.goBack();
   }
 
-  // console.log('====================================');
-  // console.log(shop.shop.weapons);
-  // console.log('====================================');
+  console.log('====================================');
+  console.log(shop.shop.weapons);
+  console.log('====================================');
+  console.log('getServerUrls output', toJS(shop.shop.weapons));
 
   return (
           <View style={ShopStyle.background}>
               
               <Button title="Назад" onPress={loadScene}/>
 
-               {/*<Text> {shop.shop.weapons[0].name}  </Text>*/}
+              <Text> {shop.shop.weapons[0].name}  </Text>
               <FlatList renderItem={({shop}) => (
                 <TouchableOpacity onPress={loadScene} >
                   
