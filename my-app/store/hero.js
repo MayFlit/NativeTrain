@@ -25,12 +25,40 @@ class Hero {
     @observable healCooldown = false;
     @observable bleedCooldown = false;
 
-    levelSystem = [{level: 2 ,exp: 100}, {level: 3 ,exp: 300}, {level: 4 ,exp: 500}, {level: 5 ,exp: 1000}, {level: 6 ,exp: 10000},]
+    @observable levelSystem = [{level: 2 ,exp: 100}, {level: 3 ,exp: 300}, {level: 4 ,exp: 500}, {level: 5 ,exp: 1000}, {level: 6 ,exp: 10000},]
 
 
     constructor() {
         makeAutoObservable(this)
     }
+
+
+
+
+    //Пробная функция для отслеживания уровня
+    @action
+    levelSystemFunk = () => {
+        for (let i = 0; i < this.levelSystem.length; i++) {
+            if (this.experience >= this.levelSystem[i].exp) {
+                this.level = this.levelSystem[i].level
+            }
+        }
+    }
+
+
+    // @computed
+    // get levelSystemFunk() {
+    //     console.log('asdas')
+    //     for (let i = 0; i < this.levelSystem.length; i++) {
+    //         if (this.experience >= this.levelSystem[i].exp) {
+    //             return this.levelSystem[i].level
+    //         }
+    //     }
+    // }
+
+
+
+
 
 
     // Тестовый метод для проверки разных миров
@@ -206,29 +234,6 @@ class Hero {
 
 
 
-
-    //Пробная функция для отслеживания уровня
-    @action
-    levelSystemFunk = () => {
-        for (let i = 0; i < this.levelSystem.length; i++) {
-            if (this.experience >= this.levelSystem[i].exp) {
-                this.level = this.levelSystem[i].level
-            }
-        }
-    }
-
-
-    // @computed
-    // get levelSystemFunk() {
-    //     console.log('asdas')
-    //     for (let i = 0; i < this.levelSystem.length; i++) {
-    //         if (this.experience >= this.levelSystem[i].exp) {
-    //             this.level = this.levelSystem[i].level
-    //         }
-    //     }
-    // }
-
-
     // Инициализация характеристик персонажа
     @action.bound
     initChar = () => {
@@ -246,6 +251,7 @@ class Hero {
     initCharAction = (char) => {
         this.characteristics = JSON.parse(char)
     }
+
 
 
     // Инициализация золота
@@ -304,6 +310,26 @@ class Hero {
 
 
 
+    // Инициализация уровня героя
+    // @action.bound
+    // initLevel = () => {
+    //     AsyncStorage.getItem('heroLevel')
+    //         .then(level => {
+    //             if (!level) {
+    //                 AsyncStorage.setItem('heroLevel', String(this.level))
+    //             }
+    //             this.initWorldAction(+level)
+    //         })
+    // }
+    //
+    //
+    // @action
+    // initWorldAction = (level) => {
+    //     this.level = level
+    // }
+
+
+
     // Инициализация текущего игрового мира
     @action.bound
     initWorld = () => {
@@ -321,6 +347,11 @@ class Hero {
     initWorldAction = (world) => {
         this.world = world
     }
+
+
+
+
+
 
 
 }

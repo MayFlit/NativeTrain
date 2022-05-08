@@ -11,6 +11,7 @@ export default function App() {
     hero.initEquip()
     hero.initExp()
     hero.initWorld()
+    // hero.initLevel()
     hero.levelSystemFunk()
 
 
