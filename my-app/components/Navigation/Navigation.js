@@ -1,6 +1,7 @@
 import React from "react";
 import { Game } from "../Game/Game";
 import { Shop } from "../Shop/Shop";
+import { Profile } from "../Profile/Profile";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -20,6 +21,11 @@ export default function Navigate() {
       name="Shop"
       component={Shop}
       options={{title: 'Магазин'}}
+      />
+      <Stack.Screen
+      name="Profile"
+      component={Profile}
+      options={{title: 'Профиль'}}
       />
     </Stack.Navigator>
   </NavigationContainer>;

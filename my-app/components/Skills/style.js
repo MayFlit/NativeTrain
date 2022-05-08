@@ -1,10 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const BarStyle = StyleSheet.create({
-    icons: {
-      width: 30,
-      height: 30,
-    },
+export const SkillsStyle = StyleSheet.create({
     box: {
       flexDirection: 'row',
       flex: 1,
@@ -14,14 +10,15 @@ export const BarStyle = StyleSheet.create({
       width: 100,
       height: 50,
       padding: 10,
-      backgroundColor: "red",
-      borderTopRightRadius: 20,
-      borderBottomLeftRadius: 20,
       color: 'white',
-      boxShadow: "1px 1px 30px 15px #f56b00",
       fontSize: 20,
     },
-    shield: {
-      
+    icons: {
+      width: 50,
+      height: 50,
+      top: 307,
+      left: 15,
+      borderRadius: 50,
+      backgroundColor: "white",
     }
 });

@@ -7,11 +7,15 @@ import {observer} from "mobx-react-lite";
 import {GameStyle} from "./style";
 import { Shop } from "../Shop/Shop";
 import { Bar } from "../Bar/Bar";
+import { Skills } from "../Skills/Skills";
 
 
 export const Game = observer (({ navigation }) => {
   const loadScene = () => {
     navigation.navigate('Shop');
+  }
+  const loadScene1 = () => {
+    navigation.navigate('Profile');
   }
 
     return (
@@ -25,7 +29,7 @@ export const Game = observer (({ navigation }) => {
                 <Image source={require('../../assets/shop.png')} style={GameStyle.shop}/>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={loadScene}>
+                <TouchableOpacity onPress={loadScene1}>
                 <Image source={require('../../assets/profile.png')} style={GameStyle.shop}/>
                 </TouchableOpacity>
 
@@ -33,6 +37,9 @@ export const Game = observer (({ navigation }) => {
                 <Enemy/>
               
                 <Text style={GameStyle.text} onPress={() => {hero.hit()}} >Атаковать</Text>
+
+                  <Skills />
+              
             </SafeAreaView>
         </ImageBackground>
     );
