@@ -1,9 +1,11 @@
-import {action, computed, makeAutoObservable, observable} from "mobx";
+import {action, makeAutoObservable, observable} from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import enemy from "./enemy";
 import enemy2 from "./enemy2";
 import enemy3 from './enemy3'
 import boss from './boss'
+import boss2 from "./boss2";
+import boss3 from "./boss3";
 
 
 class Hero {
@@ -25,8 +27,6 @@ class Hero {
     @observable healCooldown = false;
     @observable bleedCooldown = false;
 
-    @observable levelSystem = [{level: 2 ,exp: 100}, {level: 3 ,exp: 300}, {level: 4 ,exp: 500}, {level: 5 ,exp: 1000}, {level: 6 ,exp: 10000},]
-
 
     constructor() {
         makeAutoObservable(this)
@@ -35,47 +35,38 @@ class Hero {
 
 
 
-    //Пробная функция для отслеживания уровня
+    // Метод для вычисления уровня героя
     @action
-    levelSystemFunk = () => {
-        for (let i = 0; i < this.levelSystem.length; i++) {
-            if (this.experience >= this.levelSystem[i].exp) {
-                this.level = this.levelSystem[i].level
-            }
+    levelUp = () => {
+        if (this.experience >= ((this.level * (this.level - 1) / 2) * 100)) {
+            this.experience -= ((this.level * (this.level - 1) / 2) * 100);
+            this.level += 1;
+            this.characteristics.attack += 5;
+            this.characteristics.health += 20
+            AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
+            AsyncStorage.setItem('heroExp', String(this.experience))
+            AsyncStorage.setItem('heroLvl', String(this.level))
         }
     }
 
 
-    // @computed
-    // get levelSystemFunk() {
-    //     console.log('asdas')
-    //     for (let i = 0; i < this.levelSystem.length; i++) {
-    //         if (this.experience >= this.levelSystem[i].exp) {
-    //             return this.levelSystem[i].level
-    //         }
-    //     }
-    // }
 
-
-
-
-
-
-    // Тестовый метод для проверки разных миров
+    // Метод переноса персонажа между игровыми уровнями
     @action
     worldUp = () => {
         this.world += 1;
     }
 
 
+
     // Базовая атака героя
     @action
     hit = () => {
-        const arrOfEnemy = [enemy, enemy2, enemy3, boss]
+        const arrOfEnemy = [enemy, enemy2, enemy3, boss, boss2, boss3]
 
         arrOfEnemy.forEach((enemy) => {
-            if ((enemy.world === this.world && !this.bossIndicator)
-                || (enemy.world = this.world && this.bossIndicator)) {
+            if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
+                || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
                 enemy.characteristics.health -= this.characteristics.attack + this.equipment.sword.attack
                 enemy.die()
             }
@@ -83,16 +74,21 @@ class Hero {
     }
 
 
+
+
     // Slash навык
     @action
     slash = () => {
-        const arrOfEnemy = [enemy, enemy2, enemy3]
+        const arrOfEnemy = [enemy, enemy2, enemy3, boss, boss2, boss3]
 
         arrOfEnemy.forEach((enemy) => {
-            if ((enemy.world === this.world && !this.bossIndicator)
-                || (enemy.world = this.world && this.bossIndicator)) {
+            if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
+                || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 10
                 enemy.die()
+
+                console.log(this.bossIndicator)
+                console.log(enemy)
 
                 this.slashCooldown = true;
                 setTimeout(() => {
@@ -102,6 +98,8 @@ class Hero {
         })
     }
 
+
+
     @action
     slashCooldownAction = () => {
         this.slashCooldown = false;
@@ -110,15 +108,17 @@ class Hero {
 
 
 
+
     // Bleed навык
     @action
     bleed = () => {
-        const arrOfEnemy = [enemy, enemy2, enemy3]
+        const arrOfEnemy = [enemy, enemy2, enemy3, boss, boss2, boss3]
         let counter = 0;
 
+
         arrOfEnemy.forEach((enemy) => {
-            if ((enemy.world === this.world && !this.bossIndicator)
-                || (enemy.world = this.world && this.bossIndicator)) {
+            if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
+                || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
                 const intervalId = setInterval(() => {
                     this.bleedAction(enemy);
                     counter += 1;
@@ -221,16 +221,17 @@ class Hero {
     // Двойная атака героя для навыка Double Damage
     @action
     doubleHit = () => {
-        const arrOfEnemy = [enemy, enemy2, enemy3]
+        const arrOfEnemy = [enemy, enemy2, enemy3, boss, boss2, boss3]
 
         arrOfEnemy.forEach((enemy) => {
-            if ((enemy.world === this.world && !this.bossIndicator)
-                || (enemy.world = this.world && this.bossIndicator)) {
+            if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
+                || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 2
                 enemy.die()
             }
         })
     }
+
 
 
 
@@ -266,10 +267,13 @@ class Hero {
             })
     }
 
+
+
     @action
     initGoldAction = (gold) => {
         this.gold = gold
     }
+
 
 
     // Инициализация снаряжения
@@ -290,9 +294,11 @@ class Hero {
     }
 
 
+
     // Инициализация очков опыта
     @action.bound
     initExp = () => {
+        // AsyncStorage.removeItem('heroExp')
         AsyncStorage.getItem('heroExp')
             .then(exp => {
                 if (!exp) {
@@ -311,22 +317,23 @@ class Hero {
 
 
     // Инициализация уровня героя
-    // @action.bound
-    // initLevel = () => {
-    //     AsyncStorage.getItem('heroLevel')
-    //         .then(level => {
-    //             if (!level) {
-    //                 AsyncStorage.setItem('heroLevel', String(this.level))
-    //             }
-    //             this.initWorldAction(+level)
-    //         })
-    // }
-    //
-    //
-    // @action
-    // initWorldAction = (level) => {
-    //     this.level = level
-    // }
+    @action.bound
+    initLevel = () => {
+        // AsyncStorage.removeItem('heroLvl')
+        AsyncStorage.getItem('heroLvl')
+            .then(level => {
+                if (!level) {
+                    AsyncStorage.setItem('heroLvl', String(this.level))
+                }
+                this.initLevelAction(+level)
+            })
+    }
+
+
+    @action
+    initLevelAction = (level) => {
+        this.level = level
+    }
 
 
 

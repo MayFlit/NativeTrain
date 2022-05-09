@@ -20,7 +20,7 @@ class Enemy3 {
             this.characteristics.health = 300;
             this.image = this.images[Math.floor(Math.random() * 3)]
             hero.experience+= 100;
-            hero.levelSystemFunk();
+            hero.levelUp()
             hero.gold+= 50;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
