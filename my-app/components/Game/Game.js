@@ -8,6 +8,8 @@ import {GameStyle} from "./style";
 import { Shop } from "../Shop/Shop";
 import { Bar } from "../Bar/Bar";
 import { Skills } from "../Skills/Skills";
+import {SlashAnimation} from "../SlashAnimation/SlashAnimation";
+import slashAnimation from "../../store/slashAnimation";
 
 
 export const Game = observer (({ navigation }) => {
@@ -33,8 +35,10 @@ export const Game = observer (({ navigation }) => {
                 <Image source={require('../../assets/profile.png')} style={GameStyle.shop}/>
                 </TouchableOpacity>
 
+
+                {slashAnimation.animationIndicator && <SlashAnimation/>}
                 <Hero />
-                <Enemy/>
+                {/*<Enemy/>*/}
               
                 <Text style={GameStyle.text} onPress={() => {hero.hit()}} >Атаковать</Text>
 

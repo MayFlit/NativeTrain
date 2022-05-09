@@ -6,6 +6,7 @@ import enemy3 from './enemy3'
 import boss from './boss'
 import boss2 from "./boss2";
 import boss3 from "./boss3";
+import slashAnimation from "./slashAnimation";
 
 
 class Hero {
@@ -26,7 +27,6 @@ class Hero {
     @observable doubleDamageCooldown = false;
     @observable healCooldown = false;
     @observable bleedCooldown = false;
-
 
     constructor() {
         makeAutoObservable(this)
@@ -87,9 +87,8 @@ class Hero {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 10
                 enemy.die()
 
-                console.log(this.bossIndicator)
-                console.log(enemy)
-
+                slashAnimation.animationIndicator = true;
+                slashAnimation.animate()
                 this.slashCooldown = true;
                 setTimeout(() => {
                     this.slashCooldownAction()
