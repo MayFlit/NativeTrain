@@ -44,9 +44,9 @@ export const Game = observer (({ navigation }) => {
                 {animations.healIndicator && <Heal/>}
                 {animations.poisonIndicator && <Poison/>}
                 {animations.lightningOrbIndicator && <LightningOrb/>}
-                <Hero />
-
-                <Text style={GameStyle.text} onPress={() => {hero.hit()}} >Атаковать</Text>
+                <TouchableOpacity onPress={() => hero.hit()}>
+                    <Image source={require('../../assets/6DuS.gif')} style={GameStyle.hero}/>
+                </TouchableOpacity>
 
                   <Skills />
               
