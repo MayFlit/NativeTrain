@@ -24,7 +24,7 @@ export const Skills = observer (() => {
                 <Text style={SkillsStyle.container}><Image source={require('../../assets/skills/blood.png')} style={SkillsStyle.icons}/> </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => {hero.slash()}}>
+                <TouchableOpacity onPress={() => {hero.lightningOrb()}}>
                 <Text style={SkillsStyle.container}> <Image source={require('../../assets/skills/damage.png')} style={SkillsStyle.icons} /> </Text>
                 </TouchableOpacity>
 

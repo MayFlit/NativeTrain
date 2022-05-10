@@ -34,7 +34,7 @@ export const Profile = observer (({ navigation }) => {
             </View>
 
             <View> 
-                <Text>Ваша броня: {hero.equipment.armor.name}</Text>
+                {/*<Text>Ваша броня: {hero.equipment.armor.name}</Text>*/}
                 <Text>Ваш опыт: {hero.experience}</Text>
             </View>
                    
