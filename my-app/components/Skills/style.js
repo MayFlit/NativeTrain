@@ -16,7 +16,7 @@ export const SkillsStyle = StyleSheet.create({
     icons: {
       width: 50,
       height: 50,
-      top: 307,
+      // top: 307,
       left: 15,
       borderRadius: 50,
       backgroundColor: "white",

@@ -22,7 +22,15 @@ export const EnemyStyle = StyleSheet.create({
     },
     hitpoints: {
 		backgroundColor: "#e74c3c",
-		boxShadow: "inset 0px 0px 8px 2px #bf3729",
+		// boxShadow: "inset 0px 0px 8px 2px #bf3729",
+    shadowColor: "#bf3729",
+      shadowOffset: {
+        width: 1,
+        height: 1,
+      },
+      shadowOpacity: 30,
+      shadowRadius: 15,
+       elevation: 5,
 		position: "relative",
 		zIndex: -1,
         color: "white",
@@ -41,7 +49,15 @@ export const EnemyStyle = StyleSheet.create({
 			position: "absolute",
 			height: "100%",
 			backgroundColor: "#2ecc71",
-			boxShadow: "inset 0px 0px 8px 2px #17924b",
+			// boxShadow: "inset 0px 0px 8px 2px #17924b",
+      shadowColor: "#17924b",
+      shadowOffset: {
+        width: 1,
+        height: 1,
+      },
+      shadowOpacity: 30,
+      shadowRadius: 15,
+       elevation: 5,
 			boxSizing: "border-box",
 			transition: "width 0.075s ease-in"
 		}
