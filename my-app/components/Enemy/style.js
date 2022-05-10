@@ -2,8 +2,6 @@ import {StyleSheet} from 'react-native';
 
 export const EnemyStyle = StyleSheet.create({
     container: {
-        borderWidth: 4,
-        borderColor: 'red',
         position: 'absolute',
         bottom: 100,
         left: 50

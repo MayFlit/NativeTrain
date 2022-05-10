@@ -16,6 +16,6 @@ export const SkillsStyle = StyleSheet.create({
       height: 70,
       borderRadius: 50,
       borderColor: 'white',
-      borderWidth: 3,
+      borderWidth: 2,
     }
 });

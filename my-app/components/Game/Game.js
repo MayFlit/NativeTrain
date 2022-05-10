@@ -12,6 +12,8 @@ import {LightningOrb} from "../LightningOrb/LightningOrb";
 import animations from "../../store/animations";
 import {Poison} from "../Poison/Poison";
 import {Heal} from "../Heal/Heal";
+import {Hit} from "../Hit/Hit";
+import {DoubleHit} from "../DoubleHit/DoubleHit";
 
 
 export const Game = observer (({ navigation }) => {
@@ -40,13 +42,20 @@ export const Game = observer (({ navigation }) => {
 
 
                 <Enemy/>
-
+                {animations.doubleHitIndicator && <DoubleHit/>}
+                {animations.hitIndicator && <Hit/>}
                 {animations.healIndicator && <Heal/>}
                 {animations.poisonIndicator && <Poison/>}
                 {animations.lightningOrbIndicator && <LightningOrb/>}
+
+
+                {hero.doubleDamageIndicator ?
+                <TouchableOpacity onPress={() => hero.doubleHit()}>
+                    <Image source={require('../../assets/6DuS.gif')} style={GameStyle.hero}/>
+                </TouchableOpacity> :
                 <TouchableOpacity onPress={() => hero.hit()}>
                     <Image source={require('../../assets/6DuS.gif')} style={GameStyle.hero}/>
-                </TouchableOpacity>
+                </TouchableOpacity>}
 
                   <Skills />
               
