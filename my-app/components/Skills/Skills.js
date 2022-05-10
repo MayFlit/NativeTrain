@@ -3,14 +3,15 @@ import {SafeAreaView, Text, Image, TouchableOpacity } from 'react-native';
 import hero from '../../store/hero';
 import {observer} from "mobx-react-lite";
 import {SkillsStyle} from "./style";
+import { Timer } from '../Timer/Timer';
 
 
 export const Skills = observer (() => {
 return (
             <SafeAreaView style={SkillsStyle.box}>
-
                 <TouchableOpacity onPress={() => {hero.lightningOrb()}}>
-                  <Text style={SkillsStyle.container}> <Image source={require('../../assets/skills/lightningBoltIcon.png')} style={SkillsStyle.icons} /> </Text>
+                 
+                  <Text style={SkillsStyle.container}> <Timer />  <Image source={require('../../assets/skills/lightningBoltIcon.png')} style={SkillsStyle.icons} /> </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => {hero.poison()}}>
