@@ -26,6 +26,9 @@ export const GameStyle = StyleSheet.create({
         width: 150,
     },
     heroContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
     }
   
 });

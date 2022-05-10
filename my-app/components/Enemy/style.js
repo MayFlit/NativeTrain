@@ -4,19 +4,20 @@ export const EnemyStyle = StyleSheet.create({
     container: {
         position: 'absolute',
         bottom: 100,
-        left: 50
-        
     },
     enemy: {
         width: 300,
         height: 500,
-        left: 30,
     },
     text: {
         position: 'absolute',
         top: 150,
         fontSize: 20,
         color: 'red',
+    },
+    hit: {
+        width: 100,
+        height: 100,
     },
     hitpoints: {
 		backgroundColor: "#e74c3c",
