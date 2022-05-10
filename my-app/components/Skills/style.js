@@ -5,6 +5,8 @@ export const SkillsStyle = StyleSheet.create({
       flexDirection: 'row',
       flex: 1,
       justifyContent: 'space-between',
+      position: 'absolute',
+      bottom: 0,
     },
     container: {
       width: 100,

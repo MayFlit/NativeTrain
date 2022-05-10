@@ -1,9 +1,6 @@
 import React from "react";
-import {SafeAreaView, ImageBackground, Text, Image, TouchableOpacity } from 'react-native';
-import {Hero} from "../Hero/Hero";
-import {Enemy} from "../Enemy/Enemy";
+import {SafeAreaView, Text, Image, TouchableOpacity } from 'react-native';
 import hero from '../../store/hero';
-import enemy from '../../store/enemy';
 import {observer} from "mobx-react-lite";
 import {SkillsStyle} from "./style";
 
