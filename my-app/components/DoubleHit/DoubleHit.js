@@ -6,7 +6,7 @@ import {observer} from "mobx-react-lite";
 
 
 
-export const Poison = observer (() => {
+export const DoubleHit = observer (() => {
     return (
         <View style={EnemyStyle.container}>
             <Image source={animations.doubleHitImage} style={EnemyStyle.enemy}/>

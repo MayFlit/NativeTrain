@@ -71,7 +71,6 @@ class Hero {
 
 
                 animations.hit()
-
                 setTimeout(() => {
                     animations.hit()
                 }, 1000)
