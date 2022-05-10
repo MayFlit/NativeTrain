@@ -1,5 +1,5 @@
 import React from "react";
-import {SafeAreaView, ImageBackground, Text, Image, TouchableOpacity, Animated } from 'react-native';
+import {SafeAreaView, ImageBackground, Text, Image, TouchableOpacity, Animated, View} from 'react-native';
 import {Hero} from "../Hero/Hero";
 import {Enemy} from "../Enemy/Enemy";
 import hero from '../../store/hero';
@@ -51,10 +51,14 @@ export const Game = observer (({ navigation }) => {
 
                 {hero.doubleDamageIndicator ?
                 <TouchableOpacity onPress={() => hero.doubleHit()}>
-                    <Image source={require('../../assets/6DuS.gif')} style={GameStyle.hero}/>
+                    <View style={GameStyle.heroContainer}>
+                        <Image source={require('../../assets/mage.gif')} style={GameStyle.hero}/>
+                    </View>
                 </TouchableOpacity> :
                 <TouchableOpacity onPress={() => hero.hit()}>
-                    <Image source={require('../../assets/6DuS.gif')} style={GameStyle.hero}/>
+                    <View style={GameStyle.heroContainer}>
+                        <Image source={require('../../assets/mage.gif')} style={GameStyle.hero}/>
+                    </View>
                 </TouchableOpacity>}
 
                   <Skills />

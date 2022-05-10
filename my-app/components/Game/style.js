@@ -16,15 +16,16 @@ export const GameStyle = StyleSheet.create({
         right: 65,
     },
     shop: {
-          width: 50,
-          height: 50,
-          bottom: 295,
+        width: 50,
+        height: 50,
+        bottom: 295,
     },
     hero: {
-          bottom: 100,
-          left: 150,
-          height: 100,
-          width: 100,
+        bottom: 100,
+        height: 150,
+        width: 150,
+    },
+    heroContainer: {
     }
   
 });
