@@ -20,7 +20,7 @@ export const Skills = observer (() => {
                 <Text style={SkillsStyle.container}><Image source={require('../../assets/skills/health.png')} style={SkillsStyle.icons}/> </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => {hero.bleed()}}>
+                <TouchableOpacity onPress={() => {hero.poison()}}>
                 <Text style={SkillsStyle.container}><Image source={require('../../assets/skills/blood.png')} style={SkillsStyle.icons}/> </Text>
                 </TouchableOpacity>
 
