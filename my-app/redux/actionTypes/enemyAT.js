@@ -1,1 +1,0 @@
-export const INIT_ENEMY = 'INIT_ENEMY'
