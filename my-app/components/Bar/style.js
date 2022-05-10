@@ -18,7 +18,14 @@ export const BarStyle = StyleSheet.create({
       borderTopRightRadius: 20,
       borderBottomLeftRadius: 20,
       color: 'white',
-      boxShadow: "1px 1px 30px 15px #f56b00",
+      shadowColor: "#f56b00",
+      shadowOffset: {
+        width: 1,
+        height: 1,
+      },
+      shadowOpacity: 30,
+      shadowRadius: 15,
+       elevation: 5,
       fontSize: 20,
     },
     shield: {
