@@ -1,5 +1,5 @@
 import React from "react";
-import {SafeAreaView, ImageBackground, Text, Image, TouchableOpacity } from 'react-native';
+import {SafeAreaView, ImageBackground, Text, Image, TouchableOpacity, Animated } from 'react-native';
 import {Hero} from "../Hero/Hero";
 import {Enemy} from "../Enemy/Enemy";
 import hero from '../../store/hero';
@@ -8,8 +8,8 @@ import {GameStyle} from "./style";
 import { Shop } from "../Shop/Shop";
 import { Bar } from "../Bar/Bar";
 import { Skills } from "../Skills/Skills";
-import {SlashAnimation} from "../SlashAnimation/SlashAnimation";
-import slashAnimation from "../../store/slashAnimation";
+import {LightningOrb} from "../LightningOrb/LightningOrb";
+import animations from "../../store/animations";
 
 
 export const Game = observer (({ navigation }) => {
@@ -36,7 +36,7 @@ export const Game = observer (({ navigation }) => {
                 </TouchableOpacity>
 
 
-                {slashAnimation.animationIndicator && <SlashAnimation/>}
+                {animations.lightningOrbIndicator && <LightningOrb/>}
                 <Hero />
                 {/*<Enemy/>*/}
               

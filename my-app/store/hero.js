@@ -6,8 +6,7 @@ import enemy3 from './enemy3'
 import boss from './boss'
 import boss2 from "./boss2";
 import boss3 from "./boss3";
-import slashAnimation from "./slashAnimation";
-
+import animations from "./animations";
 
 class Hero {
     @observable characteristics = {attack: 20, health: 100, maxHealth: 100}
@@ -23,7 +22,7 @@ class Hero {
     @observable bossIndicator = false;
 
 
-    @observable slashCooldown = false;
+    @observable lightningOrbCooldown = false;
     @observable doubleDamageCooldown = false;
     @observable healCooldown = false;
     @observable bleedCooldown = false;
@@ -76,9 +75,9 @@ class Hero {
 
 
 
-    // Slash навык
+    // Lightning Bolt навык
     @action
-    slash = () => {
+    lightningOrb = () => {
         const arrOfEnemy = [enemy, enemy2, enemy3, boss, boss2, boss3]
 
         arrOfEnemy.forEach((enemy) => {
@@ -87,21 +86,24 @@ class Hero {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 10
                 enemy.die()
 
-                slashAnimation.animationIndicator = true;
-                slashAnimation.animate()
-                this.slashCooldown = true;
+                animations.lightningOrb()
+
                 setTimeout(() => {
-                    this.slashCooldownAction()
+                    animations.lightningOrb()
+                }, 1000)
+
+                this.lightningOrbCooldown = true;
+                setTimeout(() => {
+                    this.lightningOrbCooldownAction()
                 }, 3000)
             }
         })
     }
 
 
-
     @action
-    slashCooldownAction = () => {
-        this.slashCooldown = false;
+    lightningOrbCooldownAction = () => {
+        this.lightningOrbCooldown = false;
     }
 
 
