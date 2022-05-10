@@ -1,6 +1,5 @@
 import React from "react";
-import {SafeAreaView, ImageBackground, Text, Image, TouchableOpacity, Animated } from 'react-native';
-import {Hero} from "../Hero/Hero";
+import {SafeAreaView, ImageBackground, Image, TouchableOpacity, View} from 'react-native';
 import {Enemy} from "../Enemy/Enemy";
 import hero from '../../store/hero';
 import {observer} from "mobx-react-lite";
@@ -39,22 +38,19 @@ export const Game = observer (({ navigation }) => {
                 <Image source={require('../../assets/profile.png')} style={GameStyle.shop}/>
                 </TouchableOpacity>
 
-
-
                 <Enemy/>
-                {animations.doubleHitIndicator && <DoubleHit/>}
-                {animations.hitIndicator && <Hit/>}
-                {animations.healIndicator && <Heal/>}
-                {animations.poisonIndicator && <Poison/>}
-                {animations.lightningOrbIndicator && <LightningOrb/>}
 
 
                 {hero.doubleDamageIndicator ?
                 <TouchableOpacity onPress={() => hero.doubleHit()}>
-                    <Image source={require('../../assets/6DuS.gif')} style={GameStyle.hero}/>
+                    <View style={GameStyle.heroContainer}>
+                        <Image source={require('../../assets/mage.gif')} style={GameStyle.hero}/>
+                    </View>
                 </TouchableOpacity> :
                 <TouchableOpacity onPress={() => hero.hit()}>
-                    <Image source={require('../../assets/6DuS.gif')} style={GameStyle.hero}/>
+                    <View style={GameStyle.heroContainer}>
+                        <Image source={require('../../assets/mage.gif')} style={GameStyle.hero}/>
+                    </View>
                 </TouchableOpacity>}
 
                   <Skills />
