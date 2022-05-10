@@ -10,6 +10,8 @@ import { Bar } from "../Bar/Bar";
 import { Skills } from "../Skills/Skills";
 import {LightningOrb} from "../LightningOrb/LightningOrb";
 import animations from "../../store/animations";
+import {Poison} from "../Poison/Poison";
+import {Heal} from "../Heal/Heal";
 
 
 export const Game = observer (({ navigation }) => {
@@ -36,10 +38,14 @@ export const Game = observer (({ navigation }) => {
                 </TouchableOpacity>
 
 
+
+                <Enemy/>
+
+                {animations.healIndicator && <Heal/>}
+                {animations.poisonIndicator && <Poison/>}
                 {animations.lightningOrbIndicator && <LightningOrb/>}
                 <Hero />
-                {/*<Enemy/>*/}
-              
+
                 <Text style={GameStyle.text} onPress={() => {hero.hit()}} >Атаковать</Text>
 
                   <Skills />
