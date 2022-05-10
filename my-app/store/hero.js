@@ -25,7 +25,7 @@ class Hero {
     @observable lightningOrbCooldown = false;
     @observable doubleDamageCooldown = false;
     @observable healCooldown = false;
-    @observable bleedCooldown = false;
+    @observable poisonCooldown = false;
 
     constructor() {
         makeAutoObservable(this)
@@ -68,6 +68,14 @@ class Hero {
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
                 enemy.characteristics.health -= this.characteristics.attack + this.equipment.sword.attack
                 enemy.die()
+
+
+                animations.hit()
+
+                setTimeout(() => {
+                    animations.hit()
+                }, 1000)
+
             }
         })
     }
@@ -86,11 +94,12 @@ class Hero {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 10
                 enemy.die()
 
-                animations.lightningOrb()
 
+                animations.lightningOrb()
                 setTimeout(() => {
                     animations.lightningOrb()
                 }, 1000)
+
 
                 this.lightningOrbCooldown = true;
                 setTimeout(() => {
@@ -110,9 +119,9 @@ class Hero {
 
 
 
-    // Bleed навык
+    // Poison навык
     @action
-    bleed = () => {
+    poison = () => {
         const arrOfEnemy = [enemy, enemy2, enemy3, boss, boss2, boss3]
         let counter = 0;
 
@@ -121,7 +130,7 @@ class Hero {
             if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
                 const intervalId = setInterval(() => {
-                    this.bleedAction(enemy);
+                    this.poisonAction(enemy);
                     counter += 1;
 
                     if (counter === 10) {
@@ -130,9 +139,15 @@ class Hero {
                 }, 500)
 
 
-                this.bleedCooldown = true;
+                animations.poison()
                 setTimeout(() => {
-                    this.bleedCooldownAction()
+                    animations.poison()
+                }, 700)
+
+
+                this.poisonCooldown = true;
+                setTimeout(() => {
+                    this.poisonCooldownAction()
                 }, 3000)
 
             }
@@ -141,7 +156,7 @@ class Hero {
 
 
     @action
-    bleedAction = (enemy) => {
+    poisonAction = (enemy) => {
         enemy.characteristics.health -= 50
         enemy.die()
     }
@@ -149,8 +164,8 @@ class Hero {
 
 
     @action
-    bleedCooldownAction = () => {
-        this.bleedCooldown = false;
+    poisonCooldownAction = () => {
+        this.poisonCooldown = false;
     }
 
 
@@ -162,6 +177,13 @@ class Hero {
         if (this.characteristics.health + 100 < this.characteristics.maxHealth) {
             this.characteristics.health += 100;
 
+
+            animations.heal()
+            setTimeout(() => {
+                animations.heal()
+            }, 1000)
+
+
             this.healCooldown = true;
             setTimeout(() => {
                 this.healCooldownAction()
@@ -169,8 +191,15 @@ class Hero {
 
         } else {
             this.characteristics.health = this.characteristics.maxHealth
-            this.healCooldown = true;
 
+
+            animations.heal()
+            setTimeout(() => {
+                animations.heal()
+            }, 1000)
+
+
+            this.healCooldown = true;
             setTimeout(() => {
                 this.healCooldownAction()
             }, 3000)
@@ -229,6 +258,12 @@ class Hero {
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 2
                 enemy.die()
+
+
+                animations.doubleHit()
+                setTimeout(() => {
+                    animations.doubleHit()
+                }, 1000)
             }
         })
     }
