@@ -7,12 +7,7 @@ import {GameStyle} from "./style";
 import { Shop } from "../Shop/Shop";
 import { Bar } from "../Bar/Bar";
 import { Skills } from "../Skills/Skills";
-import {LightningOrb} from "../LightningOrb/LightningOrb";
-import animations from "../../store/animations";
-import {Poison} from "../Poison/Poison";
-import {Heal} from "../Heal/Heal";
-import {Hit} from "../Hit/Hit";
-import {DoubleHit} from "../DoubleHit/DoubleHit";
+import {Boss} from "../Boss/Boss";
 
 
 export const Game = observer (({ navigation }) => {
@@ -38,7 +33,8 @@ export const Game = observer (({ navigation }) => {
                 <Image source={require('../../assets/profile.png')} style={GameStyle.shop}/>
                 </TouchableOpacity>
 
-                <Enemy/>
+                {!hero.bossIndicator && <Enemy/>}
+                {hero.bossIndicator && <Boss/>}
 
 
                 {hero.doubleDamageIndicator ?
