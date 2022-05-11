@@ -3,14 +3,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import hero from './hero'
 
 
-class Boss {
+class Boss3 {
 
     @observable characteristics = {attack: 50, health: 3000,  maxHealth: 3000,}
-    @observable image = require('../assets/enemy/enemy1-1.png')
+    @observable image = require('../assets/enemy/angel3.gif')
     @observable world = 3
     @observable boss = true;
     @observable healthRegenIndicator = false;
-    images = [require('../assets/enemy/enemy1-1.png'), require('../assets/enemy/enemy1-2.png'), require('../assets/enemy/enemy1-3.png')]
 
     constructor() {
         makeAutoObservable(this)
@@ -88,4 +87,4 @@ class Boss {
 
 }
 
-export default new Boss()
+export default new Boss3()

@@ -6,10 +6,10 @@ import hero from './hero'
 class Enemy2 {
 
     @observable characteristics = {attack: 10, health: 200, maxHealth: 200,}
-    @observable image = require('../assets/enemy/enemy1-1.png')
+    @observable image = require('../assets/enemy/reaper1.gif')
     @observable world = 2
     @observable healthRegenIndicator = false;
-    images = [require('../assets/enemy/enemy1-1.png'), require('../assets/enemy/enemy1-2.png'), require('../assets/enemy/enemy1-3.png')]
+    images = [require('../assets/enemy/reaper1.gif'), require('../assets/enemy/reaper2.gif'), require('../assets/enemy/reaper3.gif')]
 
     constructor() {
         makeAutoObservable(this)
