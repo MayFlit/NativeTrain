@@ -6,7 +6,7 @@ export const BarStyle = StyleSheet.create({
       height: 30,
     },
     box: {
-      position: 'absolute',
+      // position: 'absolute',
       width: '100%',
       flexDirection: 'row',
       display: 'flex',
@@ -16,9 +16,7 @@ export const BarStyle = StyleSheet.create({
       width: 100,
       height: 50,
       padding: 10,
-      backgroundColor: "red",
       borderTopRightRadius: 20,
-      borderBottomLeftRadius: 20,
       color: 'white',
       shadowColor: "#f56b00",
       shadowOffset: {

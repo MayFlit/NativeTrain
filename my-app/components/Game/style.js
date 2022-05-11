@@ -21,12 +21,13 @@ export const GameStyle = StyleSheet.create({
         marginTop: 10,
     },
     container: {
-      display: 'flex',
-      flex: 1,
-      justifyContent: 'space-evenly',
+        display: 'flex',
+        flex: 1,
+        justifyContent: 'space-evenly',
     },
     shopContainer: {
         alignSelf: 'flex-end',
+        marginBottom: 130,
     },
     hero: {
         height: 150,
