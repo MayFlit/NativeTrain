@@ -12,7 +12,7 @@ export default function App() {
     hero.initExp()
     hero.initWorld()
     hero.initLevel()
-
+    hero.healthRegen()
 
     return (
       <ImageBackground source={require('./assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>

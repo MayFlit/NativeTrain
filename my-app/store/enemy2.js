@@ -5,13 +5,20 @@ import hero from './hero'
 
 class Enemy2 {
 
-    @observable characteristics = {attack: 0, health: 200}
+    @observable characteristics = {attack: 10, health: 200}
     @observable image = require('../assets/enemy/enemy1-1.png')
     @observable world = 2
     images = [require('../assets/enemy/enemy1-1.png'), require('../assets/enemy/enemy1-2.png'), require('../assets/enemy/enemy1-3.png')]
 
     constructor() {
         makeAutoObservable(this)
+    }
+
+
+
+    @action
+    hit = () => {
+        hero.characteristics.health -= this.characteristics.attack
     }
 
 

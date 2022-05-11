@@ -20,6 +20,7 @@ class Hero {
 
     @observable doubleDamageIndicator = false;
     @observable bossIndicator = false;
+    @observable healthIndicator = false;
 
 
     @observable lightningOrbCooldown = false;
@@ -41,10 +42,39 @@ class Hero {
             this.experience -= ((this.level * (this.level - 1) / 2) * 100);
             this.level += 1;
             this.characteristics.attack += 5;
-            this.characteristics.health += 20
+            this.characteristics.maxHealth += 20
             AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
             AsyncStorage.setItem('heroExp', String(this.experience))
             AsyncStorage.setItem('heroLvl', String(this.level))
+        }
+    }
+
+
+
+
+
+    // Метод регенераци здоровья
+    @action
+    healthRegen = () => {
+        setInterval(() => {
+            if (this.characteristics.health < this.characteristics.maxHealth) {
+                this.healthRegenAction()
+                this.healthRegenMaxAction()
+
+            }
+        }, 1000)
+    }
+
+
+    @action
+    healthRegenAction = () => {
+        this.characteristics.health += 10;
+    }
+
+    @action
+    healthRegenMaxAction = () => {
+        if (this.characteristics.health > this.characteristics.maxHealth) {
+            this.characteristics.health = this.characteristics.maxHealth
         }
     }
 
@@ -58,6 +88,24 @@ class Hero {
 
 
 
+    // Система триггера кнопки вызова босса
+    @action
+    bossFight = () => {
+        this.bossIndicator = !this.bossIndicator;
+    }
+
+
+    @action
+    bossTrigger = (world, lvl) => {
+        if ((world === 1 && lvl >= 10)
+        ||  (world === 2 && lvl >= 20)
+        ||  (world === 3 && lvl >= 30)) {
+            return true
+        }
+    }
+
+
+
     // Базовая атака героя
     @action
     hit = () => {
@@ -67,6 +115,7 @@ class Hero {
             if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
                 enemy.characteristics.health -= this.characteristics.attack + this.equipment.sword.attack
+                enemy.hit()
                 enemy.die()
 
 
@@ -91,6 +140,8 @@ class Hero {
             if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 10
+
+                enemy.hit()
                 enemy.die()
 
 
@@ -128,6 +179,9 @@ class Hero {
         arrOfEnemy.forEach((enemy) => {
             if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
+
+                enemy.hit()
+
                 const intervalId = setInterval(() => {
                     this.poisonAction(enemy);
                     counter += 1;
@@ -256,6 +310,8 @@ class Hero {
             if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
                 enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 2
+
+                enemy.hit()
                 enemy.die()
 
 
