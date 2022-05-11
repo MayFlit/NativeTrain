@@ -18,12 +18,19 @@ export const GameStyle = StyleSheet.create({
     shop: {
         width: 50,
         height: 50,
-        bottom: 295,
+        marginTop: 10,
+    },
+    container: {
+      display: 'flex',
+      flex: 1,
+      justifyContent: 'space-evenly',
+    },
+    shopContainer: {
+        alignSelf: 'flex-end',
     },
     hero: {
-        bottom: 100,
         height: 150,
-        width: 150,
+        width: 100,
     },
     heroContainer: {
         display: 'flex',

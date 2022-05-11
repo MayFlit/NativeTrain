@@ -2,11 +2,12 @@ import {StyleSheet} from 'react-native';
 
 export const SkillsStyle = StyleSheet.create({
     box: {
-      flexDirection: 'row',
-      justifyContent: 'space-evenly',
       position: 'absolute',
       bottom: 0,
-      width: '100%'
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+      width: '100%',
+      // minHeight: 125,
     },
     container: {
       flex: 4,
