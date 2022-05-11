@@ -6,11 +6,10 @@ import hero from './hero'
 class Boss {
 
     @observable characteristics = {attack: 20, health: 500, maxHealth: 500,}
-    @observable image = require('../assets/enemy/enemy1-1.png')
+    @observable image = require('../assets/enemy/angel1.gif')
     @observable world = 1
     @observable boss = true;
     @observable healthRegenIndicator = false;
-    images = [require('../assets/enemy/enemy1-1.png'), require('../assets/enemy/enemy1-2.png'), require('../assets/enemy/enemy1-3.png')]
 
     constructor() {
         makeAutoObservable(this)
@@ -72,7 +71,6 @@ class Boss {
     die = () => {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 500;
-            this.image = this.images[Math.floor(Math.random() * 3)]
             hero.experience+= 200;
             hero.bossFight()
             hero.levelUp()

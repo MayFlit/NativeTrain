@@ -9,7 +9,7 @@ class Enemy {
     @observable image = require('../assets/enemy/golem1.gif')
     @observable world = 1
     @observable healthRegenIndicator = false;
-    images = [require('../assets/enemy/golem1.gif'), require('../assets/enemy/golem1.gif'), require('../assets/enemy/golem1.gif')]
+    images = [require('../assets/enemy/golem1.gif'), require('../assets/enemy/golem2.gif'), require('../assets/enemy/golem3.gif')]
 
     constructor() {
         makeAutoObservable(this)
@@ -23,8 +23,6 @@ class Enemy {
             this.healthRegenIndicatorAction()
             const intervalId = setInterval(() => {
 
-
-                console.log('regen2')
                 if (this.characteristics.health < this.characteristics.maxHealth) {
                     this.healthRegenAction()
                     this.healthRegenMaxAction()
