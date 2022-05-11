@@ -20,7 +20,6 @@ class Hero {
 
     @observable doubleDamageIndicator = false;
     @observable bossIndicator = false;
-    @observable healthIndicator = false;
 
 
     @observable lightningOrbCooldown = false;
@@ -33,6 +32,14 @@ class Hero {
     }
 
 
+
+    // Метод возможности нанести урон
+    @action
+    attackResolution = (health, attack) => {
+        if (health > attack) {
+            return true;
+        }
+    }
 
 
     // Метод для вычисления уровня героя
@@ -48,8 +55,6 @@ class Hero {
             AsyncStorage.setItem('heroLvl', String(this.level))
         }
     }
-
-
 
 
 
@@ -114,15 +119,24 @@ class Hero {
         arrOfEnemy.forEach((enemy) => {
             if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
-                enemy.characteristics.health -= this.characteristics.attack + this.equipment.sword.attack
-                enemy.hit()
-                enemy.die()
+
+                if (this.attackResolution(this.characteristics.health, enemy.characteristics.attack)) {
+                    enemy.characteristics.health -= this.characteristics.attack + this.equipment.sword.attack
+                    enemy.healthRegen()
+                    enemy.hit()
+                    enemy.die()
 
 
-                animations.hit()
-                setTimeout(() => {
                     animations.hit()
-                }, 1000)
+                    setTimeout(() => {
+                        animations.hit()
+                    }, 1000)
+                } else {
+                    if (enemy.boss) {
+                        this.bossFight()
+                        enemy.healthUp()
+                    }
+                }
 
             }
         })
@@ -139,22 +153,34 @@ class Hero {
         arrOfEnemy.forEach((enemy) => {
             if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
-                enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 10
 
-                enemy.hit()
-                enemy.die()
+                if (this.attackResolution(this.characteristics.health, enemy.characteristics.attack)) {
+                    enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 10
+
+                    enemy.healthRegen()
+                    enemy.hit()
+                    enemy.die()
 
 
-                animations.lightningOrb()
-                setTimeout(() => {
                     animations.lightningOrb()
-                }, 1000)
+                    setTimeout(() => {
+                        animations.lightningOrb()
+                    }, 1000)
 
 
-                this.lightningOrbCooldown = true;
-                setTimeout(() => {
-                    this.lightningOrbCooldownAction()
-                }, 3000)
+                    this.lightningOrbCooldown = true;
+                    setTimeout(() => {
+                        this.lightningOrbCooldownAction()
+                    }, 3000)
+
+                } else {
+                    if (enemy.boss) {
+                        this.bossFight()
+                        enemy.healthUp()
+                    }
+                }
+
+
             }
         })
     }
@@ -180,29 +206,35 @@ class Hero {
             if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
 
-                enemy.hit()
+                if (this.attackResolution(this.characteristics.health, enemy.characteristics.attack)) {
+                    enemy.hit()
 
-                const intervalId = setInterval(() => {
-                    this.poisonAction(enemy);
-                    counter += 1;
+                    const intervalId = setInterval(() => {
+                        this.poisonAction(enemy);
+                        counter += 1;
 
-                    if (counter === 10) {
-                        clearInterval(intervalId);
-                    }
-                }, 500)
+                        if (counter === 10) {
+                            clearInterval(intervalId);
+                        }
+                    }, 500)
 
-
-                animations.poison()
-                setTimeout(() => {
                     animations.poison()
-                }, 700)
+                    setTimeout(() => {
+                        animations.poison()
+                    }, 700)
 
 
-                this.poisonCooldown = true;
-                setTimeout(() => {
-                    this.poisonCooldownAction()
-                }, 3000)
+                    this.poisonCooldown = true;
+                    setTimeout(() => {
+                        this.poisonCooldownAction()
+                    }, 3000)
 
+                } else {
+                    if (enemy.boss) {
+                        this.bossFight()
+                        enemy.healthUp()
+                    }
+                }
             }
         })
     }
@@ -211,6 +243,7 @@ class Hero {
     @action
     poisonAction = (enemy) => {
         enemy.characteristics.health -= 50
+        enemy.healthRegen()
         enemy.die()
     }
 
@@ -269,7 +302,6 @@ class Hero {
 
 
 
-
     // DoubleDamage навык
     @action
     doubleDamage = () => {
@@ -309,16 +341,25 @@ class Hero {
         arrOfEnemy.forEach((enemy) => {
             if ((enemy.world === this.world && !this.bossIndicator && !enemy.boss)
                 || (enemy.world === this.world && this.bossIndicator && enemy.boss)) {
-                enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 2
 
-                enemy.hit()
-                enemy.die()
+                if (this.attackResolution(this.characteristics.health, enemy.characteristics.attack)) {
+                    enemy.characteristics.health -= (this.characteristics.attack + this.equipment.sword.attack) * 2
 
+                    enemy.healthRegen()
+                    enemy.hit()
+                    enemy.die()
 
-                animations.doubleHit()
-                setTimeout(() => {
                     animations.doubleHit()
-                }, 1000)
+                    setTimeout(() => {
+                        animations.doubleHit()
+                    }, 1000)
+
+                } else {
+                    if (enemy.boss) {
+                        this.bossFight()
+                        enemy.healthUp()
+                    }
+                }
             }
         })
     }

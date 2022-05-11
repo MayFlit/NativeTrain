@@ -5,16 +5,64 @@ import hero from './hero'
 
 class Boss {
 
-    @observable characteristics = {attack: 50, health: 3000}
+    @observable characteristics = {attack: 50, health: 3000,  maxHealth: 3000,}
     @observable image = require('../assets/enemy/enemy1-1.png')
     @observable world = 3
     @observable boss = true;
+    @observable healthRegenIndicator = false;
     images = [require('../assets/enemy/enemy1-1.png'), require('../assets/enemy/enemy1-2.png'), require('../assets/enemy/enemy1-3.png')]
 
     constructor() {
         makeAutoObservable(this)
     }
 
+
+    // Метод регенераци здоровья
+    @action
+    healthRegen = () => {
+        if (!this.healthRegenIndicator) {
+            this.healthRegenIndicatorAction()
+            const intervalId = setInterval(() => {
+                if (this.characteristics.health < this.characteristics.maxHealth) {
+                    this.healthRegenAction()
+                    this.healthRegenMaxAction()
+                }
+
+                if (this.characteristics.health >= this.characteristics.maxHealth) {
+                    clearInterval(intervalId)
+                    this.healthRegenIndicatorAction()
+                }
+
+            }, 1000)
+        }
+    }
+
+
+    @action
+    healthRegenIndicatorAction = () => {
+        this.healthRegenIndicator = !this.healthRegenIndicator
+    }
+
+
+    @action
+    healthRegenAction = () => {
+        this.characteristics.health += 10;
+    }
+
+    @action
+    healthRegenMaxAction = () => {
+        if (this.characteristics.health > this.characteristics.maxHealth) {
+            this.characteristics.health = this.characteristics.maxHealth
+        }
+    }
+
+
+
+
+    @action
+    healthUp = () => {
+        this.characteristics.health = this.characteristics.maxHealth
+    }
 
 
     @action
