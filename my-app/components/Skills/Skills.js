@@ -9,26 +9,26 @@ import { Timer, Timer2, Timer3, Timer4 } from '../Timer/Timer';
 export const Skills = observer (() => {
 return (
             <SafeAreaView style={SkillsStyle.box}>
-                <TouchableOpacity onPress={() => {hero.lightningOrb()}}>
+                <TouchableOpacity>
                  
                   <Text style={SkillsStyle.container}> 
                   <Timer />  
                   </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => {hero.poison()}}>
+                <TouchableOpacity>
                   <Text style={SkillsStyle.container}>
                     <Timer2/>
                      </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => {hero.heal()}}>
+                <TouchableOpacity >
                 <Text style={SkillsStyle.container}>
                   <Timer3 />
                    </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => {hero.doubleDamage()}}>
+                <TouchableOpacity >
                 <Text style={SkillsStyle.container}>
                   <Timer4 />
                 </Text>
