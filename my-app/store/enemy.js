@@ -5,14 +5,58 @@ import hero from './hero'
 
 class Enemy {
 
-    @observable characteristics = {attack: 5, health: 100}
+    @observable characteristics = {attack: 5, health: 100, maxHealth: 100,}
     @observable image = require('../assets/enemy/golem1.gif')
     @observable world = 1
+    @observable healthRegenIndicator = false;
     images = [require('../assets/enemy/golem1.gif'), require('../assets/enemy/golem1.gif'), require('../assets/enemy/golem1.gif')]
 
     constructor() {
         makeAutoObservable(this)
     }
+
+
+    // Метод регенераци здоровья
+    @action
+    healthRegen = () => {
+        if (!this.healthRegenIndicator) {
+            this.healthRegenIndicatorAction()
+            const intervalId = setInterval(() => {
+
+
+                console.log('regen2')
+                if (this.characteristics.health < this.characteristics.maxHealth) {
+                    this.healthRegenAction()
+                    this.healthRegenMaxAction()
+                }
+
+                if (this.characteristics.health >= this.characteristics.maxHealth) {
+                    clearInterval(intervalId)
+                    this.healthRegenIndicatorAction()
+                }
+
+            }, 1000)
+        }
+    }
+
+
+    @action
+    healthRegenIndicatorAction = () => {
+        this.healthRegenIndicator = !this.healthRegenIndicator
+    }
+
+    @action
+    healthRegenAction = () => {
+        this.characteristics.health += 10;
+    }
+
+    @action
+    healthRegenMaxAction = () => {
+        if (this.characteristics.health > this.characteristics.maxHealth) {
+            this.characteristics.health = this.characteristics.maxHealth
+        }
+    }
+
 
 
     @action

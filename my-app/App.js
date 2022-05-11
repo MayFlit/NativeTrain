@@ -10,7 +10,7 @@ export default function App() {
     hero.initGold()
     hero.initEquip()
     hero.initExp()
-    hero.initWorld()
+    // hero.initWorld()
     hero.initLevel()
     hero.healthRegen()
 
