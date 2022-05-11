@@ -32,7 +32,14 @@ export const ShopStyle = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     paddingVertical: 15,
-    boxShadow: "1px -4px 23px 2px rgba(34, 60, 80, 0.2) inset",
+    shadowColor: "rgba(34, 60, 80, 0.2)",
+      shadowOffset: {
+        width: 1,
+        height: 1,
+      },
+      shadowOpacity: 23,
+      shadowRadius: 15,
+       elevation: 5,
     marginBottom: 20
   },
   img: {
@@ -47,7 +54,7 @@ export const ShopStyle = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 10,
     justifyContent: 'center',
-    fontSize: "20px",
+    fontSize: 20,
     height: 100,
   },
   itemName: {
@@ -59,10 +66,10 @@ export const ShopStyle = StyleSheet.create({
     borderRadius: "7px",
     border: "4px solid #a1e272",
     padding: 10,
-    height: "65px",
+    height: 65,
     width: "27%",
     textAlign: "center",
-    marginTop: "20px"
+    marginTop: 20
   },
   exit: {
     width:50,
