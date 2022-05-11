@@ -3,7 +3,7 @@ import {SafeAreaView, Text, Image, TouchableOpacity } from 'react-native';
 import hero from '../../store/hero';
 import {observer} from "mobx-react-lite";
 import {SkillsStyle} from "./style";
-import { Timer } from '../Timer/Timer';
+import { Timer, Timer2, Timer3, Timer4 } from '../Timer/Timer';
 
 
 export const Skills = observer (() => {
@@ -11,19 +11,27 @@ return (
             <SafeAreaView style={SkillsStyle.box}>
                 <TouchableOpacity onPress={() => {hero.lightningOrb()}}>
                  
-                  <Text style={SkillsStyle.container}> <Timer />  <Image source={require('../../assets/skills/lightningBoltIcon.png')} style={SkillsStyle.icons} /> </Text>
+                  <Text style={SkillsStyle.container}> 
+                  <Timer />  
+                  </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => {hero.poison()}}>
-                  <Text style={SkillsStyle.container}><Image source={require('../../assets/skills/poisonIcon.png')} style={SkillsStyle.icons}/> </Text>
+                  <Text style={SkillsStyle.container}>
+                    <Timer2/>
+                     </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => {hero.heal()}}>
-                <Text style={SkillsStyle.container}><Image source={require('../../assets/skills/healIcon.png')} style={SkillsStyle.icons}/> </Text>
+                <Text style={SkillsStyle.container}>
+                  <Timer3 />
+                   </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => {hero.doubleDamage()}}>
-                <Text style={SkillsStyle.container}><Image source={require('../../assets/skills/doubleDamageIcon.png')} style={SkillsStyle.icons}/></Text>
+                <Text style={SkillsStyle.container}>
+                  <Timer4 />
+                </Text>
                 </TouchableOpacity>
 
             </SafeAreaView>
