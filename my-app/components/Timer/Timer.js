@@ -7,9 +7,11 @@ import { TimerStyle } from './style';
 
 
 export const Timer = observer (() =>  {
-  const [isPlaying, setIsPlaying] = React.useState(true)
+  const [isPlaying, setIsPlaying] = React.useState(true);
+  const [key, setKey] = React.useState(0);
 
 
+  
   return (
     <View style={TimerStyle.container}>
       <CountdownCircleTimer
@@ -19,11 +21,15 @@ export const Timer = observer (() =>  {
         duration={10}
         colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
         colorsTime={[10, 6, 3, 0]}
-        onComplete={() => ({ shouldRepeat: true, delay: 2 })}
+        key={key}
+        onComplete={() =>{
+          setKey(prevKey => prevKey + 1)
+          setIsPlaying(!isPlaying)
+     }}
 
     >
       {({ remainingTime, color }) => (
-        <Text style={{ color, fontSize: 40 }} onPress={() => setIsPlaying(prev => !prev)}>
+        <Text style={{ color, fontSize: 40 }} onPress={() => setIsPlaying(prev => !prev)} >
           <Image source={require('../../assets/skills/lightningBoltIcon.png')} style={TimerStyle.img} onPress={() => {hero.lightningOrb()}}/>
           {/* {remainingTime} */}
         </Text>
@@ -37,7 +43,7 @@ export const Timer = observer (() =>  {
 
 export const Timer2 = observer (() =>  {
   const [isPlaying, setIsPlaying] = React.useState(true)
-
+  const [key, setKey] = React.useState(0);
 
   return (
     <View style={TimerStyle.container}>
@@ -48,7 +54,11 @@ export const Timer2 = observer (() =>  {
         duration={10}
         colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
         colorsTime={[10, 6, 3, 0]}
-        onComplete={() => ({ shouldRepeat: true, delay: 2 })}
+        key={key}
+        onComplete={() =>{
+          setKey(prevKey => prevKey + 1)
+          setIsPlaying(!isPlaying)
+     }}
 
     >
       {({ remainingTime, color }) => (
@@ -65,7 +75,7 @@ export const Timer2 = observer (() =>  {
 
 export const Timer3 = observer (() =>  {
   const [isPlaying, setIsPlaying] = React.useState(true)
-
+  const [key, setKey] = React.useState(0);
 
   return (
     <View style={TimerStyle.container}>
@@ -76,7 +86,11 @@ export const Timer3 = observer (() =>  {
         duration={10}
         colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
         colorsTime={[10, 6, 3, 0]}
-        onComplete={() => ({ shouldRepeat: true, delay: 2 })}
+        key={key}
+        onComplete={() =>{
+          setKey(prevKey => prevKey + 1)
+          setIsPlaying(!isPlaying)
+     }}
 
     >
       {({ remainingTime, color }) => (
@@ -93,7 +107,7 @@ export const Timer3 = observer (() =>  {
 
 export const Timer4 = observer (() =>  {
   const [isPlaying, setIsPlaying] = React.useState(true)
-
+  const [key, setKey] = React.useState(0);
 
   return (
     <View style={TimerStyle.container}>
@@ -104,7 +118,11 @@ export const Timer4 = observer (() =>  {
         duration={10}
         colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
         colorsTime={[10, 6, 3, 0]}
-        onComplete={() => ({ shouldRepeat: true, delay: 2 })}
+        key={key}
+        onComplete={() =>{
+          setKey(prevKey => prevKey + 1)
+          setIsPlaying(!isPlaying)
+     }}
 
     >
       {({ remainingTime, color }) => (
