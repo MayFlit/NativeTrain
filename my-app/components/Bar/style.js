@@ -7,7 +7,6 @@ export const BarStyle = StyleSheet.create({
     },
     box: {
       // position: 'absolute',
-      width: '100%',
       flexDirection: 'row',
       display: 'flex',
       justifyContent: 'space-between',
@@ -25,11 +24,11 @@ export const BarStyle = StyleSheet.create({
       },
       shadowOpacity: 30,
       shadowRadius: 15,
-       elevation: 5,
-      fontSize: 20,
+      elevation: 5,
+      fontSize: 15,
       justifyContent: 'space-between',
     },
-    shield: {
-      
+    mainContainer: {
+      width: '100%',
     }
 });
