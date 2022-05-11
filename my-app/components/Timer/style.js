@@ -8,6 +8,7 @@ export const TimerStyle = StyleSheet.create({
     alignItems: 'center',
     paddingTop: Constants.statusBarHeight,
     padding: 1,
+    maxHeight: 120,
   },
   img: {
       width: 70,
