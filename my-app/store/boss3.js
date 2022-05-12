@@ -83,7 +83,6 @@ class Boss3 {
     die = () => {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 3000;
-            this.image = this.images[Math.floor(Math.random() * 3)]
             hero.experience+= 2000;
             hero.bossFight()
             hero.levelUp()
