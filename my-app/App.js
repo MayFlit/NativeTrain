@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from "react";
 import {SafeAreaView, ImageBackground} from 'react-native';
 import hero from './store/hero'
-import GameStack from './components/Navigation/Navigation';
+import MainMenuStack from './components/Navigation/Navigation';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {MainMenu} from "./components/MainMenu/MainMenu";
 
@@ -30,7 +30,9 @@ export default function App() {
     return (
       <ImageBackground source={require('./assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>
       <SafeAreaView style={{flex: 1}}>
-            <MainMenu />
+
+            <MainMenuStack />
+
       <StatusBar style="auto" hidden={true}/>
     </SafeAreaView>
       </ImageBackground>
