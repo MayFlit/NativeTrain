@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button, Image } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 import {observer} from "mobx-react-lite";
 import hero from '../../store/hero';
@@ -54,7 +54,6 @@ export const Timer = observer (() =>  {
               </Text>
           )}
       </CountdownCircleTimer>
-      {/* <Button title="Toggle Playing" onPress={() => setIsPlaying(prev => !prev)} /> */}
   </View>}
       </View>
   )
