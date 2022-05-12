@@ -16,6 +16,14 @@ class Enemy {
     }
 
 
+
+    // Метод для высчитывания процентов оставшегося здоровья
+    @action
+    healthPercentage = () => {
+        return this.characteristics.health * 100 / this.characteristics.maxHealth
+    }
+
+
     // Метод регенераци здоровья
     @action
     healthRegen = () => {
@@ -68,7 +76,7 @@ class Enemy {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 100;
             this.image = this.images[Math.floor(Math.random() * 3)]
-            hero.experience+= 20;
+            hero.experience+= 20000;
             hero.levelUp()
             hero.gold+= 10;
             AsyncStorage.setItem('heroGold', String(hero.gold));

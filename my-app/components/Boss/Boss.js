@@ -12,7 +12,6 @@ export const Boss = observer (() => {
     const currentBoss = hero.world === 1 ? boss : hero.world === 2 ? boss2 : boss3
     return (
         <View style={BossStyle.container}>
-            <Text style={BossStyle.text}>{currentBoss.characteristics.health}</Text>
             <Image source={currentBoss.image} style={BossStyle.enemy}/>
         </View>
     );
