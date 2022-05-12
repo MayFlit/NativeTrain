@@ -11,7 +11,6 @@ import animations from "./animations";
 
 
 class Hero {
-    @observable characteristics = {attack: 20, health: 100, maxHealth: 100}
     @observable gold = 0;
     @observable equipment = {sword: {id: 100, name: 'Mitra Staff', attack: 5, price: 100, rare: 'lightgray', img: require('../assets/shop/MitraStaff.png')},
                             armor: {id: 200, name: 'Mitra Robe', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraRobe.png')},
@@ -20,6 +19,7 @@ class Hero {
                             ring: {id: 500, name: 'Mitra Ring', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraRing.png')},
                             gloves: {id: 600, name: 'Mitra Gloves', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraGloves.png')},
     }
+    @observable characteristics = {attack: 20, health: 100, maxHealth: 100}
     @observable experience = 0;
     @observable level = 1;
     @observable world = 1;
@@ -396,7 +396,10 @@ class Hero {
                     AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
                         .then(this.characteristicsAsyncTrigger = true)
                 }
-                this.initCharAction(char)
+
+                if (char) {
+                    this.initCharAction(char)
+                }
             })
     }
 
