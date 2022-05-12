@@ -1,22 +1,39 @@
 import {action, makeAutoObservable, observable} from "mobx";
 import hero from './hero'
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Shop {
 
-  @observable shop = {weapons: [
-                {id: 101, name: 'Knife', attack: 10, price: 1000, img: require('../assets/shop/knife.png') },
-                {id: 102, name: 'Hammer', attack: 20, price: 2000,img: require('../assets/shop/hammer.png')},
-                {id: 103, name: 'Axe', attack: 40, price: 4000,  img: require('../assets/shop/axe.png')},
-                {id: 104, name: 'Sword', attack: 80, price: 8000, img: require('../assets/shop/sword.png')},
-                {id: 105, name: 'Gun', attack: 160, price: 16000, img: require('../assets/shop/gun.png')}],
+  @observable shop = {
+            weapons: [
+                {id: 101, name: 'Cassius Staff', attack: 10, price: 1000, img: require('../assets/shop/CassiusStaff.png') },
+                {id: 102, name: 'Tobias Staff', attack: 20, price: 2000, img: require('../assets/shop/TobiasStaff.png')},
+                {id: 103, name: 'Antero Staff', attack: 40, price: 4000,  img: require('../assets/shop/AnteroStaff.png')},
+                {id: 104, name: 'Delina Staff', attack: 80, price: 8000, img: require('../assets/shop/DelinaStaff.png')},],
             armor: [
-                {id: 201, name: 'Bone Armor', defence: 10, price: 500},
-                {id: 202, name: 'Steel Armor', defence: 15, price: 1000},
-                {id: 203, name: 'Golden Armor', defence: 20, price: 1500},
-                {id: 204, name: 'Diamond Armor', defence: 25, price: 2000},
-                {id: 205, name: 'Damasked Armor', defence: 30, price: 2500},
-            ]
+                {id: 201, name: 'Cassius Robe', defence: 10, price: 500, rare: 1, img: require('../assets/shop/CassiusRobe.png')},
+                {id: 202, name: 'Tobias Robe', defence: 15, price: 1000, rare: 1, img: require('../assets/shop/TobiasRobe.png')},
+                {id: 203, name: 'Antero Robe', defence: 20, price: 1500, rare: 1, img: require('../assets/shop/AnteroRobe.png')},
+                {id: 204, name: 'Delina Robe', defence: 25, price: 2000, rare: 1, img: require('../assets/shop/DelinaRobe.png')},],
+              helmet: [
+                  {id: 301, name: 'Cassius Helmet', defence: 10, price: 500, rare: 2, img: require('../assets/shop/CassiusHelmet.png')},
+                  {id: 302, name: 'Tobias Helmet', defence: 15, price: 1000, rare: 2, img: require('../assets/shop/TobiasHelmet.png')},
+                  {id: 303, name: 'Antero Helmet', defence: 20, price: 1500, rare: 2, img: require('../assets/shop/AnteroHelmet.png')},
+                  {id: 304, name: 'Delina Helmet', defence: 25, price: 2000, rare: 2, img: require('../assets/shop/DelinaHelmet.png')},],
+              boots: [
+                  {id: 401, name: 'Cassius Boots', defence: 10, price: 500, rare: 3, img: require('../assets/shop/TobiasBoots.png')},
+                  {id: 402, name: 'Tobias Boots', defence: 15, price: 1000, rare: 3, img: require('../assets/shop/TobiasBoots.png')},
+                  {id: 403, name: 'Antero Boots', defence: 20, price: 1500, rare: 3, img: require('../assets/shop/AnteroBoots.png')},
+                  {id: 404, name: 'Delina Boots', defence: 25, price: 2000, rare: 3, img: require('../assets/shop/DelinaBoots.png')},],
+              ring: [
+                  {id: 501, name: 'Cassius Ring', defence: 10, price: 500, rare: 4, img: require('../assets/shop/CassiusRing.png')},
+                  {id: 502, name: 'Tobias Ring', defence: 15, price: 1000, rare: 4, img: require('../assets/shop/TobiasRing.png')},
+                  {id: 503, name: 'Antero Ring', defence: 20, price: 1500, rare: 4, img: require('../assets/shop/AnteroRing.png')},
+                  {id: 504, name: 'Delina Ring', defence: 25, price: 2000, rare: 4, img: require('../assets/shop/DelinaRing.png')},],
+              gloves: [
+                  {id: 601, name: 'Cassius Gloves', defence: 10, price: 500, rare: 5, img: require('../assets/shop/CassiusGloves.png')},
+                  {id: 602, name: 'Tobias Gloves', defence: 15, price: 1000, rare: 5, img: require('../assets/shop/TobiasGloves.png')},
+                  {id: 603, name: 'Antero Gloves', defence: 20, price: 1500, rare: 5, img: require('../assets/shop/AnteroGloves.png')},
+                  {id: 604, name: 'Delina Gloves', defence: 25, price: 2000, rare: 5, img: require('../assets/shop/DelinaGloves.png')},],
     }
 
     constructor() {

@@ -9,8 +9,8 @@ export const Shop = observer (({ navigation }) => {
     navigation.goBack();
   }
 
-  // для навигации
 
+  // для навигации
   const listTab = [
     { status: 'All'},
     { status: 'Weapon'},
@@ -86,8 +86,6 @@ export const Shop = observer (({ navigation }) => {
               </TouchableOpacity>
               ))
             }
-                   
-
           </View>
 
           <FlatList 

@@ -70,20 +70,19 @@ class Enemy {
         hero.characteristics.health -= this.characteristics.attack
     }
 
-
     @action
     die = () => {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 100;
-            this.image = this.images[Math.floor(Math.random() * 3)]
+            this.image = this.images.filter((el) => el !== this.image)[[Math.floor(Math.random() * 2)]]
             hero.experience+= 20000;
             hero.levelUp()
             hero.gold+= 10;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
+            return true
         }
     }
-
 }
 
 export default new Enemy()

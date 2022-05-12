@@ -74,12 +74,13 @@ class Enemy3 {
     die = () => {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 300;
-            this.image = this.images[Math.floor(Math.random() * 3)]
+            this.image = this.images.filter((el) => el !== this.image)[[Math.floor(Math.random() * 2)]]
             hero.experience+= 100;
             hero.levelUp()
             hero.gold+= 50;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
+            return true
         }
     }
 

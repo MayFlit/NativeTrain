@@ -11,8 +11,14 @@ import animations from "./animations";
 class Hero {
     @observable characteristics = {attack: 20, health: 100, maxHealth: 100}
     @observable gold = 0;
-    @observable equipment = {sword: {id: 100, name: 'Wooden Sword', attack: 5, price: 100},
-                            armor: {id: 200, name: 'Wooden Armor', defence: 5, price: 50},}
+    @observable equipment = {sword: {id: 100, name: 'Mitra Staff', attack: 5, price: 100, rare: 0, img: require('../assets/shop/MitraStaff.png')},
+                            armor: {id: 200, name: 'Mitra Robe', defence: 5, price: 50, rare: 0, img: require('../assets/shop/MitraRobe.png')},
+                            helmet: {id: 300, name: 'Mitra Helmet', defence: 5, price: 50, rare: 0, img: require('../assets/shop/MitraHelmet.png')},
+                            boots: {id: 400, name: 'Mitra Boots', defence: 5, price: 50, rare: 0, img: require('../assets/shop/MitraBoots.png')},
+                            ring: {id: 500, name: 'Mitra Ring', defence: 5, price: 50, rare: 0, img: require('../assets/shop/MitraRing.png')},
+                            gloves: {id: 600, name: 'Mitra Gloves', defence: 5, price: 50, rare: 0, img: require('../assets/shop/MitraGloves.png')},
+
+    }
     @observable experience = 0;
     @observable level = 1;
     @observable world = 1;
@@ -211,13 +217,14 @@ class Hero {
                     enemy.hit()
 
                     const intervalId = setInterval(() => {
-                        this.poisonAction(enemy);
+                        const died = this.poisonAction(enemy);
                         counter += 1;
 
-                        if (counter === 10) {
+                        if (counter === 10 || died) {
                             clearInterval(intervalId);
                         }
                     }, 500)
+
 
                     animations.poison()
                     setTimeout(() => {
@@ -245,7 +252,9 @@ class Hero {
     poisonAction = (enemy) => {
         enemy.characteristics.health -= 50
         enemy.healthRegen()
-        enemy.die()
+        const died = enemy.die()
+
+        return died
     }
 
 

@@ -90,6 +90,7 @@ class Boss3 {
             hero.gold+= 3000;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
+            return true
         }
     }
 
