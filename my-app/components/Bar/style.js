@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, ImageBackground} from 'react-native';
 
 export const BarStyle = StyleSheet.create({
     icons: {
@@ -15,20 +15,42 @@ export const BarStyle = StyleSheet.create({
       width: 100,
       height: 50,
       padding: 10,
-      borderTopRightRadius: 20,
       color: 'white',
-      shadowColor: "#f56b00",
-      shadowOffset: {
-        width: 1,
-        height: 1,
-      },
-      shadowOpacity: 30,
-      shadowRadius: 15,
-      elevation: 5,
+      backgroundColor: '#ff5757',
+      borderTopRightRadius: 20,
+      borderBottomLeftRadius: 20,
+      borderBottomRightRadius: 0,
+      borderTopLeftRadius: 0,
+      shadowOffset:{  width: 10,  height: 10,  },
+      shadowColor: '#f90000',
+      shadowOpacity: 0.5,
       fontSize: 15,
+      shadowRadius: 10,
+      elevation: 1,
       justifyContent: 'space-between',
     },
     mainContainer: {
       width: '100%',
+    },
+    shieldContainer: {
+      width: 100,
+      height: 50,
+      padding: 10,
+      color: 'white',
+      justifyContent: 'space-between',
+    },
+    shield: {
+      position: 'relevant',
+      height: 50,
+      width: 50,
+      zIndex: -1,
+    },
+    textShield: {
+      position: "absolute",
+      zIndex: 5,
+      color: 'white',
+      fontSize: 16,
+      right: 57,
+      bottom: 8,
     }
 });
