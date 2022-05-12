@@ -16,6 +16,14 @@ class Boss2 {
     }
 
 
+    // Метод для высчитывания процентов оставшегося здоровья
+    @action
+    healthPercentage = () => {
+        return this.characteristics.health * 100 / this.characteristics.maxHealth
+    }
+
+
+
     // Метод регенераци здоровья
     @action
     healthRegen = () => {

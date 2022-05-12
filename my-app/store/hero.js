@@ -488,11 +488,6 @@ class Hero {
     }
 
 
-
-
-
-
-
 }
 
 export default new Hero()

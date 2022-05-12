@@ -15,6 +15,16 @@ class Enemy2 {
         makeAutoObservable(this)
     }
 
+
+
+    // Метод для высчитывания процентов оставшегося здоровья
+    @action
+    healthPercentage = () => {
+        return this.characteristics.health * 100 / this.characteristics.maxHealth
+    }
+
+
+
     // Метод регенераци здоровья
     @action
     healthRegen = () => {
@@ -68,7 +78,7 @@ class Enemy2 {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 200;
             this.image = this.images[Math.floor(Math.random() * 3)]
-            hero.experience+= 400;
+            hero.experience+= 40000;
             hero.levelUp()
             hero.gold+= 20;
             AsyncStorage.setItem('heroGold', String(hero.gold));
