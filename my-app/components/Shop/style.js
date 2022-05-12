@@ -8,7 +8,7 @@ export const ShopStyle = StyleSheet.create({
     backgroundColor: '#ecc792',
   },
   listTab: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignSelf: 'center',
     marginBottom: 20
   },

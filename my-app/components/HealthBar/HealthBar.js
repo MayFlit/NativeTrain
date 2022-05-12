@@ -24,14 +24,23 @@ export const HealthBar = observer (() => {
     return (
         <View style={HealthBarStyle.container}>
             <View style={HealthBarStyle.emptyBar} >
-                <View style={{
+                <View
+                style={{
                     bottom: 10,
                     width: `${currentEnemy.healthPercentage()}%`,
                     height: 15,
                     marginTop: 10,
                     backgroundColor: 'red',
-                    borderRadius: 7,
-                }}></View>
+                    shadowColor: "#c9203c",
+                    shadowOffset: {
+                    width: 1,
+                    height: 1,
+                      },
+                    shadowOpacity: 30,
+                    shadowRadius: 15,
+                    elevation: 5,
+                }}
+                ></View>
                 <Text style={HealthBarStyle.text}>{currentEnemy.characteristics.health}</Text>
             </View>
         </View>
