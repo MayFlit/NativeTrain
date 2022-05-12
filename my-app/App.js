@@ -4,6 +4,7 @@ import {SafeAreaView, ImageBackground} from 'react-native';
 import hero from './store/hero'
 import MainMenuStack from './components/Navigation/Navigation';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {MainMenu} from "./components/MainMenu/MainMenu";
 
 
 export default function App() {
@@ -26,11 +27,12 @@ export default function App() {
 
 
 
-
     return (
       <ImageBackground source={require('./assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>
       <SafeAreaView style={{flex: 1}}>
+
             <MainMenuStack />
+
       <StatusBar style="auto" hidden={true}/>
     </SafeAreaView>
       </ImageBackground>
