@@ -15,6 +15,7 @@ export default function App() {
     // AsyncStorage.removeItem('heroWorld')
 
 
+
     hero.initChar()
     hero.initGold()
     hero.initEquip()
