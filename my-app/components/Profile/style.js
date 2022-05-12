@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const ProfileStyle = StyleSheet.create({
       exit: {
@@ -40,17 +40,6 @@ export const ProfileStyle = StyleSheet.create({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'flex-start',
-      },
-      iconContainer: {
-          display: 'flex',
-          height: 70,
-          width: 70,
-          padding: 40,
-          marginBottom: 10,
-          borderWidth: 4,
-          borderColor: 'orange',
-          justifyContent: 'center',
-          alignItems: 'center',
       },
       statContainer: {
         display: 'flex',

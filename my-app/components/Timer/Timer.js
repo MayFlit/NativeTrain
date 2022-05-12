@@ -11,33 +11,52 @@ export const Timer = observer (() =>  {
   const [key, setKey] = React.useState(0);
 
 
-  
+
   return (
-    <View style={TimerStyle.container}>
+      <View>
+          {!hero.lightningOrbCooldown ? <View style={TimerStyle.container}>
       <CountdownCircleTimer
         isPlaying={!isPlaying}
         size={80}
         strokeWidth={4}
-        duration={10}
-        colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-        colorsTime={[10, 6, 3, 0]}
+        duration={3}
+        colors={["#A30000", "#A30000", "#F7B801", "#004777"]}
+        colorsTime={[3, 2, 1, 0]}
         key={key}
         onComplete={() =>{
           setKey(prevKey => prevKey + 1)
           setIsPlaying(!isPlaying)
-     }}
-
-    >
+     }}>
       {({ remainingTime, color }) => (
         <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.lightningOrb()} } >
           <Image source={require('../../assets/skills/lightningBoltIcon.png')} style={TimerStyle.img} />
-          {/* {remainingTime} */}
         </Text>
-
       )}
     </CountdownCircleTimer>
     {/* <Button title="Toggle Playing" onPress={() => setIsPlaying(prev => !prev)} /> */}
-  </View>
+  </View> :
+  <View style={TimerStyle.container}>
+      <CountdownCircleTimer
+          isPlaying={!isPlaying}
+          size={80}
+          strokeWidth={4}
+          duration={3}
+          colors={["#A30000", "#A30000", "#F7B801", "#004777"]}
+          colorsTime={[3, 2, 1, 0]}
+          key={key}
+          onComplete={() =>{
+              setKey(prevKey => prevKey + 1)
+              setIsPlaying(!isPlaying)
+          }}>
+          {({ remainingTime, color }) => (
+              <Text style={{ color, fontSize: 40 }} >
+                  <Image source={require('../../assets/skills/lightningBoltIcon.png')} style={TimerStyle.img} />
+              </Text>
+          )}
+      </CountdownCircleTimer>
+      {/* <Button title="Toggle Playing" onPress={() => setIsPlaying(prev => !prev)} /> */}
+  </View>}
+      </View>
   )
 })
 
@@ -58,15 +77,11 @@ export const Timer2 = observer (() =>  {
         onComplete={() =>{
           setKey(prevKey => prevKey + 1)
           setIsPlaying(!isPlaying)
-     }}
-
-    >
+     }}>
       {({ remainingTime, color }) => (
         <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.poison()}}>
           <Image source={require('../../assets/skills/poisonIcon.png')} style={TimerStyle.img}/>
-          {/* {remainingTime} */}
         </Text>
-
       )}
     </CountdownCircleTimer>
   </View>

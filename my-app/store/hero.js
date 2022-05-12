@@ -1,4 +1,4 @@
-import {action, makeAutoObservable, observable, computed} from "mobx";
+import {action, makeAutoObservable, observable} from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import enemy from "./enemy";
 import enemy2 from "./enemy2";
@@ -11,12 +11,12 @@ import animations from "./animations";
 class Hero {
     @observable characteristics = {attack: 20, health: 100, maxHealth: 100}
     @observable gold = 0;
-    @observable equipment = {sword: {id: 100, name: 'Mitra Staff', attack: 5, price: 100, rare: 0, img: require('../assets/shop/MitraStaff.png')},
-                            armor: {id: 200, name: 'Mitra Robe', defence: 5, price: 50, rare: 0, img: require('../assets/shop/MitraRobe.png')},
-                            helmet: {id: 300, name: 'Mitra Helmet', defence: 5, price: 50, rare: 0, img: require('../assets/shop/MitraHelmet.png')},
-                            boots: {id: 400, name: 'Mitra Boots', defence: 5, price: 50, rare: 0, img: require('../assets/shop/MitraBoots.png')},
-                            ring: {id: 500, name: 'Mitra Ring', defence: 5, price: 50, rare: 0, img: require('../assets/shop/MitraRing.png')},
-                            gloves: {id: 600, name: 'Mitra Gloves', defence: 5, price: 50, rare: 0, img: require('../assets/shop/MitraGloves.png')},
+    @observable equipment = {sword: {id: 100, name: 'Mitra Staff', attack: 5, price: 100, rare: 'lightgray', img: require('../assets/shop/MitraStaff.png')},
+                            armor: {id: 200, name: 'Mitra Robe', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraRobe.png')},
+                            helmet: {id: 300, name: 'Mitra Helmet', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraHelmet.png')},
+                            boots: {id: 400, name: 'Mitra Boots', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraBoots.png')},
+                            ring: {id: 500, name: 'Mitra Ring', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraRing.png')},
+                            gloves: {id: 600, name: 'Mitra Gloves', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraGloves.png')},
 
     }
     @observable experience = 0;
