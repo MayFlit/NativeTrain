@@ -10,9 +10,8 @@ export const Skills = observer (() => {
 return (
             <SafeAreaView style={SkillsStyle.box}>
                 <TouchableOpacity>
-                 
-                  <Text style={SkillsStyle.container}> 
-                  <Timer />  
+                  <Text style={SkillsStyle.container}>
+                  <Timer />
                   </Text>
                 </TouchableOpacity>
 

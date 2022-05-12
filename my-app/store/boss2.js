@@ -16,6 +16,14 @@ class Boss2 {
     }
 
 
+    // Метод для высчитывания процентов оставшегося здоровья
+    @action
+    healthPercentage = () => {
+        return this.characteristics.health * 100 / this.characteristics.maxHealth
+    }
+
+
+
     // Метод регенераци здоровья
     @action
     healthRegen = () => {
@@ -80,6 +88,7 @@ class Boss2 {
             hero.gold+= 1000;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
+            return true
         }
     }
 

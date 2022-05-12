@@ -16,6 +16,15 @@ class Boss3 {
     }
 
 
+    // Метод для высчитывания процентов оставшегося здоровья
+    @action
+    healthPercentage = () => {
+        return this.characteristics.health * 100 / this.characteristics.maxHealth
+    }
+
+
+
+
     // Метод регенераци здоровья
     @action
     healthRegen = () => {
@@ -74,7 +83,6 @@ class Boss3 {
     die = () => {
         if (this.characteristics.health <= 0) {
             this.characteristics.health = 3000;
-            this.image = this.images[Math.floor(Math.random() * 3)]
             hero.experience+= 2000;
             hero.bossFight()
             hero.levelUp()
@@ -82,6 +90,7 @@ class Boss3 {
             hero.gold+= 3000;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
+            return true
         }
     }
 

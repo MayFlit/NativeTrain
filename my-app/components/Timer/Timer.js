@@ -29,8 +29,8 @@ export const Timer = observer (() =>  {
 
     >
       {({ remainingTime, color }) => (
-        <Text style={{ color, fontSize: 40 }} onPress={() => setIsPlaying(prev => !prev)} >
-          <Image source={require('../../assets/skills/lightningBoltIcon.png')} style={TimerStyle.img} onPress={() => {hero.lightningOrb()}}/>
+        <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.lightningOrb()} } >
+          <Image source={require('../../assets/skills/lightningBoltIcon.png')} style={TimerStyle.img} />
           {/* {remainingTime} */}
         </Text>
 
@@ -62,8 +62,8 @@ export const Timer2 = observer (() =>  {
 
     >
       {({ remainingTime, color }) => (
-        <Text style={{ color, fontSize: 40 }} onPress={() => setIsPlaying(prev => !prev)}>
-          <Image source={require('../../assets/skills/poisonIcon.png')} style={TimerStyle.img} onPress={() => {hero.poison()}}/>
+        <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.poison()}}>
+          <Image source={require('../../assets/skills/poisonIcon.png')} style={TimerStyle.img}/>
           {/* {remainingTime} */}
         </Text>
 
@@ -94,8 +94,8 @@ export const Timer3 = observer (() =>  {
 
     >
       {({ remainingTime, color }) => (
-        <Text style={{ color, fontSize: 40 }} onPress={() => setIsPlaying(prev => !prev)}>
-          <Image source={require('../../assets/skills/healIcon.png')} style={TimerStyle.img} onPress={() => {hero.heal()}}/>
+        <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.heal()}}>
+          <Image source={require('../../assets/skills/healIcon.png')} style={TimerStyle.img}/>
           {/* {remainingTime} */}
         </Text>
 
@@ -126,8 +126,8 @@ export const Timer4 = observer (() =>  {
 
     >
       {({ remainingTime, color }) => (
-        <Text style={{ color, fontSize: 40 }} onPress={() => setIsPlaying(prev => !prev)}>
-          <Image source={require('../../assets/skills/doubleDamageIcon.png')} style={TimerStyle.img} onPress={() => {hero.doubleDamage()}}/>
+        <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.doubleDamage()}}>
+          <Image source={require('../../assets/skills/doubleDamageIcon.png')} style={TimerStyle.img}/>
           {/* {remainingTime} */}
         </Text>
 
