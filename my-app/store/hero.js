@@ -1,4 +1,4 @@
-import {action, makeAutoObservable, observable, computed} from "mobx";
+import {action, makeAutoObservable, observable} from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import enemy from "./enemy";
 import enemy2 from "./enemy2";
