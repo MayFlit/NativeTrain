@@ -16,9 +16,6 @@ class Animations {
     @observable doubleHitImage = require('../assets/doubleHit.gif')
 
 
-
-
-
     constructor() {
         makeAutoObservable(this)
     }

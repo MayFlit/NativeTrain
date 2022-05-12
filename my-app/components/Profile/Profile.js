@@ -9,6 +9,9 @@ export const Profile = observer (({ navigation }) => {
     navigation.goBack();
   }
 
+
+  console.log(hero.equipment.sword)
+
   return (
     <SafeAreaView style={ProfileStyle.bg}>
 
@@ -28,25 +31,12 @@ export const Profile = observer (({ navigation }) => {
                 <View style={ProfileStyle.equipContainer}>
                     <View style={ProfileStyle.equipItem}>
                         <View style={ProfileStyle.iconContainer} >
-                        <Image style={ProfileStyle.equipIcon} source={require('../../assets/shop/gun.png')}/>
+                        <Image style={ProfileStyle.equipIcon} source={hero.equipment.sword.img}/>
                         </View>
                     </View>
                     <View style={ProfileStyle.equipItem}>
                         <View style={ProfileStyle.iconContainer} >
-                            <Image style={ProfileStyle.equipIcon} source={require('../../assets/shop/gun.png')}/>
-                        </View>
-                    </View>
-                </View>
-
-                <View style={ProfileStyle.equipContainer}>
-                    <View style={ProfileStyle.equipItem}>
-                        <View style={ProfileStyle.iconContainer} >
-                            <Image style={ProfileStyle.equipIcon} source={require('../../assets/shop/gun.png')}/>
-                        </View>
-                    </View>
-                    <View style={ProfileStyle.equipItem}>
-                        <View style={ProfileStyle.iconContainer} >
-                            <Image style={ProfileStyle.equipIcon} source={require('../../assets/shop/gun.png')}/>
+                            <Image style={ProfileStyle.equipIcon} source={hero.equipment.armor.img}/>
                         </View>
                     </View>
                 </View>
@@ -54,12 +44,25 @@ export const Profile = observer (({ navigation }) => {
                 <View style={ProfileStyle.equipContainer}>
                     <View style={ProfileStyle.equipItem}>
                         <View style={ProfileStyle.iconContainer} >
-                            <Image style={ProfileStyle.equipIcon} source={require('../../assets/shop/gun.png')}/>
+                            <Image style={ProfileStyle.equipIcon} source={hero.equipment.gloves.img}/>
                         </View>
                     </View>
                     <View style={ProfileStyle.equipItem}>
                         <View style={ProfileStyle.iconContainer} >
-                            <Image style={ProfileStyle.equipIcon} source={require('../../assets/shop/gun.png')}/>
+                            <Image style={ProfileStyle.equipIcon} source={hero.equipment.boots.img}/>
+                        </View>
+                    </View>
+                </View>
+
+                <View style={ProfileStyle.equipContainer}>
+                    <View style={ProfileStyle.equipItem}>
+                        <View style={ProfileStyle.iconContainer} >
+                            <Image style={ProfileStyle.equipIcon} source={hero.equipment.ring.img}/>
+                        </View>
+                    </View>
+                    <View style={ProfileStyle.equipItem}>
+                        <View style={ProfileStyle.iconContainer} >
+                            <Image style={ProfileStyle.equipIcon} source={hero.equipment.helmet.img}/>
                         </View>
                     </View>
                 </View>
@@ -75,7 +78,7 @@ export const Profile = observer (({ navigation }) => {
 
                 <View style={ProfileStyle.statItem}>
                     <Image style={ProfileStyle.statIcon}/>
-                    <Text style={ProfileStyle.statText}>Здоровье: {hero.characteristics.health}</Text>
+                    <Text style={ProfileStyle.statText}>Здоровье: {hero.characteristics.maxHealth}</Text>
                 </View>
             </View>
       </SafeAreaView>
