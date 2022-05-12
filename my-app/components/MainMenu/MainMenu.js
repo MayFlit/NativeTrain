@@ -5,10 +5,14 @@ import {MainMenuStyle} from "./style";
 
 
 
-export const MainMeny = observer (() => {
+export const MainMenu = observer (({navigation}) => {
+  const loadScene = () => {
+    navigation.navigate('Game');
+  }
+
     return (
         <View style={MainMenuStyle.container}>
-            <Text style={MainMenuStyle.text}>Играть</Text>
+            <Text style={MainMenuStyle.text} onPress={loadScene}>Играть</Text>
         </View>
     );
 })
