@@ -15,27 +15,29 @@ export default function App() {
     // AsyncStorage.removeItem('heroExp')
     // AsyncStorage.removeItem('heroLvl')
     // AsyncStorage.removeItem('heroWorld')
-
     // AsyncStorage.multiRemove(['heroCharacteristics', 'heroGold', 'heroEquipment', 'heroExp', 'heroLvl', 'heroWorld'])
 
 
 
-    hero.initChar()
     hero.initGold()
     hero.initEquip()
     hero.initExp()
     hero.initWorld()
     hero.initLevel()
-    
+    hero.initChar()
+
     // hero.healthRegen()
 
 
 
     async function lala() {
         const x = await AsyncStorage.getAllKeys()
+        const y = await AsyncStorage.getItem('heroCharacteristics')
+        const z = await AsyncStorage.getItem('heroGold')
+        console.log(y)
         console.log(x)
+        console.log(z)
     }
-
     lala()
 
 
@@ -44,8 +46,10 @@ export default function App() {
       <ImageBackground source={require('./assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>
       <SafeAreaView style={{flex: 1}}>
 
-          {(hero.goldAsyncTrigger + hero.worldAsyncTrigger + hero.equipmentAsyncTrigger + hero.characteristicsAsyncTrigger
-          + hero.expAsyncTrigger + hero.lvlAsyncTrigger) === 6 ? <Game /> :  <MainMenuStack />}
+          {/*{(hero.goldAsyncTrigger + hero.worldAsyncTrigger + hero.equipmentAsyncTrigger + hero.characteristicsAsyncTrigger*/}
+          {/*+ hero.expAsyncTrigger + hero.lvlAsyncTrigger) === 6 ? <Game /> :  <MainMenuStack />}*/}
+
+          <MainMenuStack/>
 
 
       <StatusBar style="auto" hidden={true}/>

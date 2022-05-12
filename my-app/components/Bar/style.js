@@ -1,4 +1,4 @@
-import {StyleSheet, ImageBackground} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const BarStyle = StyleSheet.create({
     icons: {
