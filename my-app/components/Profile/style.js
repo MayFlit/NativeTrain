@@ -13,12 +13,12 @@ export const ProfileStyle = StyleSheet.create({
       heroBg: {
         position: 'absolute',
         marginLeft: '50%',
-        top: '50%',
+        marginBottom: '50%'
 
       },
       hero: {
         width: 150,
-        height: 150,
+        height: 200,
       },
       equipContainer: {
         display: 'flex',
@@ -54,12 +54,15 @@ export const ProfileStyle = StyleSheet.create({
       },
       statContainer: {
         display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
       },
       statItem: {
-
+        width: '40%',
       },
       statText: {
-
+        fontSize: 20,
       },
       statIcon: {
 
