@@ -20,7 +20,7 @@ export const Timer = observer (() =>  {
         size={80}
         strokeWidth={4}
         duration={3}
-        colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+        colors={["#61c722", "#7ab522", "#A30000", "#41c92c"]}
         colorsTime={[3, 2, 1, 0]}
         key={key}
         onComplete={() =>{
@@ -41,7 +41,7 @@ export const Timer = observer (() =>  {
           size={80}
           strokeWidth={4}
           duration={3}
-          colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+          colors={["#61c722", "#7ab522", "#A30000", "#41c92c"]}
           colorsTime={[3, 2, 1, 0]}
           key={key}
           onComplete={() =>{
@@ -72,7 +72,7 @@ export const Timer2 = observer (() =>  {
         size={80}
         strokeWidth={4}
         duration={3}
-        colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+        colors={["#61c722", "#7ab522", "#A30000", "#41c92c"]}
         colorsTime={[3, 2, 1, 0]}
         key={key}
         onComplete={() =>{
@@ -92,7 +92,7 @@ export const Timer2 = observer (() =>  {
           size={80}
           strokeWidth={4}
           duration={3}
-          colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+          colors={["#61c722", "#7ab522", "#A30000", "#41c92c"]}
           colorsTime={[3, 2, 1, 0]}
           key={key}
           onComplete={() =>{
@@ -122,7 +122,7 @@ export const Timer3 = observer (() =>  {
         size={80}
         strokeWidth={4}
         duration={3}
-        colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+        colors={["#61c722", "#7ab522", "#A30000", "#41c92c"]}
         colorsTime={[3, 2, 1, 0]}
         key={key}
         onComplete={() =>{
@@ -143,7 +143,7 @@ export const Timer3 = observer (() =>  {
           size={80}
           strokeWidth={4}
           duration={3}
-          colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+          colors={["#61c722", "#7ab522", "#A30000", "#41c92c"]}
           colorsTime={[3, 2, 1, 0]}
           key={key}
           onComplete={() =>{
@@ -173,7 +173,7 @@ export const Timer4 = observer (() =>  {
         size={80}
         strokeWidth={4}
         duration={3}
-        colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+        colors={["#61c722", "#7ab522", "#A30000", "#41c92c"]}
         colorsTime={[3, 2, 1, 0]}
         key={key}
         onComplete={() =>{
@@ -194,7 +194,7 @@ export const Timer4 = observer (() =>  {
           size={80}
           strokeWidth={4}
           duration={3}
-          colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+          colors={["#61c722", "#7ab522", "#A30000", "#41c92c"]}
           colorsTime={[3, 2, 1, 0]}
           key={key}
           onComplete={() =>{
