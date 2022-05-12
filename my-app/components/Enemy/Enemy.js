@@ -18,7 +18,7 @@ export const Enemy = observer (() => {
     const currentEnemy = hero.world === 1 ? enemy : hero.world === 2 ? enemy2 : enemy3
     return (
         <View style={EnemyStyle.container}>
-            <Text style={EnemyStyle.hitpoints}>{currentEnemy.characteristics.health}</Text>
+            {/*<Text style={EnemyStyle.hitpoints}>{currentEnemy.characteristics.health}</Text>*/}
             <Image source={currentEnemy.image} style={EnemyStyle.enemy}/>
             {animations.doubleHitIndicator && <DoubleHit/>}
             {animations.hitIndicator && <Hit/>}
