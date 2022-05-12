@@ -13,8 +13,12 @@ export const Shop = observer (({ navigation }) => {
   // для навигации
   const listTab = [
     { status: 'All'},
-    { status: 'Weapon'},
-    { status: 'Armor'}
+    { status: 'weapons'},
+    { status: 'armor'},
+    { status: 'helmet'},
+    { status: 'boots'},
+    { status: 'ring'},
+    { status: 'gloves'},
   ];
 
   const [status, setStatus] = useState('All');
@@ -23,11 +27,11 @@ export const Shop = observer (({ navigation }) => {
 
   // это чтобы потом фильтровать броню и оружие
   const setStatusFilter = status => {
-    // if (status !== 'All') { // weapon and armor
-    //   setDataList([...shop.shop.filter(el => el.status === status)])
-    // } else {
-    //   setDataList(shop.shop)
-    // }
+    if (status !== 'All') { // weapon and armor
+      setDataList([...shop.shop.filter(el => el.status === status)])
+    } else {
+      setDataList(shop.shop)
+    }
     setStatus(status) 
   }
 
@@ -89,7 +93,7 @@ export const Shop = observer (({ navigation }) => {
           </View>
 
           <FlatList 
-          data={shop.shop.weapons}
+          data={dataList}
           keyExtractor={(el, i) => i.toString()}
           renderItem={renderItem}
           />

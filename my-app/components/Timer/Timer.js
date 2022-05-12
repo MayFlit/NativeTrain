@@ -20,7 +20,7 @@ export const Timer = observer (() =>  {
         size={80}
         strokeWidth={4}
         duration={3}
-        colors={["#A30000", "#A30000", "#F7B801", "#004777"]}
+        colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
         colorsTime={[3, 2, 1, 0]}
         key={key}
         onComplete={() =>{
@@ -41,7 +41,7 @@ export const Timer = observer (() =>  {
           size={80}
           strokeWidth={4}
           duration={3}
-          colors={["#A30000", "#A30000", "#F7B801", "#004777"]}
+          colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
           colorsTime={[3, 2, 1, 0]}
           key={key}
           onComplete={() =>{
@@ -65,26 +65,48 @@ export const Timer2 = observer (() =>  {
   const [key, setKey] = React.useState(0);
 
   return (
-    <View style={TimerStyle.container}>
+    <View>
+          {!hero.poisonCooldown ? <View style={TimerStyle.container}>
       <CountdownCircleTimer
         isPlaying={!isPlaying}
         size={80}
         strokeWidth={4}
-        duration={10}
-        colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-        colorsTime={[10, 6, 3, 0]}
+        duration={3}
+        colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+        colorsTime={[3, 2, 1, 0]}
         key={key}
         onComplete={() =>{
           setKey(prevKey => prevKey + 1)
           setIsPlaying(!isPlaying)
      }}>
       {({ remainingTime, color }) => (
-        <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.poison()}}>
-          <Image source={require('../../assets/skills/poisonIcon.png')} style={TimerStyle.img}/>
+        <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.poison()} } >
+          <Image source={require('../../assets/skills/poisonIcon.png')} style={TimerStyle.img} />
         </Text>
       )}
-    </CountdownCircleTimer>
-  </View>
+      </CountdownCircleTimer>
+  </View> :
+  <View style={TimerStyle.container}>
+      <CountdownCircleTimer
+          isPlaying={!isPlaying}
+          size={80}
+          strokeWidth={4}
+          duration={3}
+          colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+          colorsTime={[3, 2, 1, 0]}
+          key={key}
+          onComplete={() =>{
+              setKey(prevKey => prevKey + 1)
+              setIsPlaying(!isPlaying)
+          }}>
+          {({ remainingTime, color }) => (
+              <Text style={{ color, fontSize: 40 }} >
+                  <Image source={require('../../assets/skills/poisonIcon.png')} style={TimerStyle.img} />
+              </Text>
+          )}
+      </CountdownCircleTimer>
+  </View>}
+      </View>
   )
 })
 
@@ -93,30 +115,49 @@ export const Timer3 = observer (() =>  {
   const [key, setKey] = React.useState(0);
 
   return (
-    <View style={TimerStyle.container}>
+    <View>
+          {!hero.healCooldown ? <View style={TimerStyle.container}>
       <CountdownCircleTimer
         isPlaying={!isPlaying}
         size={80}
         strokeWidth={4}
-        duration={10}
-        colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-        colorsTime={[10, 6, 3, 0]}
+        duration={3}
+        colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+        colorsTime={[3, 2, 1, 0]}
         key={key}
         onComplete={() =>{
           setKey(prevKey => prevKey + 1)
           setIsPlaying(!isPlaying)
-     }}
-
-    >
+     }}>
       {({ remainingTime, color }) => (
-        <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.heal()}}>
-          <Image source={require('../../assets/skills/healIcon.png')} style={TimerStyle.img}/>
-          {/* {remainingTime} */}
+        <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.heal()} } >
+          <Image source={require('../../assets/skills/healIcon.png')} style={TimerStyle.img} />
         </Text>
-
       )}
-    </CountdownCircleTimer>
-  </View>
+
+</CountdownCircleTimer>
+  </View> :
+  <View style={TimerStyle.container}>
+      <CountdownCircleTimer
+          isPlaying={!isPlaying}
+          size={80}
+          strokeWidth={4}
+          duration={3}
+          colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+          colorsTime={[3, 2, 1, 0]}
+          key={key}
+          onComplete={() =>{
+              setKey(prevKey => prevKey + 1)
+              setIsPlaying(!isPlaying)
+          }}>
+          {({ remainingTime, color }) => (
+              <Text style={{ color, fontSize: 40 }} >
+                  <Image source={require('../../assets/skills/healIcon.png')} style={TimerStyle.img} />
+              </Text>
+          )}
+      </CountdownCircleTimer>
+  </View>}
+      </View>
   )
 })
 
@@ -125,29 +166,48 @@ export const Timer4 = observer (() =>  {
   const [key, setKey] = React.useState(0);
 
   return (
-    <View style={TimerStyle.container}>
+    <View>
+          {!hero.doubleDamageCooldown ? <View style={TimerStyle.container}>
       <CountdownCircleTimer
         isPlaying={!isPlaying}
         size={80}
         strokeWidth={4}
-        duration={10}
-        colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-        colorsTime={[10, 6, 3, 0]}
+        duration={3}
+        colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+        colorsTime={[3, 2, 1, 0]}
         key={key}
         onComplete={() =>{
           setKey(prevKey => prevKey + 1)
           setIsPlaying(!isPlaying)
-     }}
-
-    >
+     }}>
       {({ remainingTime, color }) => (
-        <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.doubleDamage()}}>
-          <Image source={require('../../assets/skills/doubleDamageIcon.png')} style={TimerStyle.img}/>
-          {/* {remainingTime} */}
+        <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.doubleDamage()} } >
+          <Image source={require('../../assets/skills/doubleDamageIcon.png')} style={TimerStyle.img} />
         </Text>
-
       )}
-    </CountdownCircleTimer>
-  </View>
+</CountdownCircleTimer>
+ 
+  </View> :
+  <View style={TimerStyle.container}>
+      <CountdownCircleTimer
+          isPlaying={!isPlaying}
+          size={80}
+          strokeWidth={4}
+          duration={3}
+          colors={["#61c722", "#F7B801", "#A30000", "#41c92c"]}
+          colorsTime={[3, 2, 1, 0]}
+          key={key}
+          onComplete={() =>{
+              setKey(prevKey => prevKey + 1)
+              setIsPlaying(!isPlaying)
+          }}>
+          {({ remainingTime, color }) => (
+              <Text style={{ color, fontSize: 40 }} >
+                  <Image source={require('../../assets/skills/doubleDamageIcon.png')} style={TimerStyle.img} />
+              </Text>
+          )}
+      </CountdownCircleTimer>
+  </View>}
+      </View>
   )
 })
