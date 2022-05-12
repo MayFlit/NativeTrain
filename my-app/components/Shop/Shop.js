@@ -12,13 +12,21 @@ export const Shop = observer (({ navigation }) => {
 
   // для навигации
   const listTab = [
-    { status: 'All'},
-    { status: 'weapons'},
-    { status: 'armor'},
-    { status: 'helmet'},
-    { status: 'boots'},
-    { status: 'ring'},
-    { status: 'gloves'},
+  //   { status: 'All',
+  //   imgBar: require('../../assets/shop/TobiasRing.png')
+  // },
+    { status: 'weapons',
+    imgBar: require('../../assets/shop/TobiasRing.png')},
+    { status: 'armor',
+    imgBar: require('../../assets/shop/TobiasRing.png')},
+    { status: 'helmet',
+    imgBar: require('../../assets/shop/TobiasRing.png')},
+    { status: 'boots',
+    imgBar: require('../../assets/shop/TobiasRing.png')},
+    { status: 'ring',
+    imgBar: require('../../assets/shop/TobiasRing.png')},
+    { status: 'gloves',
+    imgBar: require('../../assets/shop/TobiasRing.png')},
   ];
 
   const [status, setStatus] = useState('All');
@@ -70,13 +78,13 @@ export const Shop = observer (({ navigation }) => {
   return (
     <SafeAreaView style={ShopStyle.container}>
 
-          <View style={ShopStyle.listTab}>
-            <TouchableOpacity onPress={loadScene}>
+            <TouchableOpacity onPress={loadScene} >
              <Image 
                style={ShopStyle.exit}
                source={require('../../assets/shop/exit.png')}
                />
             </TouchableOpacity>
+          <View style={ShopStyle.listTab}>
             {
               listTab.map(el => (
                 <TouchableOpacity 
@@ -85,7 +93,8 @@ export const Shop = observer (({ navigation }) => {
                 >
                 <Text 
                 style={ShopStyle.textTab, status === el.status && ShopStyle.textTabActive}> 
-                {el.status}
+                {/* {el.status} */}
+                <Image source={el.imgBar} style={ShopStyle.textTab}/>
                  </Text>
               </TouchableOpacity>
               ))
