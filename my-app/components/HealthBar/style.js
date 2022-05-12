@@ -11,6 +11,14 @@ export const HealthBarStyle = StyleSheet.create({
         marginRight: 'auto',
         marginTop: 10,
         backgroundColor: 'grey',
+        shadowColor: "#17924b",
+        shadowOffset: {
+       width: 1,
+       height: 1,
+           },
+       shadowOpacity: 30,
+        shadowRadius: 15,
+        elevation: 5,
     },
     text: {
         position: 'absolute',

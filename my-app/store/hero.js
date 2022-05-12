@@ -8,6 +8,8 @@ import boss2 from "./boss2";
 import boss3 from "./boss3";
 import animations from "./animations";
 
+
+
 class Hero {
     @observable characteristics = {attack: 20, health: 100, maxHealth: 100}
     @observable gold = 0;
@@ -17,7 +19,6 @@ class Hero {
                             boots: {id: 400, name: 'Mitra Boots', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraBoots.png')},
                             ring: {id: 500, name: 'Mitra Ring', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraRing.png')},
                             gloves: {id: 600, name: 'Mitra Gloves', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraGloves.png')},
-
     }
     @observable experience = 0;
     @observable level = 1;
@@ -32,6 +33,15 @@ class Hero {
     @observable doubleDamageCooldown = false;
     @observable healCooldown = false;
     @observable poisonCooldown = false;
+
+
+    @observable characteristicsAsyncTrigger = false
+    @observable goldAsyncTrigger = false
+    @observable equipmentAsyncTrigger = false
+    @observable expAsyncTrigger = false
+    @observable lvlAsyncTrigger = false
+    @observable worldAsyncTrigger = false
+
 
     constructor() {
         makeAutoObservable(this)
@@ -380,11 +390,11 @@ class Hero {
     // Инициализация характеристик персонажа
     @action.bound
     initChar = () => {
-        // AsyncStorage.removeItem('heroCharacteristics')
         AsyncStorage.getItem('heroCharacteristics')
             .then(char => {
                 if (!char) {
                     AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
+                        .then(this.characteristicsAsyncTrigger = true)
                 }
                 this.initCharAction(char)
             })
@@ -404,6 +414,7 @@ class Hero {
             .then(gold => {
                 if (!gold) {
                     AsyncStorage.setItem('heroGold', String(this.gold))
+                        .then(this.goldAsyncTrigger = true)
                 }
                 this.initGoldAction(+gold)
             })
@@ -425,6 +436,7 @@ class Hero {
             .then(equip => {
                 if (!equip) {
                     AsyncStorage.setItem('heroEquipment', JSON.stringify(this.equipment))
+                        .then(this.equipmentAsyncTrigger = true)
                 }
                 this.initEquipAction(equip)
             })
@@ -445,6 +457,7 @@ class Hero {
             .then(exp => {
                 if (!exp) {
                     AsyncStorage.setItem('heroExp', String(this.experience))
+                        .then(this.equipmentAsyncTrigger = true)
                 }
                 this.initExpAction(+exp)
             })
@@ -461,11 +474,11 @@ class Hero {
     // Инициализация уровня героя
     @action.bound
     initLevel = () => {
-        // AsyncStorage.removeItem('heroLvl')
         AsyncStorage.getItem('heroLvl')
             .then(level => {
                 if (!level) {
                     AsyncStorage.setItem('heroLvl', String(this.level))
+                        .then(this.lvlAsyncTrigger = true)
                 }
                 this.initLevelAction(+level)
             })
@@ -486,6 +499,7 @@ class Hero {
             .then(world => {
                 if (!world) {
                     AsyncStorage.setItem('heroWorld', String(this.world))
+                        .then(this.worldAsyncTrigger = true)
                 }
                 this.initWorldAction(+world)
             })
