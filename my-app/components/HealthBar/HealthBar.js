@@ -102,6 +102,7 @@ export const HealthBar = observer (() => {
                     height: 15,
                     marginTop: 10,
                     backgroundColor: 'red',
+                    borderRadius: 7,
                 }}></View>
                 <Text style={HealthBarStyle.text}>{currentEnemy.characteristics.health}</Text>
             </View>
