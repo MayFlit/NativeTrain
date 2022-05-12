@@ -25,8 +25,7 @@ export default function App() {
     hero.initWorld()
     hero.initLevel()
     hero.initChar()
-
-    // hero.healthRegen()
+    hero.healthRegen()
 
 
 

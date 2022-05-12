@@ -66,7 +66,7 @@ export const Timer2 = observer (() =>  {
 
   return (
     <View>
-          {!hero.poison ? <View style={TimerStyle.container}>
+          {!hero.poisonCooldown ? <View style={TimerStyle.container}>
       <CountdownCircleTimer
         isPlaying={!isPlaying}
         size={80}
@@ -116,7 +116,7 @@ export const Timer3 = observer (() =>  {
 
   return (
     <View>
-          {!hero.heal ? <View style={TimerStyle.container}>
+          {!hero.healCooldown ? <View style={TimerStyle.container}>
       <CountdownCircleTimer
         isPlaying={!isPlaying}
         size={80}
@@ -167,7 +167,7 @@ export const Timer4 = observer (() =>  {
 
   return (
     <View>
-          {!hero.doubleDamage ? <View style={TimerStyle.container}>
+          {!hero.doubleDamageCooldown ? <View style={TimerStyle.container}>
       <CountdownCircleTimer
         isPlaying={!isPlaying}
         size={80}
