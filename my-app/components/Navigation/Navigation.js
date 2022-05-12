@@ -13,10 +13,15 @@ const Stack = createStackNavigator();
 export default function Navigate() {
   return <NavigationContainer>
     <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Screen
+      name="MainMenu"
+      component={MainMenu}
+      options={{title: ''}}
+      />
       <Stack.Screen
       name="Game"
       component={Game}
-      options={{title: ''}}
+      options={{title: 'Игра'}}
       />
       <Stack.Screen
       name="Shop"
@@ -27,11 +32,6 @@ export default function Navigate() {
       name="Profile"
       component={Profile}
       options={{title: 'Профиль'}}
-      />
-      <Stack.Screen
-      name="MainMenu"
-      component={MainMenu}
-      options={{title: ''}}
       />
     </Stack.Navigator>
   </NavigationContainer>;
