@@ -5,20 +5,11 @@ import AppLoading from 'expo-app-loading';
 import hero from './store/hero'
 import MainMenuStack from './components/Navigation/Navigation';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {MainMenu} from "./components/MainMenu/MainMenu";
-import {Game} from "./components/Game/Game";
+
 
 
 export default function App() {
     const [items, setItems] = useState(false)
-    // AsyncStorage.removeItem('heroCharacteristics')
-    // AsyncStorage.removeItem('heroGold')
-    // AsyncStorage.removeItem('heroEquipment')
-    // AsyncStorage.removeItem('heroExp')
-    // AsyncStorage.removeItem('heroLvl')
-    // AsyncStorage.removeItem('heroWorld')
-    // AsyncStorage.multiRemove(['heroCharacteristics', 'heroGold', 'heroEquipment', 'heroExp', 'heroLvl', 'heroWorld'])
-
 
 
     hero.initGold()
@@ -31,14 +22,8 @@ export default function App() {
 
 
 
-    async function lala() {
-        // return await AsyncStorage.getAllKeys()
+    async function getItems() {
         return await AsyncStorage.multiGet(['heroCharacteristics', 'heroGold', 'heroEquipment', 'heroExp', 'heroLvl', 'heroWorld'])
-        // const y = await AsyncStorage.getItem('heroCharacteristics')
-        // const z = await AsyncStorage.getItem('heroGold')
-        // console.log(y)
-        // console.log(x)
-        // console.log(z)
     }
 
 
@@ -50,10 +35,9 @@ export default function App() {
                     <StatusBar style="auto" hidden={true}/>
                 </SafeAreaView>
             </ImageBackground>
-
         );
     } else {
-        return <AppLoading startAsync={lala} onFinish={() => setItems(true)} onError={console.warn} />
+        return <AppLoading startAsync={getItems} onFinish={() => setItems(true)} onError={console.warn} />
     }
 
 

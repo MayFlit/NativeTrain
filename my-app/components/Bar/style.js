@@ -35,7 +35,7 @@ export const BarStyle = StyleSheet.create({
       justifyContent: 'space-between',
     },
     shield: {
-      position: 'relevant',
+      position: 'relative',
       height: 35,
       width: 35,
       zIndex: -1,

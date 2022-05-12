@@ -105,7 +105,10 @@ class Hero {
     // Метод переноса персонажа между игровыми уровнями
     @action
     worldUp = () => {
-        this.world += 1;
+        if (this.world < 3) {
+            this.world += 1;
+            AsyncStorage.setItem('heroWorld', String(this.world))
+        }
     }
 
 
@@ -260,7 +263,7 @@ class Hero {
 
     @action
     poisonAction = (enemy) => {
-        enemy.characteristics.health -= 50
+        enemy.characteristics.health -= enemy.characteristics.attack / 3
         enemy.healthRegen()
         const died = enemy.die()
 
@@ -394,7 +397,6 @@ class Hero {
             .then(char => {
                 if (!char) {
                     AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
-                        .then(this.characteristicsAsyncTrigger = true)
                 }
 
                 if (char) {
@@ -417,7 +419,6 @@ class Hero {
             .then(gold => {
                 if (!gold) {
                     AsyncStorage.setItem('heroGold', String(this.gold))
-                        .then(this.goldAsyncTrigger = true)
                 }
                 this.initGoldAction(+gold)
             })
@@ -439,7 +440,6 @@ class Hero {
             .then(equip => {
                 if (!equip) {
                     AsyncStorage.setItem('heroEquipment', JSON.stringify(this.equipment))
-                        .then(this.equipmentAsyncTrigger = true)
                 }
                 this.initEquipAction(equip)
             })
@@ -460,7 +460,6 @@ class Hero {
             .then(exp => {
                 if (!exp) {
                     AsyncStorage.setItem('heroExp', String(this.experience))
-                        .then(this.equipmentAsyncTrigger = true)
                 }
                 this.initExpAction(+exp)
             })
@@ -481,7 +480,6 @@ class Hero {
             .then(level => {
                 if (!level) {
                     AsyncStorage.setItem('heroLvl', String(this.level))
-                        .then(this.lvlAsyncTrigger = true)
                 }
                 this.initLevelAction(+level)
             })
@@ -502,7 +500,6 @@ class Hero {
             .then(world => {
                 if (!world) {
                     AsyncStorage.setItem('heroWorld', String(this.world))
-                        .then(this.worldAsyncTrigger = true)
                 }
                 this.initWorldAction(+world)
             })
