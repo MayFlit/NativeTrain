@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 export const HealthBarStyle = StyleSheet.create({
     container: {
-
+      padding: 20,
     },
     // fullBar: {
     //     bottom: 10,
