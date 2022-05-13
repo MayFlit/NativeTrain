@@ -1,5 +1,6 @@
 import {action, makeAutoObservable, observable} from "mobx";
 import hero from './hero'
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Shop {
 
@@ -26,7 +27,7 @@ class Shop {
                 {id: 503, name: 'Antero Ring', defence: 20, price: 1500, rare: 'darkorchid', status: "ring", img: require('../assets/shop/AnteroRing.png')},
                 {id: 504, name: 'Delina Ring', defence: 25, price: 2000, rare: 'darkorange', status: "ring", img: require('../assets/shop/DelinaRing.png')},
                 {id: 601, name: 'Cassius Gloves', defence: 10, price: 500, rare: 'limegreen', status: "gloves", img: require('../assets/shop/CassiusGloves.png')},
-               {id: 602, name: 'Tobias Gloves', defence: 15, price: 1000, rare: 'dodgerblue', status: "gloves", img: require('../assets/shop/TobiasGloves.png')},
+                {id: 602, name: 'Tobias Gloves', defence: 15, price: 1000, rare: 'dodgerblue', status: "gloves", img: require('../assets/shop/TobiasGloves.png')},
                 {id: 603, name: 'Antero Gloves', defence: 20, price: 1500, rare: 'darkorchid', status: "gloves", img: require('../assets/shop/AnteroGloves.png')},
                 {id: 604, name: 'Delina Gloves', defence: 25, price: 2000, rare: 'darkorange', status: "gloves", img: require('../assets/shop/DelinaGloves.png')},
             ]
@@ -38,19 +39,36 @@ class Shop {
     // Метод для покупки снаряжения
     @action
     buy = (id) => {
-        const weapon = this.shop.weapons.find(wep => wep.id === id && hero.gold >= wep.price)
-        if (weapon) {
-            hero.equipment.sword = weapon;
-            hero.gold -= weapon.price
-            // AsyncStorage
-        }
+        const item = this.shop.find(item => item.id === id && hero.gold >= item.price)
+        if (item) {
+            if (item.status === 'weapons') {
+                hero.equipment.sword = item
+            }
 
-        const armor = this.shop.armor.find(arm => arm.id === id && hero.gold >= arm.price)
-        if (armor) {
-            hero.equipment.armor = armor;
-            hero.gold -= armor.price
-            // AsyncStorage
-        }
+            if (item.status === 'armor') {
+                hero.equipment.armor = item
+            }
+
+            if (item.status === 'helmet') {
+                hero.equipment.helmet = item
+            }
+
+            if (item.status === 'boots') {
+                hero.equipment.boots = item
+            }
+
+            if (item.status === 'ring') {
+                hero.equipment.ring = item
+            }
+
+            if (item.status === 'gloves') {
+                hero.equipment.gloves = item
+            }
+
+            hero.gold -= item.price
+
+            AsyncStorage.setItem('heroGold', String(hero.gold))
+            AsyncStorage.setItem('heroEquipment', JSON.stringify(hero.equipment))}
     }
 
 

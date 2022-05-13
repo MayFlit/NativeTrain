@@ -12,12 +12,12 @@ import animations from "./animations";
 
 class Hero {
     @observable gold = 0;
-    @observable equipment = {sword: {id: 100, name: 'Mitra Staff', attack: 5, price: 100, rare: 'lightgray', img: require('../assets/shop/MitraStaff.png')},
-                            armor: {id: 200, name: 'Mitra Robe', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraRobe.png')},
-                            helmet: {id: 300, name: 'Mitra Helmet', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraHelmet.png')},
-                            boots: {id: 400, name: 'Mitra Boots', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraBoots.png')},
-                            ring: {id: 500, name: 'Mitra Ring', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraRing.png')},
-                            gloves: {id: 600, name: 'Mitra Gloves', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraGloves.png')},
+    @observable equipment = {sword: {id: 100, name: 'Mitra Staff', attack: 5, price: 100, rare: 'lightgray', status: "weapons", img: require('../assets/shop/MitraStaff.png')},
+                            armor: {id: 200, name: 'Mitra Robe', defence: 5, price: 50, rare: 'lightgray', status: "armor", img: require('../assets/shop/MitraRobe.png')},
+                            helmet: {id: 300, name: 'Mitra Helmet', defence: 5, price: 50, rare: 'lightgray', status: "helmet", img: require('../assets/shop/MitraHelmet.png')},
+                            boots: {id: 400, name: 'Mitra Boots', defence: 5, price: 50, rare: 'lightgray', status: "boots", img: require('../assets/shop/MitraBoots.png')},
+                            ring: {id: 500, name: 'Mitra Ring', defence: 5, price: 50, rare: 'lightgray', status: "ring", img: require('../assets/shop/MitraRing.png')},
+                            gloves: {id: 600, name: 'Mitra Gloves', defence: 5, price: 50, rare: 'lightgray', status: "gloves", img: require('../assets/shop/MitraGloves.png')},
     }
     @observable characteristics = {attack: 20, health: 100, maxHealth: 100}
     @observable experience = 0;
@@ -105,7 +105,10 @@ class Hero {
     // Метод переноса персонажа между игровыми уровнями
     @action
     worldUp = () => {
-        this.world += 1;
+        if (this.world < 3) {
+            this.world += 1;
+        }
+        AsyncStorage.setItem('heroWorld', String(this.world))
     }
 
 
@@ -280,8 +283,8 @@ class Hero {
     // Heal навык
     @action
     heal = () => {
-        if (this.characteristics.health + 100 < this.characteristics.maxHealth) {
-            this.characteristics.health += 100;
+        if (this.characteristics.health + this.characteristics.maxHealth / 3 < this.characteristics.maxHealth) {
+            this.characteristics.health += Math.floor(this.characteristics.maxHealth / 3);
 
 
             animations.heal()
@@ -394,7 +397,6 @@ class Hero {
             .then(char => {
                 if (!char) {
                     AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
-                        .then(this.characteristicsAsyncTrigger = true)
                 }
 
                 if (char) {
@@ -417,7 +419,6 @@ class Hero {
             .then(gold => {
                 if (!gold) {
                     AsyncStorage.setItem('heroGold', String(this.gold))
-                        .then(this.goldAsyncTrigger = true)
                 }
                 this.initGoldAction(+gold)
             })
@@ -439,7 +440,6 @@ class Hero {
             .then(equip => {
                 if (!equip) {
                     AsyncStorage.setItem('heroEquipment', JSON.stringify(this.equipment))
-                        .then(this.equipmentAsyncTrigger = true)
                 }
                 this.initEquipAction(equip)
             })
@@ -460,7 +460,6 @@ class Hero {
             .then(exp => {
                 if (!exp) {
                     AsyncStorage.setItem('heroExp', String(this.experience))
-                        .then(this.equipmentAsyncTrigger = true)
                 }
                 this.initExpAction(+exp)
             })
@@ -481,7 +480,6 @@ class Hero {
             .then(level => {
                 if (!level) {
                     AsyncStorage.setItem('heroLvl', String(this.level))
-                        .then(this.lvlAsyncTrigger = true)
                 }
                 this.initLevelAction(+level)
             })
@@ -502,7 +500,6 @@ class Hero {
             .then(world => {
                 if (!world) {
                     AsyncStorage.setItem('heroWorld', String(this.world))
-                        .then(this.worldAsyncTrigger = true)
                 }
                 this.initWorldAction(+world)
             })

@@ -8,9 +8,11 @@ export const ShopStyle = StyleSheet.create({
     backgroundColor: '#ecc792',
   },
   listTab: {
-    flexDirection: 'column',
+    flexDirection: 'row',
+    flexWrap: "wrap",
     alignSelf: 'center',
-    marginBottom: 20
+    marginBottom: 20,
+    justifyContent: "center"
   },
   btnTab: {
     width: Dimensions.get('window').width / 3.5,
@@ -21,7 +23,9 @@ export const ShopStyle = StyleSheet.create({
     justifyContent: 'center'
   },
   textTab: {
-    fontSize: 16
+    // fontSize: 16,
+    width: 30,
+    height: 30
   },
   btnTabActive: {
     backgroundColor: '#b17042',
@@ -33,13 +37,13 @@ export const ShopStyle = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 15,
     shadowColor: "rgba(34, 60, 80, 0.2)",
-      shadowOffset: {
-        width: 1,
-        height: 1,
-      },
-      shadowOpacity: 23,
-      shadowRadius: 15,
-       elevation: 5,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
     marginBottom: 20
   },
   img: {
@@ -72,7 +76,7 @@ export const ShopStyle = StyleSheet.create({
     marginTop: 20
   },
   exit: {
-    width:50,
-    height:50
+    width:30,
+    height:30
   }
 });

@@ -77,7 +77,7 @@ class Enemy {
             this.image = this.images.filter((el) => el !== this.image)[[Math.floor(Math.random() * 2)]]
             hero.experience+= 20000;
             hero.levelUp()
-            hero.gold+= 10;
+            hero.gold+= 1000;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
             return true

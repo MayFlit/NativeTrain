@@ -5,18 +5,10 @@ import AppLoading from 'expo-app-loading';
 import hero from './store/hero'
 import MainMenuStack from './components/Navigation/Navigation';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {MainMenu} from "./components/MainMenu/MainMenu";
-import {Game} from "./components/Game/Game";
 
 
 export default function App() {
     const [items, setItems] = useState(false)
-    // AsyncStorage.removeItem('heroCharacteristics')
-    // AsyncStorage.removeItem('heroGold')
-    // AsyncStorage.removeItem('heroEquipment')
-    // AsyncStorage.removeItem('heroExp')
-    // AsyncStorage.removeItem('heroLvl')
-    // AsyncStorage.removeItem('heroWorld')
     // AsyncStorage.multiRemove(['heroCharacteristics', 'heroGold', 'heroEquipment', 'heroExp', 'heroLvl', 'heroWorld'])
 
 
@@ -31,20 +23,21 @@ export default function App() {
 
 
 
-    async function lala() {
-        // return await AsyncStorage.getAllKeys()
+    async function getItems() {
         return await AsyncStorage.multiGet(['heroCharacteristics', 'heroGold', 'heroEquipment', 'heroExp', 'heroLvl', 'heroWorld'])
-        // const y = await AsyncStorage.getItem('heroCharacteristics')
-        // const z = await AsyncStorage.getItem('heroGold')
-        // console.log(y)
-        // console.log(x)
-        // console.log(z)
+
     }
 
+    // const backgrounds = {world1: require('./assets/back/background1.png'),
+    //     world2: require('./assets/back/background2.png'),
+    //     world3: require('./assets/back/background3.png'),
+    //     world4: require('./assets/back/background4.png')}
+    //
+    // const currentBackground = hero.world === 1 ? backgrounds.world1 : hero.world === 2 ? backgrounds.world2 : backgrounds.world3
 
     if (items) {
         return (
-            <ImageBackground source={require('./assets/background_main.jpg')} style={{width: '100%', height: '100%'}}>
+            <ImageBackground source={require('./assets/back/background2.png')} style={{width: '100%', height: '100%'}}>
                 <SafeAreaView style={{flex: 1}}>
                     <MainMenuStack/>
                     <StatusBar style="auto" hidden={true}/>
@@ -53,7 +46,7 @@ export default function App() {
 
         );
     } else {
-        return <AppLoading startAsync={lala} onFinish={() => setItems(true)} onError={console.warn} />
+        return <AppLoading startAsync={getItems} onFinish={() => setItems(true)} onError={console.warn} />
     }
 
 
