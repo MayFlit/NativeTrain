@@ -1,5 +1,5 @@
-import React, {useRef, useState} from "react";
-import {Text, View, Animated} from 'react-native';
+import React from "react";
+import {Text, View} from 'react-native';
 import {observer} from "mobx-react-lite";
 import {HealthBarStyle} from "./style";
 import hero from "../../store/hero";

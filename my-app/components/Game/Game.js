@@ -17,12 +17,6 @@ export const Game = observer (({ navigation }) => {
   const loadScene1 = () => {
     navigation.navigate('Profile');
   }
-    // const backgrounds = {world1: require('../../assets/back/background1.png'),
-    //                           world2: require('../../assets/back/background2.png'),
-    //                           world3: require('../../assets/back/background3.png'),
-    //                           world4: require('../../assets/back/background4.png')}
-    //
-    // const currentBackground = hero.world === 1 ? backgrounds.world1 : hero.world === 2 ? backgrounds.world2 : backgrounds.world3
 
     return (
         <ImageBackground source={require('../../assets/back/background2.png')} style={{width: '100%', height: '100%'}}>

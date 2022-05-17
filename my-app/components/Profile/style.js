@@ -14,7 +14,6 @@ export const ProfileStyle = StyleSheet.create({
         position: 'absolute',
         marginLeft: '50%',
         marginBottom: '50%'
-
       },
       hero: {
         width: 150,
@@ -54,9 +53,6 @@ export const ProfileStyle = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         color: 'brown',
-
-      },
-      statIcon: {
 
       },
 });

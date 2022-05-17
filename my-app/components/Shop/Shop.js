@@ -12,9 +12,6 @@ export const Shop = observer (({ navigation }) => {
 
   // для навигации
   const listTab = [
-    //   { status: 'All',
-    //   imgBar: require('../../assets/shop/TobiasRing.png')
-    // },
     { status: 'weapons',
       imgBar: require('../../assets/shop/DelinaStaff.png')},
     { status: 'armor',
@@ -33,9 +30,9 @@ export const Shop = observer (({ navigation }) => {
   const [dataList, setDataList] = useState(shop.shop);
 
 
-  // это чтобы потом фильтровать броню и оружие
+  // чтобы потом фильтровать броню и оружие
   const setStatusFilter = status => {
-    if (status !== 'All') { // weapon and armor
+    if (status !== 'All') {
       setDataList([...shop.shop.filter(el => el.status === status)])
     } else {
       setDataList(shop.shop)
@@ -58,12 +55,11 @@ export const Shop = observer (({ navigation }) => {
               {item.name}
               {'\n'}
                 {item.attack ? `Attack: ${item.attack}` : `Defence: ${item.defence}` }
-              {/*Attack: {item.attack}*/}
             </Text>
           </View>
 
           <View style={ShopStyle.button}>
-            <TouchableOpacity onPress={() => shop.buy(item.id)} >
+            <TouchableOpacity  onPress={() => shop.buy(item.id)} >
               <Text >
                 Buy
                 {'\n'}
@@ -92,8 +88,7 @@ export const Shop = observer (({ navigation }) => {
                     style={[ShopStyle.btnTab, status === el.status && ShopStyle.btnTabActive]}
                     onPress={() => setStatusFilter(el.status)}>
                   <Text
-                      style={ShopStyle.textTab, status === el.status && ShopStyle.textTabActive}>
-                    {/* {el.status} */}
+                      style={[ShopStyle.textTab, status === el.status && ShopStyle.textTabActive]}>
                     <Image source={el.imgBar} style={ShopStyle.textTab}/>
                   </Text>
                 </TouchableOpacity>

@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Image, Text} from "react-native";
+import {View, Image} from "react-native";
 import {EnemyStyle} from "./style";
 import {observer} from "mobx-react-lite";
 import enemy from '../../store/enemy'
@@ -15,10 +15,12 @@ import {LightningOrb} from "../LightningOrb/LightningOrb";
 
 
 export const Enemy = observer (() => {
-    const currentEnemy = hero.world === 1 ? enemy : hero.world === 2 ? enemy2 : enemy3
     return (
         <View style={EnemyStyle.container}>
-            <Image source={currentEnemy.image} style={EnemyStyle.enemy}/>
+            {hero.world === 1 ? <Image source={enemy.image} style={EnemyStyle.enemy}/> :
+            hero.world === 2 ? <Image source={enemy2.image} style={EnemyStyle.enemy}/> :
+            <Image source={enemy3.image} style={EnemyStyle.enemy}/>}
+
             {animations.doubleHitIndicator && <DoubleHit/>}
             {animations.hitIndicator && <Hit/>}
             {animations.healIndicator && <Heal/>}
