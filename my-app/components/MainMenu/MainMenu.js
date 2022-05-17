@@ -12,7 +12,7 @@ export const MainMenu = observer (({navigation}) => {
 
     return (
         <ImageBackground style={MainMenuStyle.container} source={require('../../assets/back/background2.png')}>
-            <Text style={MainMenuStyle.text} onPress={loadScene}>Играть</Text>
+            <Text style={MainMenuStyle.text} onPress={loadScene}>Денис подставил и не сделал мне кнопку! (нажмите)</Text>
         </ImageBackground>
     );
 })

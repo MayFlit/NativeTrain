@@ -57,7 +57,8 @@ export const Shop = observer (({ navigation }) => {
             <Text style={ShopStyle.itemName}>
               {item.name}
               {'\n'}
-              Attack: {item.attack}
+                {item.attack ? `Attack: ${item.attack}` : `Defence: ${item.defence}` }
+              {/*Attack: {item.attack}*/}
             </Text>
           </View>
 

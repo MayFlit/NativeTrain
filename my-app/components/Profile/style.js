@@ -52,6 +52,9 @@ export const ProfileStyle = StyleSheet.create({
       },
       statText: {
         fontSize: 20,
+        fontWeight: 'bold',
+        color: 'brown',
+
       },
       statIcon: {
 

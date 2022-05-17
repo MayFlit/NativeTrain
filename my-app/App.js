@@ -13,6 +13,8 @@ export default function App() {
 
 
 
+
+
     hero.initGold()
     hero.initEquip()
     hero.initExp()
@@ -20,6 +22,7 @@ export default function App() {
     hero.initLevel()
     hero.initChar()
     hero.healthRegen()
+
 
 
 
