@@ -3,7 +3,6 @@ import { Game } from "../Game/Game";
 import { Shop } from "../Shop/Shop";
 import { Profile } from "../Profile/Profile";
 import {MainMenu} from "../MainMenu/MainMenu";
-import hero from "../../store/hero";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";

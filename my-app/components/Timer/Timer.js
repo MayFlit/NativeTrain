@@ -33,7 +33,7 @@ export const Timer = observer (() =>  {
         </Text>
       )}
     </CountdownCircleTimer>
-    {/* <Button title="Toggle Playing" onPress={() => setIsPlaying(prev => !prev)} /> */}
+
   </View> :
   <View style={TimerStyle.container}>
       <CountdownCircleTimer
@@ -54,7 +54,6 @@ export const Timer = observer (() =>  {
               </Text>
           )}
       </CountdownCircleTimer>
-      {/* <Button title="Toggle Playing" onPress={() => setIsPlaying(prev => !prev)} /> */}
   </View>}
       </View>
   )

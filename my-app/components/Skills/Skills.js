@@ -1,6 +1,5 @@
 import React from "react";
-import {SafeAreaView, Text, Image, TouchableOpacity } from 'react-native';
-import hero from '../../store/hero';
+import {SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import {observer} from "mobx-react-lite";
 import {SkillsStyle} from "./style";
 import { Timer, Timer2, Timer3, Timer4 } from '../Timer/Timer';
