@@ -32,13 +32,14 @@ export const Game = observer (({ navigation }) => {
 
                 <View style={GameStyle.shopContainer}>
                 <TouchableOpacity onPress={loadScene}>
-                <Image source={require('../../assets/shop.png')} style={GameStyle.shop}/>
+                <Image source={require('../../assets/shop2.png')} style={GameStyle.shop}/>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={loadScene1}>
-                <Image source={require('../../assets/profile.png')} style={GameStyle.shop}/>
+                <Image source={require('../../assets/profile2.png')} style={GameStyle.shop}/>
                 </TouchableOpacity>
                 </View>
+
 
                 {!hero.bossIndicator && <Enemy/>}
                 {hero.bossIndicator && <Boss/>}

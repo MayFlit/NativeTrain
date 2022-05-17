@@ -5,7 +5,7 @@ import hero from './hero'
 
 class Boss {
 
-    @observable characteristics = {attack: 20, health: 500, maxHealth: 500,}
+    @observable characteristics = {attack: 20, health: 5000, maxHealth: 5000,}
     @observable image = require('../assets/enemy/angel1.gif')
     @observable world = 1
     @observable boss = true;
@@ -78,12 +78,12 @@ class Boss {
     @action
     die = () => {
         if (this.characteristics.health <= 0) {
-            this.characteristics.health = 500;
-            hero.experience+= 200;
+            this.characteristics.health = this.characteristics.maxHealth;
+            hero.experience+= 10000;
             hero.bossFight()
             hero.levelUp()
             hero.worldUp()
-            hero.gold+= 100;
+            hero.gold+= 5000;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
             return true

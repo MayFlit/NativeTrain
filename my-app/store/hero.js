@@ -35,14 +35,6 @@ class Hero {
     @observable poisonCooldown = false;
 
 
-    @observable characteristicsAsyncTrigger = false
-    @observable goldAsyncTrigger = false
-    @observable equipmentAsyncTrigger = false
-    @observable expAsyncTrigger = false
-    @observable lvlAsyncTrigger = false
-    @observable worldAsyncTrigger = false
-
-
     constructor() {
         makeAutoObservable(this)
     }
@@ -66,7 +58,7 @@ class Hero {
             this.experience -= ((this.level * (this.level - 1) / 2) * 100);
             this.level += 1;
             this.characteristics.attack += 5;
-            this.characteristics.maxHealth += 20
+            this.characteristics.maxHealth += 40
             AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
             AsyncStorage.setItem('heroExp', String(this.experience))
             AsyncStorage.setItem('heroLvl', String(this.level))
@@ -263,7 +255,7 @@ class Hero {
 
     @action
     poisonAction = (enemy) => {
-        enemy.characteristics.health -= 50
+        enemy.characteristics.health -= Math.floor(this.characteristics.attack + this.equipment.sword.attack / 3)
         enemy.healthRegen()
         const died = enemy.die()
 
@@ -455,7 +447,6 @@ class Hero {
     // Инициализация очков опыта
     @action.bound
     initExp = () => {
-        // AsyncStorage.removeItem('heroExp')
         AsyncStorage.getItem('heroExp')
             .then(exp => {
                 if (!exp) {

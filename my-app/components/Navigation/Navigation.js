@@ -22,8 +22,6 @@ export default function Navigate() {
       <Stack.Screen
       name="Game"
       component={Game}
-        //   component={(hero.goldAsyncTrigger + hero.worldAsyncTrigger + hero.equipmentAsyncTrigger + hero.characteristicsAsyncTrigger
-        // + hero.expAsyncTrigger + hero.lvlAsyncTrigger) === 6 ? Game : MainMenu}
       options={{title: 'Игра'}}
       />
       <Stack.Screen

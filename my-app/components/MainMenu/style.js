@@ -8,7 +8,11 @@ export const MainMenuStyle = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
+    borderWidth: 4,
+    borderColor: 'green',
+    backgroundColor: 'black',
     fontSize: 50,
     color: 'red',
+    textAlign: 'center',
   }
 })
