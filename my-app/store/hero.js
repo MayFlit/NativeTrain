@@ -120,8 +120,7 @@ class Hero {
     worldUp = () => {
         if (this.world < 3) {
             this.world += 1;
-        }
-        AsyncStorage.setItem('heroWorld', String(this.world))
+        AsyncStorage.setItem('heroWorld', String(this.world))}
     }
 
 

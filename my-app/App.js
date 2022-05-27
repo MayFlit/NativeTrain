@@ -47,7 +47,7 @@ export default function App() {
     }
 
     return (
-        <ImageBackground onLayout={onLayoutRootView} source={require('./assets/backgrounds/background2.png')} style={{width: '100%', height: '100%'}}>
+        <ImageBackground onLayout={onLayoutRootView} source={require('./assets/back/background2.png')} style={{width: '100%', height: '100%'}}>
             <SafeAreaView style={{flex: 1}}>
                 <MainMenuStack/>
                 <StatusBar style="auto" hidden={true}/>
@@ -56,6 +56,3 @@ export default function App() {
     )
 
 }
-
-
-
