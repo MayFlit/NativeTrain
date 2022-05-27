@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity, Image, SafeAreaView } from "react-native";
+import React from "react";
+import { View, Text, TouchableOpacity, Image, SafeAreaView } from "react-native";
 import {observer} from "mobx-react-lite";
 import {ProfileStyle} from "./style";
 import hero from '../../store/hero';
@@ -8,8 +8,6 @@ export const Profile = observer (({ navigation }) => {
   const loadScene = () => {
     navigation.goBack();
   }
-
-  const ring = hero.equipment.ring.rare
 
   return (
     <SafeAreaView style={ProfileStyle.bg}>
@@ -24,7 +22,7 @@ export const Profile = observer (({ navigation }) => {
 
             <View style={ProfileStyle.container}>
                 <View style={ProfileStyle.heroBg}>
-                    <Image source={require('../../assets/mage.gif')} style={ProfileStyle.hero}/>
+                    <Image source={require('../../assets/hero/mage.gif')} style={ProfileStyle.hero}/>
                 </View>
 
                 <View style={ProfileStyle.equipContainer}>
@@ -89,19 +87,3 @@ export const Profile = observer (({ navigation }) => {
       </SafeAreaView>
   );
 })
-
-
-// const iconStyle = StyleSheet.create({
-//     iconContainer: {
-//         display: 'flex',
-//         height: 70,
-//         width: 70,
-//         padding: 40,
-//         marginBottom: 10,
-//         borderWidth: 4,
-//         borderColor: 'orange',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         backgroundColor: `${hero.equipment.ring.rare}`
-//     },
-// })

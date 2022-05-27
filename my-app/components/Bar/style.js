@@ -40,7 +40,6 @@ export const BarStyle = StyleSheet.create({
       width: 35,
       zIndex: -1,
       top: -10,
-      right: 35
     },
     textShield: {
       position: "absolute",
@@ -49,5 +48,8 @@ export const BarStyle = StyleSheet.create({
       fontSize: 15,
       right: 100,
       bottom: 24,
+    },
+    btn: {
+
     }
 });

@@ -76,8 +76,18 @@ export const MainMenuStyle = StyleSheet.create({
     color: "#91A1BD",
     fontWeight: '700'
   },
+<<<<<<< HEAD
+  text: {
+    borderWidth: 4,
+    borderColor: 'green',
+    backgroundColor: 'black',
+    fontSize: 50,
+    color: 'red',
+    textAlign: 'center',
+=======
   controlsContainer: {
     flexDirection: "row",
     justifyContent: "space-around"
+>>>>>>> e1d8ca38fef3e92c07f9d3e34d19878fecb501c1
   }
 })

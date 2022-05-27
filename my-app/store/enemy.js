@@ -5,16 +5,16 @@ import hero from './hero'
 
 class Enemy {
 
-    @observable characteristics = {attack: 5, health: 100, maxHealth: 100,}
+    @observable characteristics = {attack: 5, health: 1000, maxHealth: 1000,}
     @observable image = require('../assets/enemy/golem1.gif')
-    @observable world = 1
+    @observable world = 1;
     @observable healthRegenIndicator = false;
     images = [require('../assets/enemy/golem1.gif'), require('../assets/enemy/golem2.gif'), require('../assets/enemy/golem3.gif')]
+
 
     constructor() {
         makeAutoObservable(this)
     }
-
 
 
     // Метод для высчитывания процентов оставшегося здоровья
@@ -73,9 +73,9 @@ class Enemy {
     @action
     die = () => {
         if (this.characteristics.health <= 0) {
-            this.characteristics.health = 100;
+            this.characteristics.health = this.characteristics.maxHealth;
             this.image = this.images.filter((el) => el !== this.image)[[Math.floor(Math.random() * 2)]]
-            hero.experience+= 20000;
+            hero.experience+= 1000;
             hero.levelUp()
             hero.gold+= 1000;
             AsyncStorage.setItem('heroGold', String(hero.gold));

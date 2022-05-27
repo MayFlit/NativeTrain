@@ -11,36 +11,31 @@ import animations from "./animations";
 
 
 class Hero {
-    @observable gold = 0;
-    @observable equipment = {sword: {id: 100, name: 'Mitra Staff', attack: 5, price: 100, rare: 'lightgray', img: require('../assets/shop/MitraStaff.png')},
-                            armor: {id: 200, name: 'Mitra Robe', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraRobe.png')},
-                            helmet: {id: 300, name: 'Mitra Helmet', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraHelmet.png')},
-                            boots: {id: 400, name: 'Mitra Boots', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraBoots.png')},
-                            ring: {id: 500, name: 'Mitra Ring', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraRing.png')},
-                            gloves: {id: 600, name: 'Mitra Gloves', defence: 5, price: 50, rare: 'lightgray', img: require('../assets/shop/MitraGloves.png')},
+    @observable equipment = {sword: {id: 100, name: 'Mitra Staff', attack: 5, price: 100, rare: 'lightgray', status: "weapons", img: require('../assets/shop/MitraStaff.png')},
+                            armor: {id: 200, name: 'Mitra Robe', defence: 5, price: 50, rare: 'lightgray', status: "armor", img: require('../assets/shop/MitraRobe.png')},
+                            helmet: {id: 300, name: 'Mitra Helmet', defence: 5, price: 50, rare: 'lightgray', status: "helmet", img: require('../assets/shop/MitraHelmet.png')},
+                            boots: {id: 400, name: 'Mitra Boots', defence: 5, price: 50, rare: 'lightgray', status: "boots", img: require('../assets/shop/MitraBoots.png')},
+                            ring: {id: 500, name: 'Mitra Ring', defence: 5, price: 50, rare: 'lightgray', status: "ring", img: require('../assets/shop/MitraRing.png')},
+                            gloves: {id: 600, name: 'Mitra Gloves', defence: 5, price: 50, rare: 'lightgray', status: "gloves", img: require('../assets/shop/MitraGloves.png')},
     }
+
+
     @observable characteristics = {attack: 20, health: 100, maxHealth: 100}
     @observable experience = 0;
     @observable level = 1;
+    @observable gold = 0;
     @observable world = 1;
 
 
     @observable doubleDamageIndicator = false;
     @observable bossIndicator = false;
+    @observable healthRegenIndicator = false;
 
 
     @observable lightningOrbCooldown = false;
     @observable doubleDamageCooldown = false;
     @observable healCooldown = false;
     @observable poisonCooldown = false;
-
-
-    @observable characteristicsAsyncTrigger = false
-    @observable goldAsyncTrigger = false
-    @observable equipmentAsyncTrigger = false
-    @observable expAsyncTrigger = false
-    @observable lvlAsyncTrigger = false
-    @observable worldAsyncTrigger = false
 
 
     constructor() {
@@ -66,7 +61,7 @@ class Hero {
             this.experience -= ((this.level * (this.level - 1) / 2) * 100);
             this.level += 1;
             this.characteristics.attack += 5;
-            this.characteristics.maxHealth += 20
+            this.characteristics.maxHealth += 40
             AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
             AsyncStorage.setItem('heroExp', String(this.experience))
             AsyncStorage.setItem('heroLvl', String(this.level))
@@ -78,25 +73,43 @@ class Hero {
     // Метод регенераци здоровья
     @action
     healthRegen = () => {
-        setInterval(() => {
-            if (this.characteristics.health < this.characteristics.maxHealth) {
-                this.healthRegenAction()
-                this.healthRegenMaxAction()
+        if (!this.healthRegenIndicator) {
+            this.healthRegenIndicatorAction()
+            const intervalId = setInterval(() => {
 
-            }
-        }, 1000)
+                if (this.characteristics.health < this.characteristics.maxHealth) {
+                    this.healthRegenAction()
+                    this.healthRegenMaxAction()
+                }
+
+                if (this.characteristics.health >= this.characteristics.maxHealth) {
+                    clearInterval(intervalId)
+                    this.healthRegenIndicatorAction()
+                }
+
+            }, 1000)
+        }
+    }
+
+
+    @action
+    healthRegenIndicatorAction = () => {
+        this.healthRegenIndicator = !this.healthRegenIndicator
     }
 
 
     @action
     healthRegenAction = () => {
         this.characteristics.health += 10;
+        AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
     }
 
     @action
     healthRegenMaxAction = () => {
         if (this.characteristics.health > this.characteristics.maxHealth) {
             this.characteristics.health = this.characteristics.maxHealth
+            AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
+            return true
         }
     }
 
@@ -107,8 +120,7 @@ class Hero {
     worldUp = () => {
         if (this.world < 3) {
             this.world += 1;
-            AsyncStorage.setItem('heroWorld', String(this.world))
-        }
+        AsyncStorage.setItem('heroWorld', String(this.world))}
     }
 
 
@@ -144,6 +156,7 @@ class Hero {
                     enemy.characteristics.health -= this.characteristics.attack + this.equipment.sword.attack
                     enemy.healthRegen()
                     enemy.hit()
+                    this.healthRegen()
                     enemy.die()
 
 
@@ -179,6 +192,7 @@ class Hero {
 
                     enemy.healthRegen()
                     enemy.hit()
+                    this.healthRegen()
                     enemy.die()
 
 
@@ -228,6 +242,7 @@ class Hero {
 
                 if (this.attackResolution(this.characteristics.health, enemy.characteristics.attack)) {
                     enemy.hit()
+                    this.healthRegen()
 
                     const intervalId = setInterval(() => {
                         const died = this.poisonAction(enemy);
@@ -263,7 +278,7 @@ class Hero {
 
     @action
     poisonAction = (enemy) => {
-        enemy.characteristics.health -= enemy.characteristics.attack / 3
+        enemy.characteristics.health -= Math.floor(this.characteristics.attack + this.equipment.sword.attack / 3)
         enemy.healthRegen()
         const died = enemy.die()
 
@@ -283,8 +298,8 @@ class Hero {
     // Heal навык
     @action
     heal = () => {
-        if (this.characteristics.health + 100 < this.characteristics.maxHealth) {
-            this.characteristics.health += 100;
+        if (this.characteristics.health + this.characteristics.maxHealth / 3 < this.characteristics.maxHealth) {
+            this.characteristics.health += Math.floor(this.characteristics.maxHealth / 3);
 
 
             animations.heal()
@@ -370,6 +385,7 @@ class Hero {
 
                     enemy.healthRegen()
                     enemy.hit()
+                    this.healthRegen()
                     enemy.die()
 
                     animations.doubleHit()
@@ -455,7 +471,6 @@ class Hero {
     // Инициализация очков опыта
     @action.bound
     initExp = () => {
-        // AsyncStorage.removeItem('heroExp')
         AsyncStorage.getItem('heroExp')
             .then(exp => {
                 if (!exp) {

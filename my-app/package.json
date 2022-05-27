@@ -34,7 +34,10 @@
     "react-redux": "^8.0.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
-    "webpack-dev-server": "~3.11.0"
+    "expo-app-loading": "~2.0.0",
+    "expo-splash-screen": "~0.15.1",
+    "webpack-dev-server": "~3.11.0",
+    "@expo/webpack-config": "~0.16.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

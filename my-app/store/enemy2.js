@@ -5,7 +5,7 @@ import hero from './hero'
 
 class Enemy2 {
 
-    @observable characteristics = {attack: 10, health: 200, maxHealth: 200,}
+    @observable characteristics = {attack: 10, health: 2500, maxHealth: 2500,}
     @observable image = require('../assets/enemy/reaper1.gif')
     @observable world = 2
     @observable healthRegenIndicator = false;
@@ -76,11 +76,11 @@ class Enemy2 {
     @action
     die = () => {
         if (this.characteristics.health <= 0) {
-            this.characteristics.health = 200;
+            this.characteristics.health = this.characteristics.maxHealth;
             this.image = this.images.filter((el) => el !== this.image)[[Math.floor(Math.random() * 2)]]
-            hero.experience+= 40000;
+            hero.experience+= 2500;
             hero.levelUp()
-            hero.gold+= 20;
+            hero.gold+= 1000;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
             return true

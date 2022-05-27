@@ -4,7 +4,7 @@ import hero from './hero'
 
 
 class Enemy3 {
-    @observable characteristics = {attack: 15, health: 300, maxHealth: 300,}
+    @observable characteristics = {attack: 15, health: 5000, maxHealth: 5000,}
     @observable image = require('../assets/enemy/ork1.gif')
     @observable world = 3
     @observable healthRegenIndicator = false;
@@ -73,11 +73,11 @@ class Enemy3 {
     @action
     die = () => {
         if (this.characteristics.health <= 0) {
-            this.characteristics.health = 300;
+            this.characteristics.health = this.characteristics.maxHealth;
             this.image = this.images.filter((el) => el !== this.image)[[Math.floor(Math.random() * 2)]]
-            hero.experience+= 100;
+            hero.experience+= 4000;
             hero.levelUp()
-            hero.gold+= 50;
+            hero.gold+= 1500;
             AsyncStorage.setItem('heroGold', String(hero.gold));
             AsyncStorage.setItem('heroExp', String(hero.experience));
             return true
