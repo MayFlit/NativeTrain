@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, ImageBackground} from "react-native";
+import {Text, ImageBackground, TouchableOpacity} from "react-native";
 import {observer} from "mobx-react-lite";
 import {MainMenuStyle} from "./style";
 
@@ -11,8 +11,10 @@ export const MainMenu = observer (({navigation}) => {
     }
 
     return (
-        <ImageBackground style={MainMenuStyle.container} source={require('../../assets/back/background2.png')}>
-            <Text style={MainMenuStyle.text} onPress={loadScene}>Кнопка в разработке</Text>
+        <ImageBackground style={MainMenuStyle.container} source={require('../../assets/backgrounds/background2.png')}>
+            <TouchableOpacity onPress={loadScene}>
+                <Text style={MainMenuStyle.text}>Играть</Text>
+            </TouchableOpacity>
         </ImageBackground>
     );
 })
