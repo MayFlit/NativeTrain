@@ -17,7 +17,7 @@ export const Bar = observer (() => {
 
 
                 {!hero.bossIndicator && hero.bossTrigger(hero.world, hero.level) && <TouchableOpacity onPress={() => hero.bossFight()}>
-                    <Image source={require('../../assets/btn.png')} style={BarStyle.btn} />
+                    <Image source={require('../../assets/skills/icons/btn.png')} style={BarStyle.btn} />
                 </TouchableOpacity>}
             </View>
             <HealthBar/>

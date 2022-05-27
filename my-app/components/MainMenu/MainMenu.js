@@ -6,9 +6,9 @@ import {MainMenuStyle} from "./style";
 
 
 export const MainMenu = observer (({navigation}) => {
-  const loadScene = () => {
-    navigation.navigate('Game');
-  }
+    const loadScene = () => {
+        navigation.navigate('Game');
+    }
 
     return (
         <ImageBackground style={MainMenuStyle.container} source={require('../../assets/back/background2.png')}>
