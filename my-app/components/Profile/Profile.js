@@ -22,7 +22,7 @@ export const Profile = observer (({ navigation }) => {
 
             <View style={ProfileStyle.container}>
                 <View style={ProfileStyle.heroBg}>
-                    <Image source={require('../../assets/mage.gif')} style={ProfileStyle.hero}/>
+                    <Image source={require('../../assets/hero/mage.gif')} style={ProfileStyle.hero}/>
                 </View>
 
                 <View style={ProfileStyle.equipContainer}>

@@ -7,14 +7,14 @@ class Enemy {
 
     @observable characteristics = {attack: 5, health: 1000, maxHealth: 1000,}
     @observable image = require('../assets/enemy/golem1.gif')
-    @observable world = 1
+    @observable world = 1;
     @observable healthRegenIndicator = false;
     images = [require('../assets/enemy/golem1.gif'), require('../assets/enemy/golem2.gif'), require('../assets/enemy/golem3.gif')]
+
 
     constructor() {
         makeAutoObservable(this)
     }
-
 
 
     // Метод для высчитывания процентов оставшегося здоровья

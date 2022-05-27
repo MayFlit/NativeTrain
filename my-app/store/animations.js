@@ -9,11 +9,11 @@ class Animations {
     @observable healIndicator = false;
 
 
-    @observable lightningOrbImage = require('../assets/Boom5.gif')
-    @observable poisonImage = require('../assets/poison.gif')
-    @observable healImage = require('../assets/heal.gif')
-    @observable hitImage = require('../assets/hit.gif')
-    @observable doubleHitImage = require('../assets/doubleHit.gif')
+    @observable lightningOrbImage = require('../assets/skills/animation/Boom5.gif')
+    @observable poisonImage = require('../assets/skills/animation/poison.gif')
+    @observable healImage = require('../assets/skills/animation/heal.gif')
+    @observable hitImage = require('../assets/skills/animation/hit.gif')
+    @observable doubleHitImage = require('../assets/skills/animation/doubleHit.gif')
 
 
     constructor() {

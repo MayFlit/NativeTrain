@@ -29,7 +29,7 @@ export const Timer = observer (() =>  {
      }}>
       {({ remainingTime, color }) => (
         <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.lightningOrb()} } >
-          <Image source={require('../../assets/skills/lightningBoltIcon.png')} style={TimerStyle.img} />
+          <Image source={require('../../assets/skills/icons/lightningBoltIcon.png')} style={TimerStyle.img} />
         </Text>
       )}
     </CountdownCircleTimer>
@@ -50,7 +50,7 @@ export const Timer = observer (() =>  {
           }}>
           {({ remainingTime, color }) => (
               <Text style={{ color, fontSize: 40 }} >
-                  <Image source={require('../../assets/skills/lightningBoltIcon.png')} style={TimerStyle.img} />
+                  <Image source={require('../../assets/skills/icons/lightningBoltIcon.png')} style={TimerStyle.img} />
               </Text>
           )}
       </CountdownCircleTimer>
@@ -80,7 +80,7 @@ export const Timer2 = observer (() =>  {
      }}>
       {({ remainingTime, color }) => (
         <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.poison()} } >
-          <Image source={require('../../assets/skills/poisonIcon.png')} style={TimerStyle.img} />
+          <Image source={require('../../assets/skills/icons/poisonIcon.png')} style={TimerStyle.img} />
         </Text>
       )}
       </CountdownCircleTimer>
@@ -100,7 +100,7 @@ export const Timer2 = observer (() =>  {
           }}>
           {({ remainingTime, color }) => (
               <Text style={{ color, fontSize: 40 }} >
-                  <Image source={require('../../assets/skills/poisonIcon.png')} style={TimerStyle.img} />
+                  <Image source={require('../../assets/skills/icons/poisonIcon.png')} style={TimerStyle.img} />
               </Text>
           )}
       </CountdownCircleTimer>
@@ -130,7 +130,7 @@ export const Timer3 = observer (() =>  {
      }}>
       {({ remainingTime, color }) => (
         <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.heal()} } >
-          <Image source={require('../../assets/skills/healIcon.png')} style={TimerStyle.img} />
+          <Image source={require('../../assets/skills/icons/healIcon.png')} style={TimerStyle.img} />
         </Text>
       )}
 
@@ -151,7 +151,7 @@ export const Timer3 = observer (() =>  {
           }}>
           {({ remainingTime, color }) => (
               <Text style={{ color, fontSize: 40 }} >
-                  <Image source={require('../../assets/skills/healIcon.png')} style={TimerStyle.img} />
+                  <Image source={require('../../assets/skills/icons/healIcon.png')} style={TimerStyle.img} />
               </Text>
           )}
       </CountdownCircleTimer>
@@ -181,7 +181,7 @@ export const Timer4 = observer (() =>  {
      }}>
       {({ remainingTime, color }) => (
         <Text style={{ color, fontSize: 40 }} onPress={() => {setIsPlaying(prev => !prev); hero.doubleDamage()} } >
-          <Image source={require('../../assets/skills/doubleDamageIcon.png')} style={TimerStyle.img} />
+          <Image source={require('../../assets/skills/icons/doubleDamageIcon.png')} style={TimerStyle.img} />
         </Text>
       )}
 </CountdownCircleTimer>
@@ -202,7 +202,7 @@ export const Timer4 = observer (() =>  {
           }}>
           {({ remainingTime, color }) => (
               <Text style={{ color, fontSize: 40 }} >
-                  <Image source={require('../../assets/skills/doubleDamageIcon.png')} style={TimerStyle.img} />
+                  <Image source={require('../../assets/skills/icons/doubleDamageIcon.png')} style={TimerStyle.img} />
               </Text>
           )}
       </CountdownCircleTimer>

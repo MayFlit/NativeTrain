@@ -11,7 +11,6 @@ import animations from "./animations";
 
 
 class Hero {
-    @observable gold = 0;
     @observable equipment = {sword: {id: 100, name: 'Mitra Staff', attack: 5, price: 100, rare: 'lightgray', status: "weapons", img: require('../assets/shop/MitraStaff.png')},
                             armor: {id: 200, name: 'Mitra Robe', defence: 5, price: 50, rare: 'lightgray', status: "armor", img: require('../assets/shop/MitraRobe.png')},
                             helmet: {id: 300, name: 'Mitra Helmet', defence: 5, price: 50, rare: 'lightgray', status: "helmet", img: require('../assets/shop/MitraHelmet.png')},
@@ -19,14 +18,18 @@ class Hero {
                             ring: {id: 500, name: 'Mitra Ring', defence: 5, price: 50, rare: 'lightgray', status: "ring", img: require('../assets/shop/MitraRing.png')},
                             gloves: {id: 600, name: 'Mitra Gloves', defence: 5, price: 50, rare: 'lightgray', status: "gloves", img: require('../assets/shop/MitraGloves.png')},
     }
+
+
     @observable characteristics = {attack: 20, health: 100, maxHealth: 100}
     @observable experience = 0;
     @observable level = 1;
+    @observable gold = 0;
     @observable world = 1;
 
 
     @observable doubleDamageIndicator = false;
     @observable bossIndicator = false;
+    @observable healthRegenIndicator = false;
 
 
     @observable lightningOrbCooldown = false;
@@ -70,25 +73,43 @@ class Hero {
     // Метод регенераци здоровья
     @action
     healthRegen = () => {
-        setInterval(() => {
-            if (this.characteristics.health < this.characteristics.maxHealth) {
-                this.healthRegenAction()
-                this.healthRegenMaxAction()
+        if (!this.healthRegenIndicator) {
+            this.healthRegenIndicatorAction()
+            const intervalId = setInterval(() => {
 
-            }
-        }, 1000)
+                if (this.characteristics.health < this.characteristics.maxHealth) {
+                    this.healthRegenAction()
+                    this.healthRegenMaxAction()
+                }
+
+                if (this.characteristics.health >= this.characteristics.maxHealth) {
+                    clearInterval(intervalId)
+                    this.healthRegenIndicatorAction()
+                }
+
+            }, 1000)
+        }
+    }
+
+
+    @action
+    healthRegenIndicatorAction = () => {
+        this.healthRegenIndicator = !this.healthRegenIndicator
     }
 
 
     @action
     healthRegenAction = () => {
         this.characteristics.health += 10;
+        AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
     }
 
     @action
     healthRegenMaxAction = () => {
         if (this.characteristics.health > this.characteristics.maxHealth) {
             this.characteristics.health = this.characteristics.maxHealth
+            AsyncStorage.setItem('heroCharacteristics', JSON.stringify(this.characteristics))
+            return true
         }
     }
 
@@ -136,6 +157,7 @@ class Hero {
                     enemy.characteristics.health -= this.characteristics.attack + this.equipment.sword.attack
                     enemy.healthRegen()
                     enemy.hit()
+                    this.healthRegen()
                     enemy.die()
 
 
@@ -171,6 +193,7 @@ class Hero {
 
                     enemy.healthRegen()
                     enemy.hit()
+                    this.healthRegen()
                     enemy.die()
 
 
@@ -220,6 +243,7 @@ class Hero {
 
                 if (this.attackResolution(this.characteristics.health, enemy.characteristics.attack)) {
                     enemy.hit()
+                    this.healthRegen()
 
                     const intervalId = setInterval(() => {
                         const died = this.poisonAction(enemy);
@@ -362,6 +386,7 @@ class Hero {
 
                     enemy.healthRegen()
                     enemy.hit()
+                    this.healthRegen()
                     enemy.die()
 
                     animations.doubleHit()

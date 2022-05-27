@@ -11,7 +11,7 @@ export const MainMenu = observer (({navigation}) => {
   }
 
     return (
-        <ImageBackground style={MainMenuStyle.container} source={require('../../assets/back/background2.png')}>
+        <ImageBackground style={MainMenuStyle.container} source={require('../../assets/backgrounds/background2.png')}>
             <Text style={MainMenuStyle.text} onPress={loadScene}>Кнопка в разработке</Text>
         </ImageBackground>
     );
